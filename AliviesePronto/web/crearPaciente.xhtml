@@ -1,0 +1,131 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Pharmacy</title>
+    </h:head>
+    <h:body>
+        <b:panelGrid colSpans="2,10">
+            <b:panel look="primary" title="Pharmacy" collapsible="false">
+                <b:listLinks>
+                    <b:navLink value="Acceso a paciente" href="faces/index.xhtml"/>
+                    <b:navLink value="Acceso a medicos" href="faces/indexMedico.xhtml"/>
+                    <b:navLink value="Acceso a farmaceutas" href="faces/indexFarmaceuta.xhtml"/>
+                </b:listLinks>
+            </b:panel>
+            <b:panel title="Registro de pacientes" id="targetPage" look="primary" collapsible="false">
+                <h:form id="signUpForm">
+                    <b:container>
+                        <b:row>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Primer Nombre"/>
+                                </b:row>
+                                <b:row>
+                                    <b:inputText placeholder="Primer Nombre" value=""/>
+                                </b:row>
+                            </b:column>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Segundo Nombre"/>
+                                </b:row>
+                                <b:row>
+                                    <b:inputText placeholder="Segundo Nombre" value=""/>
+                                </b:row>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Primer Apellido"/>
+                                </b:row>
+                                <b:row>
+                                    <b:inputText placeholder="Primer Apellido" value=""/>
+                                </b:row>
+                            </b:column>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Segundo Apellido"/>
+                                </b:row>
+                                <b:row>
+                                    <b:inputText placeholder="Segundo Apellido" value=""/>
+                                </b:row>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Nombre de usuario"/>
+                                </b:row>
+                                <b:row>
+                                    <b:inputText placeholder="Nombre de usuario" value=""/>
+                                </b:row>
+                            </b:column>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Correo"/>
+                                </b:row>
+                                <b:row>
+                                    <b:inputText placeholder="Correo" value=""/>
+                                </b:row>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Contraseña"/>
+                                </b:row>
+                                <b:row>
+                                    <b:inputSecret placeholder="Contraseña" value=""/>
+                                </b:row>
+                            </b:column>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Confirmar contraseña"/>
+                                </b:row>
+                                <b:row>
+                                    <b:inputSecret placeholder="Confirmar contraseña" value=""/>
+                                </b:row>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Fecha de nacimiento"/>
+                                </b:row>
+                                <b:row>
+                                    <b:datepicker mode="popup-icon" placeholder="Fecha de nacimiento" value=""/>
+                                </b:row>
+                            </b:column>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Tarjeta profesional"/>
+                                </b:row>
+                                <b:row>
+                                    <b:buttonGroup>
+                                        <b:button value="Masculino" />
+                                        <b:button value="Femenino" />
+                                    </b:buttonGroup>
+                                </b:row>
+                            </b:column>
+                        </b:row>
+                    </b:container>
+                </h:form>
+            </b:panel>
+        </b:panelGrid>
+    </h:body>
+</html>
+
