@@ -15,7 +15,23 @@ and open the template in the editor.
 
 .bodyLoginMedico{
     background-image: url("../resources/medicoBackground.jpg");
-    background-size: cover;
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.bodyLoginPaciente{
+    background-image: url("../resources/pacienteBackground.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.bodyLoginFarmaceuta{
+    background-image: url("../resources/pharmacystBackground.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
+}
+.bodyLoginManager{
+    background-image: url("../resources/managerBackground.jpg");
+    background-size: 100%;
+    background-repeat: no-repeat;
 }
 
 .sub-header {

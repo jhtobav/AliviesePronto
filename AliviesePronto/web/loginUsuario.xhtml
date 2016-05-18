@@ -6,59 +6,62 @@
       xmlns:f="http://java.sun.com/jsf/core">
     <h:head>
         <title>Pharmacy</title>
+        <link href="css/aliviesePronto.css" rel="stylesheet"/>
     </h:head>
-    <h:body>
-        <b:panelGrid colSpans="2,10">
-            <b:panel look="primary" title="Pharmacy" collapsible="false">
-                <b:listLinks>
-                    <b:navLink value="Acceso a paciente" href="faces/index.xhtml"/>
-                    <b:navLink value="Acceso a medicos" href="faces/indexMedico.xhtml"/>
-                    <b:navLink value="Acceso a farmaceutas" href="faces/indexFarmaceuta.xhtml"/>
-                </b:listLinks>
-            </b:panel>
-            <b:panel title="" id="targetPage" look="primary" collapsible="false">
-                <h:form id="loginForm">
-                    <b:row>
-                        <b:column medium-screen="2">
-                            <h:outputText value="Usuario:"/>
-                        </b:column>
-                        <b:column medium-screen="4">
-                            <b:inputText placeholder="Usuario" id="username">
-                                <f:facet name="prepend">
-                                    <b:icon name="user" />
-                                </f:facet>
-                            </b:inputText>
-                        </b:column>
-                        <b:column medium-screen="6">
-                            <b:message for="username" />
-                        </b:column>
-                    </b:row>
-                    <b:row>
-                        <b:column medium-screen="2">
-                            <h:outputText value="Contraseña:" />
-                        </b:column>
-                        <b:column medium-screen="4">
-                            <b:inputSecret id="password" placeholder="Contraseña">
-                                <f:facet name="prepend">
-                                    <b:iconAwesome name="key" />
-                                </f:facet>
-                            </b:inputSecret>
-                        </b:column>
-                        <b:column medium-screen="6">
-                            <b:message for="password" />
-                        </b:column>
-                    </b:row>
-                    <b:row>
-                        <b:column span="2" offset="2">
-                            <b:commandButton value="Iniciar sesión" onclick="" update="@form" look="primary" style="width:100%" />
-                        </b:column>
-                        <b:column span="2">
-                            <b:commandButton value="Crear cuenta" action="#{navLinkBean.navegacion('Paciente')}" look="warning" style="width:100%" />
-                        </b:column>
-                    </b:row>
-                </h:form>
-            </b:panel>
-        </b:panelGrid>
+    <h:body class="bodyLoginPaciente">
+        <h:form id="loginForm" >
+            <b:container styleClass="main">
+                <b:row>
+                    <b:column span="12"></b:column>
+                </b:row>
+                <b:row>
+                    <b:column span="2"></b:column>
+                    <b:column span="8">
+                        <b:row>
+                            <b:column medium-screen="2">
+                                <h:outputText value="Usuario:"/>
+                            </b:column>
+                            <b:column medium-screen="6">
+                                <b:inputText placeholder="Usuario" id="username">
+                                    <f:facet name="prepend">
+                                        <b:icon name="user" />
+                                    </f:facet>
+                                </b:inputText>
+                            </b:column>
+                            <b:column medium-screen="4">
+                                <b:message for="username" />
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column medium-screen="2">
+                                <h:outputText value="Contraseña:" />
+                            </b:column>
+                            <b:column medium-screen="6">
+                                <b:inputSecret id="password" placeholder="Contraseña">
+                                    <f:facet name="prepend">
+                                        <b:iconAwesome name="key" />
+                                    </f:facet>
+                                </b:inputSecret>
+                            </b:column>
+                            <b:column medium-screen="4">
+                                <b:message for="password" />
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column span="2"></b:column>
+                            <b:column span="3">
+                                <b:commandButton value="Iniciar sesión" onclick="" update="@form" look="primary" style="width:100%" />
+                            </b:column>
+                            <b:column span="3">
+                                <b:commandButton value="Crear cuenta" action="#{navLinkBean.navegacion('Paciente')}" look="warning" style="width:100%" />
+                            </b:column>
+                            <b:column span="2"></b:column>
+                        </b:row>
+                    </b:column>
+                    <b:column span="2"></b:column>
+                </b:row>
+            </b:container>
+        </h:form>
     </h:body>
 </html>
 

@@ -7,7 +7,7 @@
             <minimum-ant-version>1.6.5</minimum-ant-version>
             <web-module-libraries>
                 <library dirs="200">
-                    <file>${file.reference.BootsFaces-OSP-0.8.1-dist.jar}</file>
+                    <file>${file.reference.BootsFaces-OSP-0.8.5-dist.jar}</file>
                     <path-in-war>WEB-INF/lib</path-in-war>
                 </library>
             </web-module-libraries>
