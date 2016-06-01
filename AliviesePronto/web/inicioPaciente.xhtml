@@ -33,15 +33,11 @@
                             <li><h:link outcome="listarProductos.xhtml" value="Todos los productos" target="inicioFrame"/></li>
                             <li><h:link outcome="listarProductos.xhtml" value="Limpieza" target="inicioFrame"/></li>
                             <li><h:link outcome="listarProductos.xhtml" value="Salud" target="inicioFrame"/></li>
-                            <li><h:link outcome="loginUsuario.xhtml" value="Formulas" target="inicioFrame"/></li>
                         </b:listLinks>
                         <b:listLinks>
-                            <b:navLink header="Ingreso a miembros" />
-                            <li><h:link outcome="loginUsuario.xhtml" value="Clientes" target="inicioFrame"/></li>
-                            <li><h:link outcome="loginMedico.xhtml" value="Medicos" target="inicioFrame"/></li>
-                            <li><h:link outcome="loginFarmaceuta.xhtml" value="Farmaceutas" target="inicioFrame"/></li>
-                            <li><h:link outcome="loginAdministrador.xhtml"  value="Administrador" target="inicioFrame"/></li>
-                            <li><h:link outcome="loginGerente.xhtml" value="Gerente" target="inicioFrame"/></li>
+                            <b:navLink header="Opciones" />
+                            <li><h:link outcome="listarFormulas.xhtml" value="Consultar formulas" target="inicioFrame"/></li>
+                            <li><h:link outcome="loginMedico.xhtml" value="Realizar orden" target="inicioFrame"/></li>
                         </b:listLinks>
                     </b:column>
                     <b:column col-sm="10" col-md="10" col-lg="10" styleClass="main">

@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>Pharmacy</title>
         <link href="css/aliviesePronto.css" rel="stylesheet"/>
@@ -50,7 +51,7 @@
                         <b:row>
                             <b:column span="2"></b:column>
                             <b:column span="3">
-                                <b:commandButton value="Iniciar sesión" onclick="" update="@form" look="primary" style="width:100%" />
+                                <b:commandButton  value="Iniciar sesión" action="inicioPaciente.xhtml" look="primary" style="width:100%" onclick="form.target='_parent'"/>
                             </b:column>
                             <b:column span="3">
                                 <b:commandButton value="Crear cuenta" action="#{navLinkBean.navegacion('Paciente')}" look="warning" style="width:100%" />

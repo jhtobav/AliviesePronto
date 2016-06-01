@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Pharmacy</title>
+        <link href="css/aliviesePronto.css" rel="stylesheet"/>
+    </h:head>
+    <h:body>
+        <h:form id="loginForm" >
+            <b:container styleClass="main">
+                <b:row>
+                    <b:column span="12"></b:column>
+                </b:row>
+                <b:row class="top-buffer">
+                    <c:forEach begin="0" end="12" varStatus="i" step="1">
+                        <b:column span="12">
+                            <b:panel title="Formula diligenciada el 12/05/2016" look="primary" collapsed="true">
+                                <b:row>
+                                    <b:column span="10">
+                                        <h:outputText value="Doctor: Jaime Toba" />
+                                        <br/>
+                                        <h:outputText value="Valor de la formula: $12.000" />
+                                        <br/>
+                                        <c:forEach begin="0" end="12" varStatus="i" step="1">
+                                            <h:outputText value="Medicamento #{i.index}" />
+                                            <br/>
+                                        </c:forEach>
+                                    </b:column>
+                                    <b:column span="2">
+                                        <b:button value="Ordenar"/>
+                                    </b:column>
+                                </b:row>
+                            </b:panel>
+                        </b:column>
+                    </c:forEach>
+                </b:row>
+            </b:container>
+        </h:form>
+    </h:body>
+</html>
