@@ -18,7 +18,7 @@ public class MedicoConsultaBaseDatos {
     
     EntityManagerFactory emf = InicioSesionIntermedioPaginas.getEmf();
         
-    public Medico searchByIdUsuario(Long idMedico) {
+    public Medico encontrarPorIdMedico(Long idMedico) {
         EntityManager em = emf.createEntityManager();
         Medico medico = null;
         try {

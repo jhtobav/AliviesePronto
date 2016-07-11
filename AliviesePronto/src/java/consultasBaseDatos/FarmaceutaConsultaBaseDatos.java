@@ -18,7 +18,7 @@ public class FarmaceutaConsultaBaseDatos {
     
     EntityManagerFactory emf = InicioSesionIntermedioPaginas.getEmf();
         
-    public Farmaceuta searchByIdUsuario(Long idFarmaceuta) {
+    public Farmaceuta encontrarPorIdFarmaceuta(Long idFarmaceuta) {
         EntityManager em = emf.createEntityManager();
         Farmaceuta farmaceuta = null;
         try {

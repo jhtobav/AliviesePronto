@@ -18,7 +18,7 @@ public class GerenteConsultaBaseDatos {
     
     EntityManagerFactory emf = InicioSesionIntermedioPaginas.getEmf();
         
-    public Gerente searchByIdUsuario(Long idGerente) {
+    public Gerente searchByIdGerente(Long idGerente) {
         EntityManager em = emf.createEntityManager();
         Gerente gerente = null;
         try {

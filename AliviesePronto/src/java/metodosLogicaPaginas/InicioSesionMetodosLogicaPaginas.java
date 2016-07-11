@@ -6,6 +6,7 @@
 package metodosLogicaPaginas;
 
 import consultasBaseDatos.UsuarioConsultaBaseDatos;
+import tablas.Usuario;
 
 /**
  *
@@ -15,10 +16,21 @@ public class InicioSesionMetodosLogicaPaginas {
     
     public Boolean inicioSesion(String nombreUsuario, String contrasena, String tipoUsuario){
         
-        if( "Usuario".equals(tipoUsuario)){
+        if("Usuario".equals(tipoUsuario)){
             
             UsuarioConsultaBaseDatos usuarioConsultaBaseDatos = new UsuarioConsultaBaseDatos();
            
+            Usuario usuario = usuarioConsultaBaseDatos.encontrarPorNombreUsuario(nombreUsuario);
+                
+            if (usuario != null){
+                
+                return contrasena.equals(usuario.getContrasena());
+                
+            } else {
+                
+                return false;
+                
+            }
             
         }
         

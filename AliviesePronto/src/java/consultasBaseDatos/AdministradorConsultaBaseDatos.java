@@ -18,7 +18,7 @@ public class AdministradorConsultaBaseDatos {
     
     EntityManagerFactory emf = InicioSesionIntermedioPaginas.getEmf();
         
-    public Administrador searchByIdUsuario(Long idAdministrador) {
+    public Administrador encontrarPorIdAdministrador(Long idAdministrador) {
         EntityManager em = emf.createEntityManager();
         Administrador administrador = null;
         try {
