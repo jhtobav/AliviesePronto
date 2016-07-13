@@ -62,16 +62,20 @@ public class InicioSesionIntermedioPaginas {
             
             InicioSesionMetodosLogicaPaginas inicioSesionMetodosLogicaPaginas 
                     = new InicioSesionMetodosLogicaPaginas();
+
+            if ("Error Credenciales".equals(inicioSesionMetodosLogicaPaginas
+                    .inicioSesion(nombreUsuario, contrasena, tipoUsuario)))
+
+                return "pag error credenciales";
+                
+            if ("Cuenta Inactiva".equals(inicioSesionMetodosLogicaPaginas
+                    .inicioSesion(nombreUsuario, contrasena, tipoUsuario)))
+                
+                return "pagina cuenta inactiva";
             
-            if (inicioSesionMetodosLogicaPaginas.inicioSesion(nombreUsuario, contrasena, tipoUsuario)){
+            return inicioSesionMetodosLogicaPaginas
+                    .inicioSesion(nombreUsuario, contrasena, tipoUsuario);
                 
-                return "Inicio de Sesión Exitoso";
-                
-            } else {
-                
-                return "Nombre de Usuario o Contraseña incorrectos";
-                
-            }
             
         } else {
             

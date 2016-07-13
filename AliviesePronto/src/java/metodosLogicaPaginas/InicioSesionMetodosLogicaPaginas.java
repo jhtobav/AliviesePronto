@@ -21,101 +21,182 @@ import tablas.Usuario;
  * @author jhtob
  */
 public class InicioSesionMetodosLogicaPaginas {
-    
-    public Boolean inicioSesion(String nombreUsuario, String contrasena, String tipoUsuario){
-        
-        if("Usuario".equals(tipoUsuario)){
-            
+
+    public String inicioSesion(String nombreUsuario, String contrasena, String tipoUsuario) {
+
+        if ("Usuario".equals(tipoUsuario)) {
+
             UsuarioConsultaBaseDatos usuarioConsultaBaseDatos = new UsuarioConsultaBaseDatos();
-           
+
             Usuario usuario = usuarioConsultaBaseDatos.encontrarPorNombreUsuario(nombreUsuario);
-                
-            if (usuario != null){
-                
-                return contrasena.equals(usuario.getContrasena());
-                
+
+            if (usuario != null) {
+
+                if (usuario.getEstadoCuenta()) {
+
+                    if (contrasena.equals(usuario.getContrasena())) {
+
+                        // Inicio Correcto
+                        return "inicioPaciente.xhtml";
+
+                    } else {
+
+                        return "Error Credenciales";
+
+                    }
+
+                } else {
+
+                    return "Cuenta Inactiva";
+
+                }
+
             } else {
-                
-                return false;
-                
+
+                return "Error Credenciales";
+
             }
-            
+
         }
-        
-        if( "Administrador".equals(tipoUsuario)){
-            
+
+        if ("Administrador".equals(tipoUsuario)) {
+
             AdministradorConsultaBaseDatos administradorConsultaBaseDatos = new AdministradorConsultaBaseDatos();
-           
+
             Administrador administrador = administradorConsultaBaseDatos.encontrarPorNombreUsuario(nombreUsuario);
-                
-            if (administrador != null){
-                
-                return contrasena.equals(administrador.getContrasena());
-                
+
+            if (administrador != null) {
+
+                if (administrador.getEstadoCuenta()) {
+
+                    if (contrasena.equals(administrador.getContrasena())) {
+
+                        return "Inicio Correcto";
+
+                    } else {
+
+                        return "Error Credenciales";
+
+                    }
+
+                } else {
+
+                    return "Cuenta Inactiva";
+
+                }
+
             } else {
-                
-                return false;
-                
+
+                return "Error Credenciales";
+
             }
-            
+
         }
-        
-        if( "Farmaceuta".equals(tipoUsuario)){
-            
+
+        if ("Farmaceuta".equals(tipoUsuario)) {
+
             FarmaceutaConsultaBaseDatos farmaceutaConsultaBaseDatos = new FarmaceutaConsultaBaseDatos();
-           
+
             Farmaceuta farmaceuta = farmaceutaConsultaBaseDatos.encontrarPorNombreUsuario(nombreUsuario);
-                
-            if (farmaceuta != null){
-                
-                return contrasena.equals(farmaceuta.getContrasena());
-                
+
+            if (farmaceuta != null) {
+
+                if (farmaceuta.getEstadoCuenta()) {
+
+                    if (contrasena.equals(farmaceuta.getContrasena())) {
+
+                        return "Inicio Correcto";
+
+                    } else {
+
+                        return "Error Credenciales";
+
+                    }
+
+                } else {
+
+                    return "Cuenta Inactiva";
+
+                }
+
             } else {
-                
-                return false;
-                
+
+                return "Error Credenciales";
+
             }
-            
+
         }
-        
-        if( "Gerente".equals(tipoUsuario)){
-            
+
+        if ("Gerente".equals(tipoUsuario)) {
+
             GerenteConsultaBaseDatos gerenteConsultaBaseDatos = new GerenteConsultaBaseDatos();
-           
+
             Gerente gerente = gerenteConsultaBaseDatos.encontrarPorNombreUsuario(nombreUsuario);
-                
-            if (gerente != null){
-                
-                return contrasena.equals(gerente.getContrasena());
-                
+
+            if (gerente != null) {
+
+                if (gerente.getEstadoCuenta()) {
+
+                    if (contrasena.equals(gerente.getContrasena())) {
+
+                        return "Inicio Correcto";
+
+                    } else {
+
+                        return "Error Credenciales";
+
+                    }
+
+                } else {
+
+                    return "Cuenta Inactiva";
+
+                }
+
             } else {
-                
-                return false;
-                
+
+                return "Error Credenciales";
+
             }
-            
+
         }
-        
-        if( "Medico".equals(tipoUsuario)){
-            
+
+        if ("Medico".equals(tipoUsuario)) {
+
             MedicoConsultaBaseDatos medicoConsultaBaseDatos = new MedicoConsultaBaseDatos();
-           
+
             Medico medico = medicoConsultaBaseDatos.encontrarPorNombreUsuario(nombreUsuario);
-                
-            if (medico != null){
-                
-                return contrasena.equals(medico.getContrasena());
-                
+
+            if (medico != null) {
+
+                if (medico.getEstadoCuenta()) {
+
+                    if (contrasena.equals(medico.getContrasena())) {
+
+                        return "Inicio Correcto";
+
+                    } else {
+
+                        return "Error Credenciales";
+
+                    }
+
+                } else {
+
+                    return "Cuenta Inactiva";
+
+                }
+
             } else {
-                
-                return false;
-                
+
+                return "Error Credenciales";
+
             }
-            
+
         }
-        
-        return false;
-        
+
+        return "Error Credenciales";
+
     }
     
 }
