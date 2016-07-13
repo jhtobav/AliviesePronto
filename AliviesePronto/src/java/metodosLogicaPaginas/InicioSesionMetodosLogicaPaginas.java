@@ -5,7 +5,15 @@
  */
 package metodosLogicaPaginas;
 
+import consultasBaseDatos.AdministradorConsultaBaseDatos;
+import consultasBaseDatos.FarmaceutaConsultaBaseDatos;
+import consultasBaseDatos.GerenteConsultaBaseDatos;
+import consultasBaseDatos.MedicoConsultaBaseDatos;
 import consultasBaseDatos.UsuarioConsultaBaseDatos;
+import tablas.Administrador;
+import tablas.Farmaceuta;
+import tablas.Gerente;
+import tablas.Medico;
 import tablas.Usuario;
 
 /**
@@ -36,21 +44,77 @@ public class InicioSesionMetodosLogicaPaginas {
         
         if( "Administrador".equals(tipoUsuario)){
             
+            AdministradorConsultaBaseDatos administradorConsultaBaseDatos = new AdministradorConsultaBaseDatos();
+           
+            Administrador administrador = administradorConsultaBaseDatos.encontrarPorNombreUsuario(nombreUsuario);
+                
+            if (administrador != null){
+                
+                return contrasena.equals(administrador.getContrasena());
+                
+            } else {
+                
+                return false;
+                
+            }
+            
         }
         
         if( "Farmaceuta".equals(tipoUsuario)){
+            
+            FarmaceutaConsultaBaseDatos farmaceutaConsultaBaseDatos = new FarmaceutaConsultaBaseDatos();
+           
+            Farmaceuta farmaceuta = farmaceutaConsultaBaseDatos.encontrarPorNombreUsuario(nombreUsuario);
+                
+            if (farmaceuta != null){
+                
+                return contrasena.equals(farmaceuta.getContrasena());
+                
+            } else {
+                
+                return false;
+                
+            }
             
         }
         
         if( "Gerente".equals(tipoUsuario)){
             
+            GerenteConsultaBaseDatos gerenteConsultaBaseDatos = new GerenteConsultaBaseDatos();
+           
+            Gerente gerente = gerenteConsultaBaseDatos.encontrarPorNombreUsuario(nombreUsuario);
+                
+            if (gerente != null){
+                
+                return contrasena.equals(gerente.getContrasena());
+                
+            } else {
+                
+                return false;
+                
+            }
+            
         }
         
         if( "Medico".equals(tipoUsuario)){
             
+            MedicoConsultaBaseDatos medicoConsultaBaseDatos = new MedicoConsultaBaseDatos();
+           
+            Medico medico = medicoConsultaBaseDatos.encontrarPorNombreUsuario(nombreUsuario);
+                
+            if (medico != null){
+                
+                return contrasena.equals(medico.getContrasena());
+                
+            } else {
+                
+                return false;
+                
+            }
+            
         }
         
-        return true;
+        return false;
         
     }
     

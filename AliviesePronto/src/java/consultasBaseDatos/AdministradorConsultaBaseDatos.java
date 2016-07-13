@@ -8,6 +8,7 @@ package consultasBaseDatos;
 import intermedioPaginas.InicioSesionIntermedioPaginas;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 import tablas.Administrador;
 
 /**
@@ -31,5 +32,23 @@ public class AdministradorConsultaBaseDatos {
         }
       
     }  
+    
+    public Administrador encontrarPorNombreUsuario(String nombreUsuario) {
+      
+        EntityManager em = emf.createEntityManager();
+        Query q;
+        
+        Administrador administrador = null;
+        
+        try {
+            q = em.createNamedQuery("Administrador.findByNombreUsuario", Administrador.class);
+            q.setParameter("nombreUsuario", nombreUsuario);
+            administrador = (Administrador) q.getSingleResult();
+        } catch (Exception e){
+        } finally {
+            em.close();
+            return administrador;
+        }
+    }
 
 }

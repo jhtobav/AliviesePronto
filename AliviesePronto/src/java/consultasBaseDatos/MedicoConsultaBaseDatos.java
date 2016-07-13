@@ -8,6 +8,7 @@ package consultasBaseDatos;
 import intermedioPaginas.InicioSesionIntermedioPaginas;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 import tablas.Medico;
 
 /**
@@ -30,6 +31,24 @@ public class MedicoConsultaBaseDatos {
             return medico;
         }
       
-    }  
+    } 
+    
+    public Medico encontrarPorNombreUsuario(String nombreUsuario) {
+      
+        EntityManager em = emf.createEntityManager();
+        Query q;
+        
+        Medico medico = null;
+        
+        try {
+            q = em.createNamedQuery("Medico.findByNombreUsuario", Medico.class);
+            q.setParameter("nombreUsuario", nombreUsuario);
+            medico = (Medico) q.getSingleResult();
+        } catch (Exception e){
+        } finally {
+            em.close();
+            return medico;
+        }
+    }
 
 }

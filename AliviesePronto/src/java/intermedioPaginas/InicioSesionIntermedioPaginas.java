@@ -54,6 +54,10 @@ public class InicioSesionIntermedioPaginas {
     
     public String inicioSesion(String tipoUsuario){
         
+        System.out.println("hello there");
+        nombreUsuario="jhtobav";
+        contrasena="1726354";
+        
         if(nombreUsuario != null && contrasena != null){
             
             InicioSesionMetodosLogicaPaginas inicioSesionMetodosLogicaPaginas 
@@ -61,11 +65,11 @@ public class InicioSesionIntermedioPaginas {
             
             if (inicioSesionMetodosLogicaPaginas.inicioSesion(nombreUsuario, contrasena, tipoUsuario)){
                 
-                return "exito";
+                return "Inicio de Sesión Exitoso";
                 
             } else {
                 
-                return "error";
+                return "Nombre de Usuario o Contraseña incorrectos";
                 
             }
             
