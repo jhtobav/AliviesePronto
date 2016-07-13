@@ -71,7 +71,8 @@ public class InicioSesionMetodosLogicaPaginas {
 
                     if (contrasena.equals(administrador.getContrasena())) {
 
-                        return "Inicio Correcto";
+                        // Inicio Correcto
+                        return "inicioAdministrador.xhtml";
 
                     } else {
 
@@ -105,7 +106,8 @@ public class InicioSesionMetodosLogicaPaginas {
 
                     if (contrasena.equals(farmaceuta.getContrasena())) {
 
-                        return "Inicio Correcto";
+                        // Inicio Correcto
+                        return "inicioFarmaceuta.xhtml";
 
                     } else {
 
@@ -139,7 +141,8 @@ public class InicioSesionMetodosLogicaPaginas {
 
                     if (contrasena.equals(gerente.getContrasena())) {
 
-                        return "Inicio Correcto";
+                        // Inicio Correcto
+                        return "inicioGerente.xhtml";
 
                     } else {
 
@@ -173,7 +176,8 @@ public class InicioSesionMetodosLogicaPaginas {
 
                     if (contrasena.equals(medico.getContrasena())) {
 
-                        return "Inicio Correcto";
+                        // Inicio Correcto
+                        return "inicioMedico.xhtml";
 
                     } else {
 
