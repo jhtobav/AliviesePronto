@@ -9,7 +9,9 @@ and open the template in the editor.
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
     <h:head>
         <title>Pharmacy</title>
         <link href="css/aliviesePronto.css" rel="stylesheet"/>
@@ -37,13 +39,14 @@ and open the template in the editor.
                     </b:column>
                     <b:column span="2"></b:column>
                 </b:row>
-                <c:forEach begin="0" end="12" varStatus="i" step="4">
+                <c:forEach begin="0" end="#{buscarMedicamentosBean.obtenerListaMedicamentos().size()}" varStatus="i" step="4">
                     <b:row class="top-buffer">
                         <c:forEach begin="0" end="3" varStatus="j">
                             <b:column span="3">
                                 <div class="imgWrap">
+                                    <c:set var="medicamento" value="#{buscarMedicamentosBean.obtenerListaMedicamentos().get(j.index + i.index)}"/>
                                     <img src="resources/farmacia1.png" alt="polaroid" class="productImage"/>
-                                    <p class="imgDescription">Nombre del producto:#{j.index + i.index}<br/>
+                                    <p class="imgDescription">Nombre del producto:#{medicamento.descripcion}<br/>
                                         Fabricante:<br/>
                                         Precio:<br/>
                                         Registro Invima: <br/></p>

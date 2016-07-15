@@ -22,7 +22,7 @@
                                 <h:outputText value="Usuario:"/>
                             </b:column>
                             <b:column medium-screen="6">
-                                <b:inputText placeholder="Usuario" id="username">
+                                <b:inputText placeholder="Usuario" id="username" value="#{inicioSesionIntermedioPaginas.nombreUsuario}">
                                     <f:facet name="prepend">
                                         <b:icon name="user" />
                                     </f:facet>
@@ -37,7 +37,7 @@
                                 <h:outputText value="Contraseña:" />
                             </b:column>
                             <b:column medium-screen="6">
-                                <b:inputSecret id="password" placeholder="Contraseña">
+                                <b:inputSecret id="password" placeholder="Contraseña" value="#{inicioSesionIntermedioPaginas.contrasena}">
                                     <f:facet name="prepend">
                                         <b:iconAwesome name="key" />
                                     </f:facet>
@@ -50,7 +50,7 @@
                         <b:row>
                             <b:column span="2"></b:column>
                             <b:column span="6">
-                                <b:commandButton value="Iniciar sesión" onclick="" update="@form" look="primary" style="width:100%" />
+                                <b:commandButton value="Iniciar sesión" action="#{inicioSesionIntermedioPaginas.inicioSesion("Medico")}" update="@form" look="primary" style="width:100%" />
                             </b:column>
                             <b:column span="4"></b:column>
                         </b:row>
