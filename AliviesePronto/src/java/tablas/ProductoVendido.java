@@ -7,6 +7,7 @@ package tablas;
 
 import java.io.Serializable;
 import javax.persistence.Basic;
+import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -24,6 +25,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  * @author jhtob
  */
 @Entity
+@Cacheable(false)
 @Table(name = "ProductoVendido")
 @XmlRootElement
 @NamedQueries({
