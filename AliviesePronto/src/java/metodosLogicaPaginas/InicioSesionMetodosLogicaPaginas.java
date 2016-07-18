@@ -60,7 +60,7 @@ public class InicioSesionMetodosLogicaPaginas {
         }
 
         if ("Administrador".equals(tipoUsuario)) {
-
+            
             AdministradorConsultaBaseDatos administradorConsultaBaseDatos = new AdministradorConsultaBaseDatos();
 
             Administrador administrador = administradorConsultaBaseDatos.encontrarPorNombreUsuario(nombreUsuario);

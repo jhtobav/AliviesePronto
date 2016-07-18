@@ -6,20 +6,18 @@
 package tablas;
 
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -31,6 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "TarjetaCredito.findAll", query = "SELECT t FROM TarjetaCredito t"),
     @NamedQuery(name = "TarjetaCredito.findById", query = "SELECT t FROM TarjetaCredito t WHERE t.id = :id"),
+    @NamedQuery(name = "TarjetaCredito.findByNumTarjeta", query = "SELECT t FROM TarjetaCredito t WHERE t.numTarjeta = :numTarjeta"),
     @NamedQuery(name = "TarjetaCredito.findByNombrePersona", query = "SELECT t FROM TarjetaCredito t WHERE t.nombrePersona = :nombrePersona"),
     @NamedQuery(name = "TarjetaCredito.findByFechaVencimiento", query = "SELECT t FROM TarjetaCredito t WHERE t.fechaVencimiento = :fechaVencimiento"),
     @NamedQuery(name = "TarjetaCredito.findByCsv", query = "SELECT t FROM TarjetaCredito t WHERE t.csv = :csv")})
@@ -39,9 +38,13 @@ public class TarjetaCredito implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
     @Column(name = "Id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)     
     private Long id;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "numTarjeta")
+    private long numTarjeta;
     @Basic(optional = false)
     @NotNull
     @Size(min = 1, max = 2147483647)
@@ -55,9 +58,7 @@ public class TarjetaCredito implements Serializable {
     @Basic(optional = false)
     @NotNull
     @Column(name = "CSV")
-    private short csv;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "tarjetaId")
-    private Collection<Usuario> usuarioCollection;
+    private int csv;
 
     public TarjetaCredito() {
     }
@@ -66,8 +67,9 @@ public class TarjetaCredito implements Serializable {
         this.id = id;
     }
 
-    public TarjetaCredito(Long id, String nombrePersona, String fechaVencimiento, short csv) {
+    public TarjetaCredito(Long id, long numTarjeta, String nombrePersona, String fechaVencimiento, int csv) {
         this.id = id;
+        this.numTarjeta = numTarjeta;
         this.nombrePersona = nombrePersona;
         this.fechaVencimiento = fechaVencimiento;
         this.csv = csv;
@@ -79,6 +81,14 @@ public class TarjetaCredito implements Serializable {
 
     public void setId(Long id) {
         this.id = id;
+    }
+
+    public long getNumTarjeta() {
+        return numTarjeta;
+    }
+
+    public void setNumTarjeta(long numTarjeta) {
+        this.numTarjeta = numTarjeta;
     }
 
     public String getNombrePersona() {
@@ -97,21 +107,12 @@ public class TarjetaCredito implements Serializable {
         this.fechaVencimiento = fechaVencimiento;
     }
 
-    public short getCsv() {
+    public int getCsv() {
         return csv;
     }
 
-    public void setCsv(short csv) {
+    public void setCsv(int csv) {
         this.csv = csv;
-    }
-
-    @XmlTransient
-    public Collection<Usuario> getUsuarioCollection() {
-        return usuarioCollection;
-    }
-
-    public void setUsuarioCollection(Collection<Usuario> usuarioCollection) {
-        this.usuarioCollection = usuarioCollection;
     }
 
     @Override

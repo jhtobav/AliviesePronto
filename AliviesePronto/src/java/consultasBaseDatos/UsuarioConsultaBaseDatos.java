@@ -51,5 +51,22 @@ public class UsuarioConsultaBaseDatos {
             return usuario;
         }
     }
+    
+    public Usuario crearUsuario(Usuario usuario) {
+        
+        EntityManager em = emf.createEntityManager();
+        
+        em.getTransaction().begin();
+        try{
+            em.persist(usuario);
+            em.getTransaction().commit();
+        }catch(Exception e){
+            em.getTransaction().rollback();
+        }finally{
+            em.close();
+            return usuario;
+        }
+
+    }
 
 }
