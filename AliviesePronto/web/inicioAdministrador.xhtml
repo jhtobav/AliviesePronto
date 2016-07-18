@@ -1,0 +1,58 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>AliviesePronto</title>
+        <script src="js/aliviesePronto.js" type="text/javascript"></script>
+    </h:head>
+    <h:body style="padding-top: 60px" onload="inicioLoaded()">
+        <b:navBar brand="Aliviese Pronto" brandHref="#" inverse="true" fixed="top" fluid="true">
+            <h:form styleClass="navbar-form navbar-right">
+                <div class="form-group">
+                    <b:inputText placeholder="Buscar productos..." fieldSize="m" />
+                    <b:dropButton value="Mis compras">
+                        <b:navLink value="Shampoo"></b:navLink>
+                        <b:navLink value="Jabon" href="#"></b:navLink>
+                        <b:button value="Pagar"></b:button>
+                    </b:dropButton>
+                </div>
+            </h:form>
+        </b:navBar>
+        <b:container fluid="true">
+            <b:row>
+                <h:form id="indexSidebar">
+                    <b:column col-sm="2" col-md="2" col-lg="2" styleClass="sidebar">
+                        <b:listLinks>
+                            <li><h:link id="carrouselBienvenida" outcome="carrouselBienvenida.xhtml" value="Bienvenido" target="inicioFrame"/></li>
+                        </b:listLinks>
+                        <b:listLinks>
+                            <b:navLink header="Comprar jajajaja productos"/>
+                            <li><h:link outcome="listarProductos.xhtml" value="Todos los productos" target="inicioFrame"/></li>
+                            <li><h:link outcome="listarProductos.xhtml" value="Limpieza" target="inicioFrame"/></li>
+                            <li><h:link outcome="listarProductos.xhtml" value="Salud" target="inicioFrame"/></li>
+                        </b:listLinks>
+                        <b:listLinks>
+                            <b:navLink header="Opciones" />
+                            <li><h:link outcome="listarFormulas.xhtml" value="Consultar formulas" target="inicioFrame"/></li>
+                            <li><h:link outcome="loginMedico.xhtml" value="Realizar orden" target="inicioFrame"/></li>
+                        </b:listLinks>
+                    </b:column>
+                    <b:column col-sm="10" col-md="10" col-lg="10" styleClass="main">
+                        <b:row  id="targetPage">
+                            <h:form>
+                                <iframe style="
+                                        border: none;
+                                        padding: 0px;
+                                        margin-top: 0px;" class="mainFrame" name="inicioFrame" onload="resizeIframe(this)" width="100%"/>
+                            </h:form>
+                        </b:row>
+                    </b:column>
+                </h:form>
+            </b:row>
+        </b:container> 
+    </h:body>
+</html>
+

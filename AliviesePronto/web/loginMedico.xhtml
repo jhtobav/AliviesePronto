@@ -50,7 +50,7 @@
                         <b:row>
                             <b:column span="2"></b:column>
                             <b:column span="6">
-                                <b:commandButton value="Iniciar sesión" action="#{inicioSesionIntermedioPaginas.inicioSesion('Medico')}" update="@form" look="primary" style="width:100%" />
+                                <b:commandButton value="Iniciar sesión" action="#{inicioSesionIntermedioPaginas.inicioSesion('Medico')}"  onclick="form.target='_parent'" look="primary" style="width:100%" />
                             </b:column>
                             <b:column span="4"></b:column>
                         </b:row>
