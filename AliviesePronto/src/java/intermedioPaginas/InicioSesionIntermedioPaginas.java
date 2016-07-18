@@ -1,6 +1,7 @@
 package intermedioPaginas;
 
 import static intermedioPaginas.InicioSesionIntermedioPaginas.emf;
+import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -21,6 +22,7 @@ public class InicioSesionIntermedioPaginas {
     public InicioSesionIntermedioPaginas() {
     }
     
+    @PostConstruct
     public void init(){
         
         nombreUsuario = null;
@@ -53,29 +55,35 @@ public class InicioSesionIntermedioPaginas {
     }
     
     public String inicioSesion(String tipoUsuario){
-        
-        System.out.println("hello there");
-        nombreUsuario="jhtobav";
-        contrasena="1726354";
-        
+                
         if(nombreUsuario != null && contrasena != null){
             
             InicioSesionMetodosLogicaPaginas inicioSesionMetodosLogicaPaginas 
                     = new InicioSesionMetodosLogicaPaginas();
 
-            if ("Error Credenciales".equals(inicioSesionMetodosLogicaPaginas
-                    .inicioSesion(nombreUsuario, contrasena, tipoUsuario)))
+            System.out.println(nombreUsuario);
+            System.out.println(contrasena);
+            
+            String respuesta = inicioSesionMetodosLogicaPaginas
+                    .inicioSesion(nombreUsuario, contrasena, tipoUsuario);
+            
+            if ("Error Credenciales".equals(respuesta)){
 
+                System.out.println("error 1");
+                
                 return "pag error credenciales";
                 
-            if ("Cuenta Inactiva".equals(inicioSesionMetodosLogicaPaginas
-                    .inicioSesion(nombreUsuario, contrasena, tipoUsuario)))
+            }
+                
+            if ("Cuenta Inactiva".equals(respuesta)){
+                
+                System.out.println("error 2");
                 
                 return "pagina cuenta inactiva";
-            
-            return inicioSesionMetodosLogicaPaginas
-                    .inicioSesion(nombreUsuario, contrasena, tipoUsuario);
                 
+            }
+            
+            return respuesta;
             
         } else {
             
