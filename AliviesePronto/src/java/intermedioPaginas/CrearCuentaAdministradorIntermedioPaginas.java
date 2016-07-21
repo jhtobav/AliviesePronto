@@ -4,13 +4,12 @@ import java.util.Date;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import metodosLogicaPaginas.RegistroUsuarioMetodosLogicaPaginas;
-import transporteDatos.TarjetaTransporteDatos;
-import transporteDatos.UsuarioTransporteDatos;
+import metodosLogicaPaginas.CrearCuentasMetodosLogicaPaginas;
+import transporteDatos.AdministradorTransporteDatos;
 
-@ManagedBean(name="registroUsuarioIntermedioPaginas")
+@ManagedBean(name="crearCuentaAdministradorIntermedioPaginas")
 @SessionScoped
-public class RegistroUsuarioIntermedioPaginas {
+public class CrearCuentaAdministradorIntermedioPaginas {
         
     private Long numDocumento;
     private String nombreUsuario;
@@ -24,13 +23,8 @@ public class RegistroUsuarioIntermedioPaginas {
     private String correo;
     private String contrasena;
     private String genero;
-    
-    private Long numTarjeta;
-    private String nombrePersona;
-    private String fechaVencimiento;
-    private Integer csv;
 
-    public RegistroUsuarioIntermedioPaginas() {
+    public CrearCuentaAdministradorIntermedioPaginas() {
     }
     
     @PostConstruct
@@ -48,11 +42,6 @@ public class RegistroUsuarioIntermedioPaginas {
         correo = null;
         contrasena = null;
         genero = null;
-        
-        numTarjeta = null;
-        nombrePersona = null;
-        fechaVencimiento = null;
-        csv = null;
         
     }
 
@@ -152,92 +141,47 @@ public class RegistroUsuarioIntermedioPaginas {
         this.genero = genero;
     }
 
-    public Long getNumTarjeta() {
-        return numTarjeta;
-    }
-
-    public void setNumTarjeta(Long numTarjeta) {
-        this.numTarjeta = numTarjeta;
-    }
-
-    public String getNombrePersona() {
-        return nombrePersona;
-    }
-
-    public void setNombrePersona(String nombrePersona) {
-        this.nombrePersona = nombrePersona;
-    }
-
-    public String getFechaVencimiento() {
-        return fechaVencimiento;
-    }
-
-    public void setFechaVencimiento(String fechaVencimiento) {
-        this.fechaVencimiento = fechaVencimiento;
-    }
-
-    public Integer getCsv() {
-        return csv;
-    }
-
-    public void setCsv(Integer csv) {
-        this.csv = csv;
-    }
-
-    public String registroUsuario(){
+    public String crearAdministrador(){
         
-        
-        numDocumento = 123456789l;
-        nombreUsuario = "PruebaUsuario";
-        primerNombre = "PrimerNombreUsuario";
-        segundoNombre = "SegundoNombreUsuario";
-        primerApellido = "PrimerApellidoUsuario";
-        segundoApellido = "SegudnoApellidoUsuario";
+        /*
+        numDocumento = 987654321l;
+        nombreUsuario = "PruebaAdministrador";
+        primerNombre = "PrimerNombreAdministrador";
+        segundoNombre = "SegundoNombreAdministrador";
+        primerApellido = "PrimerApellidoAdministrador";
+        segundoApellido = "SegudnoApellidoAdministrador";
         fechaNacimiento = new Date();
-        telefono = 12345l;
-        direccion = "Cll 12345";
-        correo = "usuario@gmail.com";
-        contrasena = "passUsuario";
-        genero = "femeninoUsuario";
-        
-        numTarjeta = 1000l;
-        nombrePersona = "NombreUsuario";
-        fechaVencimiento = "10/06/2016";
-        csv = 2028;
+        telefono = 98765l;
+        direccion = "Cll 98765";
+        correo = "administrador@gmail.com";
+        contrasena = "passAdministrador";
+        genero = "femeninoAdministrador";
+        */
         
         
         if (numDocumento != null && nombreUsuario != null && primerNombre != null && 
         segundoNombre != null && primerApellido != null && segundoApellido != null && 
         fechaNacimiento != null && telefono != null && direccion != null && 
-        correo != null && contrasena != null && genero != null &&
-        numTarjeta != null && nombrePersona != null && fechaVencimiento != null && csv != null){
+        correo != null && contrasena != null && genero != null){
             
-            UsuarioTransporteDatos usuarioTransporteDatos = new UsuarioTransporteDatos();
+            AdministradorTransporteDatos administradorTransporteDatos = new AdministradorTransporteDatos();
             
-            usuarioTransporteDatos.setNumDocumento(numDocumento);
-            usuarioTransporteDatos.setNombreUsuario(nombreUsuario);
-            usuarioTransporteDatos.setPrimerNombre(primerNombre);
-            usuarioTransporteDatos.setSegundoNombre(segundoNombre);
-            usuarioTransporteDatos.setPrimerApellido(primerApellido);
-            usuarioTransporteDatos.setSegundoApellido(segundoApellido);
-            usuarioTransporteDatos.setFechaNacimiento(fechaNacimiento);
-            usuarioTransporteDatos.setTelefono(telefono);
-            usuarioTransporteDatos.setDireccion(direccion);
-            usuarioTransporteDatos.setCorreo(correo);
-            usuarioTransporteDatos.setContrasena(contrasena);
-            usuarioTransporteDatos.setGenero(genero);
+            administradorTransporteDatos.setNumDocumento(numDocumento);
+            administradorTransporteDatos.setNombreUsuario(nombreUsuario);
+            administradorTransporteDatos.setPrimerNombre(primerNombre);
+            administradorTransporteDatos.setSegundoNombre(segundoNombre);
+            administradorTransporteDatos.setPrimerApellido(primerApellido);
+            administradorTransporteDatos.setSegundoApellido(segundoApellido);
+            administradorTransporteDatos.setFechaNacimiento(fechaNacimiento);
+            administradorTransporteDatos.setTelefono(telefono);
+            administradorTransporteDatos.setDireccion(direccion);
+            administradorTransporteDatos.setCorreo(correo);
+            administradorTransporteDatos.setContrasena(contrasena);
+            administradorTransporteDatos.setGenero(genero);
             
-            TarjetaTransporteDatos tarjetaTransporteDatos = new TarjetaTransporteDatos();
+            CrearCuentasMetodosLogicaPaginas crearCuentasMetodosLogicaPaginas = new CrearCuentasMetodosLogicaPaginas();
             
-            tarjetaTransporteDatos.setNumTarjeta(numTarjeta);
-            tarjetaTransporteDatos.setNombrePersona(nombrePersona);
-            tarjetaTransporteDatos.setFechaVencimiento(fechaVencimiento);
-            tarjetaTransporteDatos.setCsv(csv.shortValue());
-            
-            RegistroUsuarioMetodosLogicaPaginas registroUsuarioMetodosLogicaPaginas = new RegistroUsuarioMetodosLogicaPaginas();
-            
-            if(registroUsuarioMetodosLogicaPaginas
-                    .RegistrarUsuario(usuarioTransporteDatos, tarjetaTransporteDatos)){
+            if(crearCuentasMetodosLogicaPaginas.CrearAdministrador(administradorTransporteDatos)){
                 
                 return "pagina exito";
                 

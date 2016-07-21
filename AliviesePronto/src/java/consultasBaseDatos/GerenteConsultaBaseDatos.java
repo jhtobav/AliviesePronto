@@ -50,5 +50,22 @@ public class GerenteConsultaBaseDatos {
             return gerente;
         }
     }
+    
+    public Gerente crearGerente(Gerente gerente) {
+        
+        EntityManager em = emf.createEntityManager();
+        
+        em.getTransaction().begin();
+        try{
+            em.persist(gerente);
+            em.getTransaction().commit();
+        }catch(Exception e){
+            em.getTransaction().rollback();
+        }finally{
+            em.close();
+            return gerente;
+        }
 
+    }
+    
 }

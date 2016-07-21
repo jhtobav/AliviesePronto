@@ -11,6 +11,8 @@ import javax.persistence.Basic;
 import javax.persistence.Cacheable;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -50,8 +52,8 @@ public class Administrador implements Serializable {
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
     @Column(name = "Id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)     
     private Long id;
     @Basic(optional = false)
     @NotNull

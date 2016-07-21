@@ -60,24 +60,17 @@ public class InicioSesionIntermedioPaginas {
             
             InicioSesionMetodosLogicaPaginas inicioSesionMetodosLogicaPaginas 
                     = new InicioSesionMetodosLogicaPaginas();
-
-            System.out.println(nombreUsuario);
-            System.out.println(contrasena);
             
             String respuesta = inicioSesionMetodosLogicaPaginas
                     .inicioSesion(nombreUsuario, contrasena, tipoUsuario);
             
             if ("Error Credenciales".equals(respuesta)){
-
-                System.out.println("error 1");
                 
                 return "pag error credenciales";
                 
             }
                 
             if ("Cuenta Inactiva".equals(respuesta)){
-                
-                System.out.println("error 2");
                 
                 return "pagina cuenta inactiva";
                 

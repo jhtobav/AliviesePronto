@@ -4,13 +4,12 @@ import java.util.Date;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import metodosLogicaPaginas.RegistroUsuarioMetodosLogicaPaginas;
-import transporteDatos.TarjetaTransporteDatos;
-import transporteDatos.UsuarioTransporteDatos;
+import metodosLogicaPaginas.CrearCuentasMetodosLogicaPaginas;
+import transporteDatos.FarmaceutaTransporteDatos;
 
-@ManagedBean(name="registroUsuarioIntermedioPaginas")
+@ManagedBean(name="crearCuentaFarmaceutaIntermedioPaginas")
 @SessionScoped
-public class RegistroUsuarioIntermedioPaginas {
+public class CrearCuentaFarmaceutaIntermedioPaginas {
         
     private Long numDocumento;
     private String nombreUsuario;
@@ -24,13 +23,8 @@ public class RegistroUsuarioIntermedioPaginas {
     private String correo;
     private String contrasena;
     private String genero;
-    
-    private Long numTarjeta;
-    private String nombrePersona;
-    private String fechaVencimiento;
-    private Integer csv;
 
-    public RegistroUsuarioIntermedioPaginas() {
+    public CrearCuentaFarmaceutaIntermedioPaginas() {
     }
     
     @PostConstruct
@@ -48,11 +42,6 @@ public class RegistroUsuarioIntermedioPaginas {
         correo = null;
         contrasena = null;
         genero = null;
-        
-        numTarjeta = null;
-        nombrePersona = null;
-        fechaVencimiento = null;
-        csv = null;
         
     }
 
@@ -152,92 +141,46 @@ public class RegistroUsuarioIntermedioPaginas {
         this.genero = genero;
     }
 
-    public Long getNumTarjeta() {
-        return numTarjeta;
-    }
-
-    public void setNumTarjeta(Long numTarjeta) {
-        this.numTarjeta = numTarjeta;
-    }
-
-    public String getNombrePersona() {
-        return nombrePersona;
-    }
-
-    public void setNombrePersona(String nombrePersona) {
-        this.nombrePersona = nombrePersona;
-    }
-
-    public String getFechaVencimiento() {
-        return fechaVencimiento;
-    }
-
-    public void setFechaVencimiento(String fechaVencimiento) {
-        this.fechaVencimiento = fechaVencimiento;
-    }
-
-    public Integer getCsv() {
-        return csv;
-    }
-
-    public void setCsv(Integer csv) {
-        this.csv = csv;
-    }
-
-    public String registroUsuario(){
+    public String crearFarmaceuta(){
         
-        
-        numDocumento = 123456789l;
-        nombreUsuario = "PruebaUsuario";
-        primerNombre = "PrimerNombreUsuario";
-        segundoNombre = "SegundoNombreUsuario";
-        primerApellido = "PrimerApellidoUsuario";
-        segundoApellido = "SegudnoApellidoUsuario";
+        /*
+        numDocumento = 192837465l;
+        nombreUsuario = "PruebaFarmaceuta";
+        primerNombre = "PrimerNombreFarmaceuta";
+        segundoNombre = "SegundoNombreFarmaceuta";
+        primerApellido = "PrimerApellidoFarmaceuta";
+        segundoApellido = "SegudnoApellidoFarmaceuta";
         fechaNacimiento = new Date();
-        telefono = 12345l;
-        direccion = "Cll 12345";
-        correo = "usuario@gmail.com";
-        contrasena = "passUsuario";
-        genero = "femeninoUsuario";
-        
-        numTarjeta = 1000l;
-        nombrePersona = "NombreUsuario";
-        fechaVencimiento = "10/06/2016";
-        csv = 2028;
-        
+        telefono = 19283l;
+        direccion = "Cll 19283";
+        correo = "farmaceuta@gmail.com";
+        contrasena = "passFarmaceuta";
+        genero = "femeninoFarmaceuta";
+        */
         
         if (numDocumento != null && nombreUsuario != null && primerNombre != null && 
         segundoNombre != null && primerApellido != null && segundoApellido != null && 
         fechaNacimiento != null && telefono != null && direccion != null && 
-        correo != null && contrasena != null && genero != null &&
-        numTarjeta != null && nombrePersona != null && fechaVencimiento != null && csv != null){
+        correo != null && contrasena != null && genero != null){
             
-            UsuarioTransporteDatos usuarioTransporteDatos = new UsuarioTransporteDatos();
+            FarmaceutaTransporteDatos farmaceutaTransporteDatos = new FarmaceutaTransporteDatos();
             
-            usuarioTransporteDatos.setNumDocumento(numDocumento);
-            usuarioTransporteDatos.setNombreUsuario(nombreUsuario);
-            usuarioTransporteDatos.setPrimerNombre(primerNombre);
-            usuarioTransporteDatos.setSegundoNombre(segundoNombre);
-            usuarioTransporteDatos.setPrimerApellido(primerApellido);
-            usuarioTransporteDatos.setSegundoApellido(segundoApellido);
-            usuarioTransporteDatos.setFechaNacimiento(fechaNacimiento);
-            usuarioTransporteDatos.setTelefono(telefono);
-            usuarioTransporteDatos.setDireccion(direccion);
-            usuarioTransporteDatos.setCorreo(correo);
-            usuarioTransporteDatos.setContrasena(contrasena);
-            usuarioTransporteDatos.setGenero(genero);
+            farmaceutaTransporteDatos.setNumDocumento(numDocumento);
+            farmaceutaTransporteDatos.setNombreUsuario(nombreUsuario);
+            farmaceutaTransporteDatos.setPrimerNombre(primerNombre);
+            farmaceutaTransporteDatos.setSegundoNombre(segundoNombre);
+            farmaceutaTransporteDatos.setPrimerApellido(primerApellido);
+            farmaceutaTransporteDatos.setSegundoApellido(segundoApellido);
+            farmaceutaTransporteDatos.setFechaNacimiento(fechaNacimiento);
+            farmaceutaTransporteDatos.setTelefono(telefono);
+            farmaceutaTransporteDatos.setDireccion(direccion);
+            farmaceutaTransporteDatos.setCorreo(correo);
+            farmaceutaTransporteDatos.setContrasena(contrasena);
+            farmaceutaTransporteDatos.setGenero(genero);
             
-            TarjetaTransporteDatos tarjetaTransporteDatos = new TarjetaTransporteDatos();
+            CrearCuentasMetodosLogicaPaginas crearCuentasMetodosLogicaPaginas = new CrearCuentasMetodosLogicaPaginas();
             
-            tarjetaTransporteDatos.setNumTarjeta(numTarjeta);
-            tarjetaTransporteDatos.setNombrePersona(nombrePersona);
-            tarjetaTransporteDatos.setFechaVencimiento(fechaVencimiento);
-            tarjetaTransporteDatos.setCsv(csv.shortValue());
-            
-            RegistroUsuarioMetodosLogicaPaginas registroUsuarioMetodosLogicaPaginas = new RegistroUsuarioMetodosLogicaPaginas();
-            
-            if(registroUsuarioMetodosLogicaPaginas
-                    .RegistrarUsuario(usuarioTransporteDatos, tarjetaTransporteDatos)){
+            if(crearCuentasMetodosLogicaPaginas.CrearFarmaceuta(farmaceutaTransporteDatos)){
                 
                 return "pagina exito";
                 

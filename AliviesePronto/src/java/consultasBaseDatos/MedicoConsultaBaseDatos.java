@@ -50,5 +50,20 @@ public class MedicoConsultaBaseDatos {
             return medico;
         }
     }
+    public Medico crearMedico(Medico medico) {
+        
+        EntityManager em = emf.createEntityManager();
+        
+        em.getTransaction().begin();
+        try{
+            em.persist(medico);
+            em.getTransaction().commit();
+        }catch(Exception e){
+            em.getTransaction().rollback();
+        }finally{
+            em.close();
+            return medico;
+        }
 
+    }
 }

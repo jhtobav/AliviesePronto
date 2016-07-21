@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author jhtob
  */
-public class UsuarioTransporteDatos {
+public class MedicoTransporteDatos {
     
     private long numDocumento;
     private String nombreUsuario;
@@ -25,6 +25,7 @@ public class UsuarioTransporteDatos {
     private String correo;
     private String contrasena;
     private String genero;
+    private long numTarjetaProfesional;
 
     public long getNumDocumento() {
         return numDocumento;
@@ -120,6 +121,14 @@ public class UsuarioTransporteDatos {
 
     public void setGenero(String genero) {
         this.genero = genero;
+    }
+
+    public long getNumTarjetaProfesional() {
+        return numTarjetaProfesional;
+    }
+
+    public void setNumTarjetaProfesional(long numTarjetaProfesional) {
+        this.numTarjetaProfesional = numTarjetaProfesional;
     }
     
 }

@@ -11,7 +11,7 @@ import java.util.Date;
  *
  * @author jhtob
  */
-public class UsuarioTransporteDatos {
+public class FarmaceutaTransporteDatos {
     
     private long numDocumento;
     private String nombreUsuario;

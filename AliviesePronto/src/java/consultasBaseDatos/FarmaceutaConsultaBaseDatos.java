@@ -50,5 +50,22 @@ public class FarmaceutaConsultaBaseDatos {
             return farmaceuta;
         }
     }
+    
+    public Farmaceuta crearFarmaceuta(Farmaceuta farmaceuta) {
+        
+        EntityManager em = emf.createEntityManager();
+        
+        em.getTransaction().begin();
+        try{
+            em.persist(farmaceuta);
+            em.getTransaction().commit();
+        }catch(Exception e){
+            em.getTransaction().rollback();
+        }finally{
+            em.close();
+            return farmaceuta;
+        }
+
+    }
 
 }

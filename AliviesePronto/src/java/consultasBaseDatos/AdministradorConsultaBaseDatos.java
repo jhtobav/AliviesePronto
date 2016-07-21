@@ -50,5 +50,22 @@ public class AdministradorConsultaBaseDatos {
             return administrador;
         }
     }
+    
+    public Administrador crearAdministrador(Administrador administrador) {
+        
+        EntityManager em = emf.createEntityManager();
+        
+        em.getTransaction().begin();
+        try{
+            em.persist(administrador);
+            em.getTransaction().commit();
+        }catch(Exception e){
+            em.getTransaction().rollback();
+        }finally{
+            em.close();
+            return administrador;
+        }
+
+    }
 
 }
