@@ -1,15 +1,17 @@
 package intermedioPaginas;
 
+import consultasBaseDatos.MedicoConsultaBaseDatos;
 import java.util.Date;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import metodosLogicaPaginas.CrearCuentasMetodosLogicaPaginas;
+import metodosLogicaPaginas.ModificarCuentasMetodosLogicaPaginas;
+import tablas.Medico;
 import transporteDatos.MedicoTransporteDatos;
 
-@ManagedBean(name="crearCuentaMedicoIntermedioPaginas")
+@ManagedBean(name="modificarCuentaMedicoIntermedioPaginas")
 @SessionScoped
-public class CrearCuentaMedicoIntermedioPaginas {
+public class ModificarCuentaMedicoIntermedioPaginas {
         
     private Long numDocumento;
     private String nombreUsuario;
@@ -23,9 +25,10 @@ public class CrearCuentaMedicoIntermedioPaginas {
     private String correo;
     private String contrasena;
     private String genero;
+    private Boolean estadoCuenta;
     private Long numTarjetaProfesional;
 
-    public CrearCuentaMedicoIntermedioPaginas() {
+    public ModificarCuentaMedicoIntermedioPaginas() {
     }
     
     @PostConstruct
@@ -43,7 +46,39 @@ public class CrearCuentaMedicoIntermedioPaginas {
         correo = null;
         contrasena = null;
         genero = null;
+        estadoCuenta = null;
         numTarjetaProfesional = null;
+        
+    }
+    public String buscarMedico(String nomUsuario){
+     
+        MedicoConsultaBaseDatos consultaBaseDatos = new MedicoConsultaBaseDatos();
+        
+        Medico medico = consultaBaseDatos.encontrarPorNombreUsuario(nomUsuario);
+        
+        if(medico != null){
+            
+            numDocumento = medico.getNumDocumento();
+            nombreUsuario = medico.getNombreUsuario();
+            primerNombre = medico.getPrimerNombre();
+            segundoNombre = medico.getSegundoNombre();
+            primerApellido = medico.getPrimerApellido();
+            segundoApellido = medico.getSegundoApellido();
+            fechaNacimiento = medico.getFechaNacimiento();
+            telefono = medico.getTelefono();
+            direccion = medico.getDireccion();
+            correo = medico.getCorreo();
+            contrasena = medico.getContrasena();
+            genero = medico.getGenero();
+            estadoCuenta = medico.getEstadoCuenta();
+            
+            return "usuario encontrado";
+            
+        } else {
+            
+            return "usuario no encontrado";
+            
+        }
         
     }
 
@@ -143,6 +178,14 @@ public class CrearCuentaMedicoIntermedioPaginas {
         this.genero = genero;
     }
 
+    public Boolean getEstadoCuenta() {
+        return estadoCuenta;
+    }
+
+    public void setEstadoCuenta(Boolean estadoCuenta) {
+        this.estadoCuenta = estadoCuenta;
+    }
+
     public Long getNumTarjetaProfesional() {
         return numTarjetaProfesional;
     }
@@ -151,7 +194,7 @@ public class CrearCuentaMedicoIntermedioPaginas {
         this.numTarjetaProfesional = numTarjetaProfesional;
     }
 
-    public String crearMedico(){
+    public String modificarMedico(){
         
         /*
         numDocumento = 111111111l;
@@ -189,11 +232,12 @@ public class CrearCuentaMedicoIntermedioPaginas {
             medicoTransporteDatos.setCorreo(correo);
             medicoTransporteDatos.setContrasena(contrasena);
             medicoTransporteDatos.setGenero(genero);
+            medicoTransporteDatos.setEstadoCuenta(estadoCuenta);
             medicoTransporteDatos.setNumTarjetaProfesional(numTarjetaProfesional);
             
-            CrearCuentasMetodosLogicaPaginas crearCuentasMetodosLogicaPaginas = new CrearCuentasMetodosLogicaPaginas();
+            ModificarCuentasMetodosLogicaPaginas modificarCuentasMetodosLogicaPaginas = new ModificarCuentasMetodosLogicaPaginas();
             
-            if(crearCuentasMetodosLogicaPaginas.CrearMedico(medicoTransporteDatos)){
+            if(modificarCuentasMetodosLogicaPaginas.ModificarMedico(medicoTransporteDatos)){
                 
                 return "pagina exito";
                 

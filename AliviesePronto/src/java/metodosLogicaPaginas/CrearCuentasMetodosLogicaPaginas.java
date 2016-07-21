@@ -9,6 +9,8 @@ import consultasBaseDatos.AdministradorConsultaBaseDatos;
 import consultasBaseDatos.FarmaceutaConsultaBaseDatos;
 import consultasBaseDatos.GerenteConsultaBaseDatos;
 import consultasBaseDatos.MedicoConsultaBaseDatos;
+import consultasBaseDatos.TarjetaConsultaBaseDatos;
+import consultasBaseDatos.UsuarioConsultaBaseDatos;
 import java.util.ArrayList;
 import java.util.List;
 import tablas.Administrador;
@@ -16,10 +18,14 @@ import tablas.Farmaceuta;
 import tablas.Formula;
 import tablas.Gerente;
 import tablas.Medico;
+import tablas.TarjetaCredito;
+import tablas.Usuario;
 import transporteDatos.AdministradorTransporteDatos;
 import transporteDatos.FarmaceutaTransporteDatos;
 import transporteDatos.GerenteTransporteDatos;
 import transporteDatos.MedicoTransporteDatos;
+import transporteDatos.TarjetaTransporteDatos;
+import transporteDatos.UsuarioTransporteDatos;
 
 /**
  *
@@ -27,6 +33,47 @@ import transporteDatos.MedicoTransporteDatos;
  */
 public class CrearCuentasMetodosLogicaPaginas {
 
+    public boolean RegistrarUsuario(UsuarioTransporteDatos usuarioTransporteDatos,
+            TarjetaTransporteDatos tarjetaTransporteDatos ){
+    
+        TarjetaCredito tarjetaCredito = new TarjetaCredito();
+        
+        tarjetaCredito.setNumTarjeta(tarjetaTransporteDatos.getNumTarjeta());
+        tarjetaCredito.setFechaVencimiento(tarjetaTransporteDatos.getFechaVencimiento());
+        tarjetaCredito.setNombrePersona(tarjetaTransporteDatos.getNombrePersona());
+        tarjetaCredito.setCsv(tarjetaTransporteDatos.getCsv());
+        
+        Usuario usuario = new Usuario();
+        
+        usuario.setNumDocumento(usuarioTransporteDatos.getNumDocumento());
+        usuario.setNombreUsuario(usuarioTransporteDatos.getNombreUsuario());
+        usuario.setPrimerNombre(usuarioTransporteDatos.getPrimerNombre());
+        usuario.setSegundoNombre(usuarioTransporteDatos.getSegundoNombre());
+        usuario.setPrimerApellido(usuarioTransporteDatos.getPrimerApellido());
+        usuario.setSegundoApellido(usuarioTransporteDatos.getSegundoApellido());
+        usuario.setFechaNacimiento(usuarioTransporteDatos.getFechaNacimiento());
+        usuario.setTelefono(usuarioTransporteDatos.getTelefono());
+        usuario.setDireccion(usuarioTransporteDatos.getDireccion());
+        usuario.setCorreo(usuarioTransporteDatos.getCorreo());
+        usuario.setContrasena(usuarioTransporteDatos.getContrasena());
+        usuario.setGenero(usuarioTransporteDatos.getGenero());
+        usuario.setEstadoCuenta(true);
+        
+        List<Formula> formulas = new ArrayList<>();
+        usuario.setFormulaCollection(formulas);
+        
+        TarjetaConsultaBaseDatos tarjetaConsultaBaseDatos = new TarjetaConsultaBaseDatos();
+        tarjetaConsultaBaseDatos.crearTarjetaCredito(tarjetaCredito);
+        
+        usuario.setTarjetaId(tarjetaCredito);
+        
+        UsuarioConsultaBaseDatos usuarioConsultaBaseDatos = new UsuarioConsultaBaseDatos();
+        usuarioConsultaBaseDatos.crearUsuario(usuario);
+        
+        return true;
+        
+    }
+    
     public boolean CrearAdministrador(AdministradorTransporteDatos administradorTransporteDatos){
         
         Administrador administrador = new Administrador();

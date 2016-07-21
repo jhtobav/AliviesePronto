@@ -4,7 +4,7 @@ import java.util.Date;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import metodosLogicaPaginas.RegistroUsuarioMetodosLogicaPaginas;
+import metodosLogicaPaginas.CrearCuentasMetodosLogicaPaginas;
 import transporteDatos.TarjetaTransporteDatos;
 import transporteDatos.UsuarioTransporteDatos;
 
@@ -186,7 +186,7 @@ public class RegistroUsuarioIntermedioPaginas {
 
     public String registroUsuario(){
         
-        
+        /*
         numDocumento = 123456789l;
         nombreUsuario = "PruebaUsuario";
         primerNombre = "PrimerNombreUsuario";
@@ -204,7 +204,7 @@ public class RegistroUsuarioIntermedioPaginas {
         nombrePersona = "NombreUsuario";
         fechaVencimiento = "10/06/2016";
         csv = 2028;
-        
+        */
         
         if (numDocumento != null && nombreUsuario != null && primerNombre != null && 
         segundoNombre != null && primerApellido != null && segundoApellido != null && 
@@ -234,9 +234,9 @@ public class RegistroUsuarioIntermedioPaginas {
             tarjetaTransporteDatos.setFechaVencimiento(fechaVencimiento);
             tarjetaTransporteDatos.setCsv(csv.shortValue());
             
-            RegistroUsuarioMetodosLogicaPaginas registroUsuarioMetodosLogicaPaginas = new RegistroUsuarioMetodosLogicaPaginas();
+            CrearCuentasMetodosLogicaPaginas crearCuentasMetodosLogicaPaginas = new CrearCuentasMetodosLogicaPaginas();
             
-            if(registroUsuarioMetodosLogicaPaginas
+            if(crearCuentasMetodosLogicaPaginas
                     .RegistrarUsuario(usuarioTransporteDatos, tarjetaTransporteDatos)){
                 
                 return "pagina exito";

@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import tablas.Administrador;
+import transporteDatos.AdministradorTransporteDatos;
 
 /**
  *
@@ -66,6 +67,40 @@ public class AdministradorConsultaBaseDatos {
             return administrador;
         }
 
+    }
+    
+    public Administrador modificarAdministrador(AdministradorTransporteDatos administradorTransporteDatos){
+        
+        EntityManager em = emf.createEntityManager();  
+        
+        em.getTransaction().begin();
+        
+        Administrador nuevoAdministrador = new Administrador();
+        
+        try {
+            nuevoAdministrador = em.merge(em.find(Administrador.class, administradorTransporteDatos.getId()));
+            
+            nuevoAdministrador.setNumDocumento(administradorTransporteDatos.getNumDocumento());
+            nuevoAdministrador.setPrimerNombre(administradorTransporteDatos.getPrimerNombre());
+            nuevoAdministrador.setSegundoNombre(administradorTransporteDatos.getSegundoNombre());
+            nuevoAdministrador.setPrimerApellido(administradorTransporteDatos.getPrimerApellido());
+            nuevoAdministrador.setSegundoApellido(administradorTransporteDatos.getSegundoApellido());
+            nuevoAdministrador.setFechaNacimiento(administradorTransporteDatos.getFechaNacimiento());
+            nuevoAdministrador.setTelefono(administradorTransporteDatos.getTelefono());
+            nuevoAdministrador.setDireccion(administradorTransporteDatos.getDireccion());
+            nuevoAdministrador.setCorreo(administradorTransporteDatos.getCorreo());
+            nuevoAdministrador.setContrasena(administradorTransporteDatos.getContrasena());
+            nuevoAdministrador.setGenero(administradorTransporteDatos.getGenero());
+            nuevoAdministrador.setEstadoCuenta(administradorTransporteDatos.isEstadoCuenta());
+            
+            em.getTransaction().commit();
+        } catch (Exception e){
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+            return nuevoAdministrador;
+        }
+        
     }
 
 }

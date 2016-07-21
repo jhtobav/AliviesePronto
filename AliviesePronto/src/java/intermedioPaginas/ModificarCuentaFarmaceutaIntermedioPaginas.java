@@ -1,15 +1,18 @@
 package intermedioPaginas;
 
+import consultasBaseDatos.FarmaceutaConsultaBaseDatos;
 import java.util.Date;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import metodosLogicaPaginas.CrearCuentasMetodosLogicaPaginas;
-import transporteDatos.MedicoTransporteDatos;
+import metodosLogicaPaginas.ModificarCuentasMetodosLogicaPaginas;
+import tablas.Farmaceuta;
+import transporteDatos.FarmaceutaTransporteDatos;
 
-@ManagedBean(name="crearCuentaMedicoIntermedioPaginas")
+@ManagedBean(name="modificarCuentaFarmaceutaIntermedioPaginas")
 @SessionScoped
-public class CrearCuentaMedicoIntermedioPaginas {
+public class ModificarCuentaFarmaceutaIntermedioPaginas {
         
     private Long numDocumento;
     private String nombreUsuario;
@@ -23,9 +26,9 @@ public class CrearCuentaMedicoIntermedioPaginas {
     private String correo;
     private String contrasena;
     private String genero;
-    private Long numTarjetaProfesional;
+    private Boolean estadoCuenta;
 
-    public CrearCuentaMedicoIntermedioPaginas() {
+    public ModificarCuentaFarmaceutaIntermedioPaginas() {
     }
     
     @PostConstruct
@@ -43,7 +46,39 @@ public class CrearCuentaMedicoIntermedioPaginas {
         correo = null;
         contrasena = null;
         genero = null;
-        numTarjetaProfesional = null;
+        estadoCuenta = null;
+        
+    }
+    
+    public String buscarFarmaceuta(String nomUsuario){
+     
+        FarmaceutaConsultaBaseDatos consultaBaseDatos = new FarmaceutaConsultaBaseDatos();
+        
+        Farmaceuta farmaceuta = consultaBaseDatos.encontrarPorNombreUsuario(nomUsuario);
+        
+        if(farmaceuta != null){
+            
+            numDocumento = farmaceuta.getNumDocumento();
+            nombreUsuario = farmaceuta.getNombreUsuario();
+            primerNombre = farmaceuta.getPrimerNombre();
+            segundoNombre = farmaceuta.getSegundoNombre();
+            primerApellido = farmaceuta.getPrimerApellido();
+            segundoApellido = farmaceuta.getSegundoApellido();
+            fechaNacimiento = farmaceuta.getFechaNacimiento();
+            telefono = farmaceuta.getTelefono();
+            direccion = farmaceuta.getDireccion();
+            correo = farmaceuta.getCorreo();
+            contrasena = farmaceuta.getContrasena();
+            genero = farmaceuta.getGenero();
+            estadoCuenta = farmaceuta.getEstadoCuenta();
+            
+            return "usuario encontrado";
+            
+        } else {
+            
+            return "usuario no encontrado";
+            
+        }
         
     }
 
@@ -143,57 +178,55 @@ public class CrearCuentaMedicoIntermedioPaginas {
         this.genero = genero;
     }
 
-    public Long getNumTarjetaProfesional() {
-        return numTarjetaProfesional;
+    public Boolean getEstadoCuenta() {
+        return estadoCuenta;
     }
 
-    public void setNumTarjetaProfesional(Long numTarjetaProfesional) {
-        this.numTarjetaProfesional = numTarjetaProfesional;
+    public void setEstadoCuenta(Boolean estadoCuenta) {
+        this.estadoCuenta = estadoCuenta;
     }
 
-    public String crearMedico(){
+    public String modificarFarmaceuta(){
         
         /*
-        numDocumento = 111111111l;
-        nombreUsuario = "PruebaMedico";
-        primerNombre = "PrimerNombreMedico";
-        segundoNombre = "SegundoNombreMedico";
-        primerApellido = "PrimerApellidoMedico";
-        segundoApellido = "SegudnoApellidoMedico";
+        numDocumento = 192837465l;
+        nombreUsuario = "PruebaFarmaceuta";
+        primerNombre = "PrimerNombreFarmaceuta";
+        segundoNombre = "SegundoNombreFarmaceuta";
+        primerApellido = "PrimerApellidoFarmaceuta";
+        segundoApellido = "SegudnoApellidoFarmaceuta";
         fechaNacimiento = new Date();
-        telefono = 11111l;
-        direccion = "Cll 11111";
-        correo = "medico@gmail.com";
-        contrasena = "passMedico";
-        genero = "femeninoMedico";
-        numTarjetaProfesional = 11111111l;
+        telefono = 19283l;
+        direccion = "Cll 19283";
+        correo = "farmaceuta@gmail.com";
+        contrasena = "passFarmaceuta";
+        genero = "femeninoFarmaceuta";
         */
         
         if (numDocumento != null && nombreUsuario != null && primerNombre != null && 
         segundoNombre != null && primerApellido != null && segundoApellido != null && 
         fechaNacimiento != null && telefono != null && direccion != null && 
-        correo != null && contrasena != null && genero != null &&
-        numTarjetaProfesional != null){
+        correo != null && contrasena != null && genero != null){
             
-            MedicoTransporteDatos medicoTransporteDatos = new MedicoTransporteDatos();
+            FarmaceutaTransporteDatos farmaceutaTransporteDatos = new FarmaceutaTransporteDatos();
             
-            medicoTransporteDatos.setNumDocumento(numDocumento);
-            medicoTransporteDatos.setNombreUsuario(nombreUsuario);
-            medicoTransporteDatos.setPrimerNombre(primerNombre);
-            medicoTransporteDatos.setSegundoNombre(segundoNombre);
-            medicoTransporteDatos.setPrimerApellido(primerApellido);
-            medicoTransporteDatos.setSegundoApellido(segundoApellido);
-            medicoTransporteDatos.setFechaNacimiento(fechaNacimiento);
-            medicoTransporteDatos.setTelefono(telefono);
-            medicoTransporteDatos.setDireccion(direccion);
-            medicoTransporteDatos.setCorreo(correo);
-            medicoTransporteDatos.setContrasena(contrasena);
-            medicoTransporteDatos.setGenero(genero);
-            medicoTransporteDatos.setNumTarjetaProfesional(numTarjetaProfesional);
+            farmaceutaTransporteDatos.setNumDocumento(numDocumento);
+            farmaceutaTransporteDatos.setNombreUsuario(nombreUsuario);
+            farmaceutaTransporteDatos.setPrimerNombre(primerNombre);
+            farmaceutaTransporteDatos.setSegundoNombre(segundoNombre);
+            farmaceutaTransporteDatos.setPrimerApellido(primerApellido);
+            farmaceutaTransporteDatos.setSegundoApellido(segundoApellido);
+            farmaceutaTransporteDatos.setFechaNacimiento(fechaNacimiento);
+            farmaceutaTransporteDatos.setTelefono(telefono);
+            farmaceutaTransporteDatos.setDireccion(direccion);
+            farmaceutaTransporteDatos.setCorreo(correo);
+            farmaceutaTransporteDatos.setContrasena(contrasena);
+            farmaceutaTransporteDatos.setGenero(genero);
+            farmaceutaTransporteDatos.setEstadoCuenta(estadoCuenta);
             
-            CrearCuentasMetodosLogicaPaginas crearCuentasMetodosLogicaPaginas = new CrearCuentasMetodosLogicaPaginas();
+            ModificarCuentasMetodosLogicaPaginas modificarCuentasMetodosLogicaPaginas = new ModificarCuentasMetodosLogicaPaginas();
             
-            if(crearCuentasMetodosLogicaPaginas.CrearMedico(medicoTransporteDatos)){
+            if(modificarCuentasMetodosLogicaPaginas.ModificarFarmaceuta(farmaceutaTransporteDatos)){
                 
                 return "pagina exito";
                 

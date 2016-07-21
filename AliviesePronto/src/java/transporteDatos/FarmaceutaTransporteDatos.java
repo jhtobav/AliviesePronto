@@ -13,6 +13,7 @@ import java.util.Date;
  */
 public class FarmaceutaTransporteDatos {
     
+    private long id;
     private long numDocumento;
     private String nombreUsuario;
     private String primerNombre;
@@ -25,7 +26,16 @@ public class FarmaceutaTransporteDatos {
     private String correo;
     private String contrasena;
     private String genero;
+    private boolean estadoCuenta;
 
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+    
     public long getNumDocumento() {
         return numDocumento;
     }
@@ -120,6 +130,14 @@ public class FarmaceutaTransporteDatos {
 
     public void setGenero(String genero) {
         this.genero = genero;
+    }
+    
+    public boolean isEstadoCuenta() {
+        return estadoCuenta;
+    }
+
+    public void setEstadoCuenta(boolean estadoCuenta) {
+        this.estadoCuenta = estadoCuenta;
     }
     
 }

@@ -10,6 +10,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import tablas.Medico;
+import transporteDatos.MedicoTransporteDatos;
 
 /**
  *
@@ -66,4 +67,41 @@ public class MedicoConsultaBaseDatos {
         }
 
     }
+    
+    public Medico modificarMedico(MedicoTransporteDatos medicoTransporteDatos){
+        
+        EntityManager em = emf.createEntityManager();  
+        
+        em.getTransaction().begin();
+        
+        Medico nuevoMedico = new Medico();
+        
+        try {
+            nuevoMedico = em.merge(em.find(Medico.class, medicoTransporteDatos.getId()));
+            
+            nuevoMedico.setNumDocumento(medicoTransporteDatos.getNumDocumento());
+            nuevoMedico.setNombreUsuario(medicoTransporteDatos.getNombreUsuario());
+            nuevoMedico.setPrimerNombre(medicoTransporteDatos.getPrimerNombre());
+            nuevoMedico.setSegundoNombre(medicoTransporteDatos.getSegundoNombre());
+            nuevoMedico.setPrimerApellido(medicoTransporteDatos.getPrimerApellido());
+            nuevoMedico.setSegundoApellido(medicoTransporteDatos.getSegundoApellido());
+            nuevoMedico.setFechaNacimiento(medicoTransporteDatos.getFechaNacimiento());
+            nuevoMedico.setTelefono(medicoTransporteDatos.getTelefono());
+            nuevoMedico.setDireccion(medicoTransporteDatos.getDireccion());
+            nuevoMedico.setCorreo(medicoTransporteDatos.getCorreo());
+            nuevoMedico.setContrasena(medicoTransporteDatos.getContrasena());
+            nuevoMedico.setGenero(medicoTransporteDatos.getGenero());
+            nuevoMedico.setEstadoCuenta(medicoTransporteDatos.isEstadoCuenta());
+            nuevoMedico.setNumTarjetaProfesional(medicoTransporteDatos.getNumTarjetaProfesional());
+            
+            em.getTransaction().commit();
+        } catch (Exception e){
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+            return nuevoMedico;
+        }
+        
+    }
+    
 }

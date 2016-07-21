@@ -13,6 +13,7 @@ import java.util.Date;
  */
 public class MedicoTransporteDatos {
     
+    private long id;
     private long numDocumento;
     private String nombreUsuario;
     private String primerNombre;
@@ -25,7 +26,16 @@ public class MedicoTransporteDatos {
     private String correo;
     private String contrasena;
     private String genero;
+    private boolean estadoCuenta;
     private long numTarjetaProfesional;
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
 
     public long getNumDocumento() {
         return numDocumento;
@@ -121,6 +131,14 @@ public class MedicoTransporteDatos {
 
     public void setGenero(String genero) {
         this.genero = genero;
+    }
+
+    public boolean isEstadoCuenta() {
+        return estadoCuenta;
+    }
+
+    public void setEstadoCuenta(boolean estadoCuenta) {
+        this.estadoCuenta = estadoCuenta;
     }
 
     public long getNumTarjetaProfesional() {

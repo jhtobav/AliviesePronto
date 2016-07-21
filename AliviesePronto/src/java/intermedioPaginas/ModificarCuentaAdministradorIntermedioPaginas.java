@@ -1,15 +1,17 @@
 package intermedioPaginas;
 
+import consultasBaseDatos.AdministradorConsultaBaseDatos;
 import java.util.Date;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import metodosLogicaPaginas.CrearCuentasMetodosLogicaPaginas;
-import transporteDatos.MedicoTransporteDatos;
+import metodosLogicaPaginas.ModificarCuentasMetodosLogicaPaginas;
+import tablas.Administrador;
+import transporteDatos.AdministradorTransporteDatos;
 
-@ManagedBean(name="crearCuentaMedicoIntermedioPaginas")
+@ManagedBean(name="modificarCuentaAdministradorIntermedioPaginas")
 @SessionScoped
-public class CrearCuentaMedicoIntermedioPaginas {
+public class ModificarCuentaAdministradorIntermedioPaginas {
         
     private Long numDocumento;
     private String nombreUsuario;
@@ -23,9 +25,9 @@ public class CrearCuentaMedicoIntermedioPaginas {
     private String correo;
     private String contrasena;
     private String genero;
-    private Long numTarjetaProfesional;
+    private Boolean estadoCuenta;
 
-    public CrearCuentaMedicoIntermedioPaginas() {
+    public ModificarCuentaAdministradorIntermedioPaginas() {
     }
     
     @PostConstruct
@@ -43,7 +45,39 @@ public class CrearCuentaMedicoIntermedioPaginas {
         correo = null;
         contrasena = null;
         genero = null;
-        numTarjetaProfesional = null;
+        estadoCuenta = null;
+        
+    }
+    
+    public String buscarAdministrador(String nomUsuario){
+     
+        AdministradorConsultaBaseDatos consultaBaseDatos = new AdministradorConsultaBaseDatos();
+        
+        Administrador administrador = consultaBaseDatos.encontrarPorNombreUsuario(nomUsuario);
+        
+        if(administrador != null){
+            
+            numDocumento = administrador.getNumDocumento();
+            nombreUsuario = administrador.getNombreUsuario();
+            primerNombre = administrador.getPrimerNombre();
+            segundoNombre = administrador.getSegundoNombre();
+            primerApellido = administrador.getPrimerApellido();
+            segundoApellido = administrador.getSegundoApellido();
+            fechaNacimiento = administrador.getFechaNacimiento();
+            telefono = administrador.getTelefono();
+            direccion = administrador.getDireccion();
+            correo = administrador.getCorreo();
+            contrasena = administrador.getContrasena();
+            genero = administrador.getGenero();
+            estadoCuenta = administrador.getEstadoCuenta();
+            
+            return "usuario encontrado";
+            
+        } else {
+            
+            return "usuario no encontrado";
+            
+        }
         
     }
 
@@ -143,57 +177,56 @@ public class CrearCuentaMedicoIntermedioPaginas {
         this.genero = genero;
     }
 
-    public Long getNumTarjetaProfesional() {
-        return numTarjetaProfesional;
+    public Boolean getEstadoCuenta() {
+        return estadoCuenta;
     }
 
-    public void setNumTarjetaProfesional(Long numTarjetaProfesional) {
-        this.numTarjetaProfesional = numTarjetaProfesional;
+    public void setEstadoCuenta(Boolean estadoCuenta) {
+        this.estadoCuenta = estadoCuenta;
     }
 
-    public String crearMedico(){
+    public String modificarAdministrador(){
         
         /*
-        numDocumento = 111111111l;
-        nombreUsuario = "PruebaMedico";
-        primerNombre = "PrimerNombreMedico";
-        segundoNombre = "SegundoNombreMedico";
-        primerApellido = "PrimerApellidoMedico";
-        segundoApellido = "SegudnoApellidoMedico";
+        numDocumento = 987654321l;
+        nombreUsuario = "PruebaAdministrador";
+        primerNombre = "PrimerNombreAdministrador";
+        segundoNombre = "SegundoNombreAdministrador";
+        primerApellido = "PrimerApellidoAdministrador";
+        segundoApellido = "SegudnoApellidoAdministrador";
         fechaNacimiento = new Date();
-        telefono = 11111l;
-        direccion = "Cll 11111";
-        correo = "medico@gmail.com";
-        contrasena = "passMedico";
-        genero = "femeninoMedico";
-        numTarjetaProfesional = 11111111l;
+        telefono = 98765l;
+        direccion = "Cll 98765";
+        correo = "administrador@gmail.com";
+        contrasena = "passAdministrador";
+        genero = "femeninoAdministrador";
         */
+        
         
         if (numDocumento != null && nombreUsuario != null && primerNombre != null && 
         segundoNombre != null && primerApellido != null && segundoApellido != null && 
         fechaNacimiento != null && telefono != null && direccion != null && 
-        correo != null && contrasena != null && genero != null &&
-        numTarjetaProfesional != null){
+        correo != null && contrasena != null && genero != null){
             
-            MedicoTransporteDatos medicoTransporteDatos = new MedicoTransporteDatos();
+            AdministradorTransporteDatos administradorTransporteDatos = new AdministradorTransporteDatos();
             
-            medicoTransporteDatos.setNumDocumento(numDocumento);
-            medicoTransporteDatos.setNombreUsuario(nombreUsuario);
-            medicoTransporteDatos.setPrimerNombre(primerNombre);
-            medicoTransporteDatos.setSegundoNombre(segundoNombre);
-            medicoTransporteDatos.setPrimerApellido(primerApellido);
-            medicoTransporteDatos.setSegundoApellido(segundoApellido);
-            medicoTransporteDatos.setFechaNacimiento(fechaNacimiento);
-            medicoTransporteDatos.setTelefono(telefono);
-            medicoTransporteDatos.setDireccion(direccion);
-            medicoTransporteDatos.setCorreo(correo);
-            medicoTransporteDatos.setContrasena(contrasena);
-            medicoTransporteDatos.setGenero(genero);
-            medicoTransporteDatos.setNumTarjetaProfesional(numTarjetaProfesional);
+            administradorTransporteDatos.setNumDocumento(numDocumento);
+            administradorTransporteDatos.setNombreUsuario(nombreUsuario);
+            administradorTransporteDatos.setPrimerNombre(primerNombre);
+            administradorTransporteDatos.setSegundoNombre(segundoNombre);
+            administradorTransporteDatos.setPrimerApellido(primerApellido);
+            administradorTransporteDatos.setSegundoApellido(segundoApellido);
+            administradorTransporteDatos.setFechaNacimiento(fechaNacimiento);
+            administradorTransporteDatos.setTelefono(telefono);
+            administradorTransporteDatos.setDireccion(direccion);
+            administradorTransporteDatos.setCorreo(correo);
+            administradorTransporteDatos.setContrasena(contrasena);
+            administradorTransporteDatos.setGenero(genero);
+            administradorTransporteDatos.setEstadoCuenta(estadoCuenta);
             
-            CrearCuentasMetodosLogicaPaginas crearCuentasMetodosLogicaPaginas = new CrearCuentasMetodosLogicaPaginas();
+            ModificarCuentasMetodosLogicaPaginas modificarCuentasMetodosLogicaPaginas = new ModificarCuentasMetodosLogicaPaginas();
             
-            if(crearCuentasMetodosLogicaPaginas.CrearMedico(medicoTransporteDatos)){
+            if(modificarCuentasMetodosLogicaPaginas.ModificarAdministrador(administradorTransporteDatos)){
                 
                 return "pagina exito";
                 
