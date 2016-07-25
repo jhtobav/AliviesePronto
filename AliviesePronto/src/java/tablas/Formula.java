@@ -10,7 +10,6 @@ import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Cacheable;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -62,7 +61,7 @@ public class Formula implements Serializable {
     @JoinColumn(name = "Usuario_Id", referencedColumnName = "Id")
     @ManyToOne(optional = false)
     private Usuario usuarioId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "formulaProductoProductoId")
+    @OneToMany(mappedBy = "formulaProductoProductoId")
     private Collection<Producto> productoCollection;
 
     public Formula() {
