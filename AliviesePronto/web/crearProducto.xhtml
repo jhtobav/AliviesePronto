@@ -48,7 +48,10 @@
                                     <h:outputText value="Tipo"/>
                                 </b:row>
                                 <b:row>
-                                    <b:inputText placeholder="Tipo" value="#{registrarProductoIntermedioPaginas.tipo}"/>
+                                    <b:selectOneMenu value="#{registrarProductoIntermedioPaginas.tipo}" id="brandID" >
+                                        <f:selectItem itemLabel="Prescripcion" itemValue="Prescripcion"/>
+                                        <f:selectItem itemLabel="Publico" itemValue="Publico"/>
+                                    </b:selectOneMenu>
                                 </b:row>
                             </b:column>
                         </b:row>
@@ -115,7 +118,7 @@
                         <b:row>
                             <b:column span="1"></b:column>
                             <b:column span="4">
-                                <b:commandButton  value="Cancelar" action="inicioAdministrador.xhtml" look="warning" style="width:100%" onclick="form.target='_parent'"/>
+                                <b:commandButton  value="Cancelar" action="inicioAdministrador.xhtml" look="warning" style="width:100%" onclick="form.target = '_parent'"/>
                             </b:column>
                             <b:column span="1"></b:column>
                             <b:column span="4">
