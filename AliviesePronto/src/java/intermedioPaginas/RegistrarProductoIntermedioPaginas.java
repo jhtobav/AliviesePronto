@@ -122,6 +122,7 @@ public class RegistrarProductoIntermedioPaginas {
 
     public String registrarProducto(){
         
+        /*
         nombre = "productoNombre";
         descripcion = "productoDescripcion";
         marca = "productoMarca";
@@ -132,6 +133,7 @@ public class RegistrarProductoIntermedioPaginas {
         cantidadInventario = 9012;
         cantidadMinimaInventario = 3456;
         tipo = "productoTipo";
+        */
         
         if (nombre != null && descripcion != null && marca != null && imagen != null
             && presentacion != null && precioUnitarioCompra != null && precioUnitarioVenta != null
