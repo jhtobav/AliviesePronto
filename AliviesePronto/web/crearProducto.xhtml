@@ -1,0 +1,132 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Pharmacy</title>
+    </h:head>
+    <h:body>
+        <b:panelGrid colSpans="12">
+            <b:panel title="Registro de productos" id="targetPage" look="primary" collapsible="false">
+                <h:form id="signUpForm">
+                    <b:container>
+                        <b:row>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Nombre"/>
+                                </b:row>
+                                <b:row>
+                                    <b:inputText placeholder="Nombre" value="#{registrarProductoIntermedioPaginas.nombre}"/>
+                                </b:row>
+                            </b:column>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Descripcion"/>
+                                </b:row>
+                                <b:row>
+                                    <b:inputText placeholder="Descripcion" value="#{registrarProductoIntermedioPaginas.descripcion}"/>
+                                </b:row>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Marca"/>
+                                </b:row>
+                                <b:row>
+                                    <b:inputText placeholder="Marca" value="#{registrarProductoIntermedioPaginas.marca}"/>
+                                </b:row>
+                            </b:column>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Tipo"/>
+                                </b:row>
+                                <b:row>
+                                    <b:inputText placeholder="Tipo" value="#{registrarProductoIntermedioPaginas.tipo}"/>
+                                </b:row>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Presentacion"/>
+                                </b:row>
+                                <b:row>
+                                    <b:inputText placeholder="Presentacion" value="#{registrarProductoIntermedioPaginas.presentacion}"/>
+                                </b:row>
+                            </b:column>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Imagen"/>
+                                </b:row>
+                                <b:row>
+                                    <b:inputText placeholder="Imagen" value="#{registrarProductoIntermedioPaginas.imagen}"/>
+                                </b:row>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Precio unitario de compra"/>
+                                </b:row>
+                                <b:row>
+                                    <b:inputText placeholder="Precio unitario de compra" value="#{registrarProductoIntermedioPaginas.precioUnitarioCompra}"/>
+                                </b:row>
+                            </b:column>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Precio unitario de venta"/>
+                                </b:row>
+                                <b:row>
+                                    <b:inputText placeholder="Precio unitario de venta" value="#{registrarProductoIntermedioPaginas.precioUnitarioVenta}"/>
+                                </b:row>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Cantidad"/>
+                                </b:row>
+                                <b:row>
+                                    <b:inputText placeholder="Cantidad" value="#{registrarProductoIntermedioPaginas.cantidadInventario}"/>
+                                </b:row>
+                            </b:column>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Cantidad mínima"/>
+                                </b:row>
+                                <b:row>
+                                    <b:inputText placeholder="Cantidad mínima" value="#{registrarProductoIntermedioPaginas.cantidadMinimaInventario}"/>
+                                </b:row>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:commandButton  value="Cancelar" action="inicioAdministrador.xhtml" look="warning" style="width:100%" onclick="form.target='_parent'"/>
+                            </b:column>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:commandButton value="Crear producto" action="#{registrarProductoIntermedioPaginas.registrarProducto()}" look="primary" style="width:100%" />
+                            </b:column>
+                            <b:column span="2"></b:column>
+                        </b:row>
+                    </b:container>
+                </h:form>
+            </b:panel>
+        </b:panelGrid>
+    </h:body>
+</html>
+
