@@ -10,7 +10,7 @@
     <h:body>
         <b:panelGrid colSpans="12">
             <b:panel title="Registro de productos" id="targetPage" look="primary" collapsible="false">
-                <h:form id="signUpForm">
+                <h:form id="signUpForm" enctype="multipart/form-data"  >
                     <b:container>
                         <b:row>
                             <b:column span="1"></b:column>
@@ -71,7 +71,7 @@
                                     <h:outputText value="Imagen"/>
                                 </b:row>
                                 <b:row>
-                                    <b:inputText placeholder="Imagen" value="#{registrarProductoIntermedioPaginas.imagen}"/>
+                                    <h:inputFile id="file" value="#{registrarProductoIntermedioPaginas.inputFile}" />
                                 </b:row>
                             </b:column>
                         </b:row>

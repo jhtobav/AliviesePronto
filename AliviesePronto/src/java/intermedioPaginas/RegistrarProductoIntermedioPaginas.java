@@ -1,15 +1,21 @@
 package intermedioPaginas;
 
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Scanner;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.servlet.http.Part;
 import metodosLogicaPaginas.RegistrarProductoMetodosLogicaPaginas;
 import transporteDatos.ProductoTransporteDatos;
 
-@ManagedBean(name="registrarProductoIntermedioPaginas")
+@ManagedBean(name = "registrarProductoIntermedioPaginas")
 @SessionScoped
 public class RegistrarProductoIntermedioPaginas {
-        
+
     private String nombre;
     private String descripcion;
     private String marca;
@@ -20,13 +26,13 @@ public class RegistrarProductoIntermedioPaginas {
     private Integer cantidadInventario;
     private Integer cantidadMinimaInventario;
     private String tipo;
-    
+
     public RegistrarProductoIntermedioPaginas() {
     }
-    
+
     @PostConstruct
-    public void init(){
-        
+    public void init() {
+
         nombre = null;
         descripcion = null;
         marca = null;
@@ -37,7 +43,7 @@ public class RegistrarProductoIntermedioPaginas {
         cantidadInventario = null;
         cantidadMinimaInventario = null;
         tipo = null;
-        
+
     }
 
     public String getNombre() {
@@ -120,8 +126,8 @@ public class RegistrarProductoIntermedioPaginas {
         this.tipo = tipo;
     }
 
-    public String registrarProducto(){
-        
+    public String registrarProducto() {
+
         /*
         nombre = "productoNombre";
         descripcion = "productoDescripcion";
@@ -133,14 +139,16 @@ public class RegistrarProductoIntermedioPaginas {
         cantidadInventario = 9012;
         cantidadMinimaInventario = 3456;
         tipo = "productoTipo";
-        */
+         */
         
+        upload();
+
+
         if (nombre != null && descripcion != null && marca != null && imagen != null
-            && presentacion != null && precioUnitarioCompra != null && precioUnitarioVenta != null
-            && cantidadInventario != null && cantidadMinimaInventario != null && tipo != null){
-            
+                && presentacion != null && precioUnitarioCompra != null && precioUnitarioVenta != null
+                && cantidadInventario != null && cantidadMinimaInventario != null && tipo != null) {
+
             ProductoTransporteDatos productoTransporteDatos = new ProductoTransporteDatos();
-        
             productoTransporteDatos.setNombre(nombre);
             productoTransporteDatos.setDescripcion(descripcion);
             productoTransporteDatos.setMarca(marca);
@@ -151,25 +159,59 @@ public class RegistrarProductoIntermedioPaginas {
             productoTransporteDatos.setCantidadInventario(cantidadInventario);
             productoTransporteDatos.setCantidadMinimaInventario(cantidadMinimaInventario);
             productoTransporteDatos.setTipo(tipo);
-            
+
             RegistrarProductoMetodosLogicaPaginas registrarProductoMetodosLogicaPaginas = new RegistrarProductoMetodosLogicaPaginas();
             
-            if(registrarProductoMetodosLogicaPaginas
-                    .RegistrarProducto(productoTransporteDatos)){
-                
+            if (registrarProductoMetodosLogicaPaginas
+                    .RegistrarProducto(productoTransporteDatos)) {
+
                 return "pagina exito";
-                
+
             } else {
-                
+
                 return "pagina fracaso";
-                
+
             }
-            
+
         } else {
-            
+
             return "Por favor ingrese los datos completos";
-            
+
         }
-        
+
     }
+
+    private Part inputFile;
+    private InputStream fileContent;
+    private File localFile;
+
+    public void upload() {
+        try {
+            fileContent = inputFile.getInputStream();
+            localFile = new File(File.separator + "Imagenes" + File.separator + inputFile.getSubmittedFileName());
+            FileOutputStream out = new FileOutputStream(localFile);
+            imagen = localFile.getAbsolutePath();
+            int read = 0;
+            final byte[] bytes = new byte[1024];
+
+            while ((read = fileContent.read(bytes)) != -1) {
+                out.write(bytes);
+            }
+            out.close();
+            
+            System.out.println("New file " + "file001.jpg" + " created at ");
+        } catch (IOException e) {
+            System.out.println("");
+        }
+    }
+
+    public Part getInputFile() {
+        return inputFile;
+    }
+
+    public void setInputFile(Part inputFile) {
+        this.inputFile = inputFile;
+    }
+
+
 }
