@@ -1,8 +1,10 @@
 package consultasBaseDatos;
 
 import intermedioPaginas.InicioSesionIntermedioPaginas;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Query;
 import tablas.Producto;
 
 public class ProductoConsultaBaseDatos {
@@ -25,6 +27,26 @@ public class ProductoConsultaBaseDatos {
             return producto;
         }
 
+    }
+    
+    public List<Producto> obtenerProductosPublicos(){
+            
+        EntityManager em = emf.createEntityManager();
+        
+        Query q;
+
+        List<Producto> productos = null;
+
+        try {
+            q = em.createNamedQuery("Producto.findByTipo", Producto.class);
+            q.setParameter("tipo", "Publico");
+            productos = q.getResultList();
+        } catch (Exception e) {
+        } finally {
+            em.close();
+            return productos;
+        }
+        
     }
 
 }
