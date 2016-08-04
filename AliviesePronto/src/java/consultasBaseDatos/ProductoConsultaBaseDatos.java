@@ -36,10 +36,11 @@ public class ProductoConsultaBaseDatos {
         Query q;
 
         List<Producto> productos = null;
+        String tipo = "Publico";
 
         try {
             q = em.createNamedQuery("Producto.findByTipo", Producto.class);
-            q.setParameter("tipo", "Publico");
+            q.setParameter("tipo", tipo);
             productos = q.getResultList();
         } catch (Exception e) {
             System.out.println(e);
