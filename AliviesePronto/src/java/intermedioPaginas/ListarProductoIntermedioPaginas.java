@@ -4,32 +4,35 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import metodosLogicaPaginas.CarroComprasMetodosLogicaPaginas;
+import metodosLogicaPaginas.ProductoMetodosLogicaPaginas;
 import transporteDatos.ProductoTransporteDatos;
 
-@ManagedBean(name="carroComprasIntermedioPaginas")
+@ManagedBean(name="listarProductoIntermedioPaginas")
 @SessionScoped
-public class CarroComprasIntermedioPaginas {
+public class ListarProductoIntermedioPaginas {
         
     List<ProductoTransporteDatos> productosPublicos;
     
-    public CarroComprasIntermedioPaginas() {
+    public ListarProductoIntermedioPaginas() {
     }
     
     @PostConstruct
     public void init(){
         
-        productosPublicos = new CarroComprasMetodosLogicaPaginas().listarProductosPublicos();
+        productosPublicos = new ProductoMetodosLogicaPaginas().listarProductosPublicos();
         
         for(ProductoTransporteDatos productoTransporteDatos : productosPublicos)
             
             System.out.println(productoTransporteDatos.getId() + productoTransporteDatos.getDescripcion());
         
     }
-    
-    public void comprar(){
-        
-        
-        
+
+    public List<ProductoTransporteDatos> getProductosPublicos() {
+        return productosPublicos;
     }
+
+    public void setProductosPublicos(List<ProductoTransporteDatos> productosPublicos) {
+        this.productosPublicos = productosPublicos;
+    }
+    
 }

@@ -9,7 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.servlet.http.Part;
-import metodosLogicaPaginas.RegistrarProductoMetodosLogicaPaginas;
+import metodosLogicaPaginas.ProductoMetodosLogicaPaginas;
 import transporteDatos.ProductoTransporteDatos;
 
 @ManagedBean(name = "registrarProductoIntermedioPaginas")
@@ -160,7 +160,7 @@ public class RegistrarProductoIntermedioPaginas {
             productoTransporteDatos.setCantidadMinimaInventario(cantidadMinimaInventario);
             productoTransporteDatos.setTipo(tipo);
 
-            RegistrarProductoMetodosLogicaPaginas registrarProductoMetodosLogicaPaginas = new RegistrarProductoMetodosLogicaPaginas();
+            ProductoMetodosLogicaPaginas registrarProductoMetodosLogicaPaginas = new ProductoMetodosLogicaPaginas();
             
             if (registrarProductoMetodosLogicaPaginas
                     .RegistrarProducto(productoTransporteDatos)) {
