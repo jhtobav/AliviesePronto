@@ -40,21 +40,17 @@ and open the template in the editor.
                     <b:column span="2"></b:column>
                 </b:row> 
                 <c:forEach items="#{listarProductoIntermedioPaginas.productosPublicos}" var="producto">
-                    <c:forEach begin="0" end="12" varStatus="i" step="4">
-                        <b:row class="top-buffer">
-                            <c:forEach begin="0" end="3" varStatus="j">
-                                <b:column span="3">
-                                    <div class="imgWrap">
-                                        <img src="#{producto.imagen}" alt="polaroid" class="productImage"/>
-                                        <p class="imgDescription">Nombre del producto: #{producto.nombre}<br/>
-                                            Fabricante: #{producto.marca}<br/>
-                                            Precio: #{producto.precioUnitarioCompra}<br/>
-                                            Descripcion: #{producto.descripcion}<br/></p>
-                                    </div>
-                                </b:column>
-                            </c:forEach>
-                        </b:row>
-                    </c:forEach>
+                    <b:row class="top-buffer">
+                        <b:column span="3">
+                            <div class="imgWrap">
+                                <img src="#{producto.imagen}" alt="polaroid" class="productImage"/>
+                                <p class="imgDescription">Nombre del producto: #{producto.nombre}<br/>
+                                    Fabricante: #{producto.marca}<br/>
+                                    Precio: #{producto.precioUnitarioCompra}<br/>
+                                    Descripcion: #{producto.descripcion}<br/></p>
+                            </div>
+                        </b:column>
+                    </b:row>
                 </c:forEach>
             </b:container>
         </h:form>
