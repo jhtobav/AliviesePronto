@@ -11,19 +11,18 @@ import transporteDatos.ProductoTransporteDatos;
 @SessionScoped
 public class ListarProductoIntermedioPaginas {
         
-    List<ProductoTransporteDatos> productosPublicos;
+    List<ProductoTransporteDatos> productosPublicos = null;
     
     public ListarProductoIntermedioPaginas() {
     }
     
     @PostConstruct
     public void init(){
-        
+               
         productosPublicos = new ProductoMetodosLogicaPaginas().listarProductosPublicos();
         
         for(ProductoTransporteDatos productoTransporteDatos : productosPublicos)
-            
-            System.out.println(productoTransporteDatos.getId() + productoTransporteDatos.getDescripcion());
+            System.out.println(productoTransporteDatos.getId() + " " + productoTransporteDatos.getDescripcion());
         
     }
 

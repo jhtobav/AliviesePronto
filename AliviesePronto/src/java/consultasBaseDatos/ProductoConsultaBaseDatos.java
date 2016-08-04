@@ -14,7 +14,6 @@ public class ProductoConsultaBaseDatos {
     public Producto crearProducto(Producto producto) {
         
         EntityManager em = emf.createEntityManager();
-        
         em.getTransaction().begin();
         
         try{
@@ -32,6 +31,7 @@ public class ProductoConsultaBaseDatos {
     public List<Producto> obtenerProductosPublicos(){
             
         EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
         
         Query q;
 
@@ -42,6 +42,7 @@ public class ProductoConsultaBaseDatos {
             q.setParameter("tipo", "Publico");
             productos = q.getResultList();
         } catch (Exception e) {
+            System.out.println(e);
         } finally {
             em.close();
             return productos;
