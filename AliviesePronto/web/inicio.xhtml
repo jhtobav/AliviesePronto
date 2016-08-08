@@ -37,11 +37,11 @@
                         </b:listLinks>
                         <b:listLinks>
                             <b:navLink header="Ingreso a miembros" />
-                            <li><h:link outcome="loginUsuario.xhtml" value="Clientes" target="inicioFrame"/></li>
-                            <li><h:link outcome="loginMedico.xhtml" value="Medicos" target="inicioFrame"/></li>
-                            <li><h:link outcome="loginFarmaceuta.xhtml" value="Farmaceutas" target="inicioFrame"/></li>
-                            <li><h:link outcome="loginAdministrador.xhtml"  value="Administrador" target="inicioFrame"/></li>
-                            <li><h:link outcome="loginGerente.xhtml" value="Gerente" target="inicioFrame"/></li>
+                            <li><h:commandLink action="#{inicioSesionIntermedioPaginas.init('Usuario')}" value="Clientes" target="inicioFrame"/></li>
+                            <li><h:commandLink action="#{inicioSesionIntermedioPaginas.init('Medico')}" value="Medicos" target="inicioFrame"/></li>
+                            <li><h:commandLink action="#{inicioSesionIntermedioPaginas.init('Farmaceuta')}" value="Farmaceutas" target="inicioFrame"/></li>
+                            <li><h:commandLink action="#{inicioSesionIntermedioPaginas.init('Administrador')}"  value="Administrador" target="inicioFrame"/></li>
+                            <li><h:commandLink action="#{inicioSesionIntermedioPaginas.init('Gerente')}" value="Gerente" target="inicioFrame"/></li>
                         </b:listLinks>
                     </b:column>
                     <b:column col-sm="10" col-md="10" col-lg="10" styleClass="main">

@@ -1,7 +1,6 @@
 package intermedioPaginas;
 
 import java.util.Date;
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import metodosLogicaPaginas.CrearCuentasMetodosLogicaPaginas;
@@ -27,8 +26,7 @@ public class CrearCuentaFarmaceutaIntermedioPaginas {
     public CrearCuentaFarmaceutaIntermedioPaginas() {
     }
     
-    @PostConstruct
-    public void init(){
+    public String init(){
         
         numDocumento = null;
         nombreUsuario = null;
@@ -42,6 +40,8 @@ public class CrearCuentaFarmaceutaIntermedioPaginas {
         correo = null;
         contrasena = null;
         genero = null;
+        
+        return "crearFarmaceuta.xhtml";
         
     }
 
@@ -182,7 +182,7 @@ public class CrearCuentaFarmaceutaIntermedioPaginas {
             
             if(crearCuentasMetodosLogicaPaginas.CrearFarmaceuta(farmaceutaTransporteDatos)){
                 
-                return "pagina exito";
+                return "carrouselBienvenida.xhtml";
                 
             } else {
                 

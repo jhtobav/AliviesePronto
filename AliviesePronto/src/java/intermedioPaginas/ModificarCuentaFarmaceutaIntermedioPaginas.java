@@ -2,10 +2,8 @@ package intermedioPaginas;
 
 import consultasBaseDatos.FarmaceutaConsultaBaseDatos;
 import java.util.Date;
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import metodosLogicaPaginas.CrearCuentasMetodosLogicaPaginas;
 import metodosLogicaPaginas.ModificarCuentasMetodosLogicaPaginas;
 import tablas.Farmaceuta;
 import transporteDatos.FarmaceutaTransporteDatos;
@@ -31,8 +29,7 @@ public class ModificarCuentaFarmaceutaIntermedioPaginas {
     public ModificarCuentaFarmaceutaIntermedioPaginas() {
     }
     
-    @PostConstruct
-    public void init(){
+    public String init(){
         
         numDocumento = null;
         nombreUsuario = null;
@@ -47,6 +44,8 @@ public class ModificarCuentaFarmaceutaIntermedioPaginas {
         contrasena = null;
         genero = null;
         estadoCuenta = null;
+        
+        return "modificarFarmaceuta.xhtml";
         
     }
     

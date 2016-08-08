@@ -51,10 +51,10 @@
                         <b:row>
                             <b:column span="2"></b:column>
                             <b:column span="3">
-                                <b:commandButton  value="Iniciar sesión" action="#{listarProductoIntermedioPaginas.init()}" look="primary" style="width:100%" onclick="form.target='_parent'"/>
+                                <b:commandButton  value="Iniciar Sesión" action="#{inicioSesionIntermedioPaginas.inicioSesion('Usuario')}" look="primary" style="width:100%" onclick="form.target='_parent'"/>
                             </b:column>
                             <b:column span="3">
-                                <b:commandButton value="Crear cuenta" action="#{inicioSesionIntermedioPaginas.inicioSesion('Usuario')}" look="warning" style="width:100%" />
+                                <b:commandButton value="Registrarse" action="#{crearCuentaUsuarioIntermedioPaginas.init()}" look="warning" style="width:100%" />
                             </b:column>
                             <b:column span="2"></b:column>
                         </b:row>

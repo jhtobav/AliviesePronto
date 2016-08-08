@@ -1,7 +1,6 @@
 package intermedioPaginas;
 
 import java.util.Date;
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import metodosLogicaPaginas.CrearCuentasMetodosLogicaPaginas;
@@ -28,8 +27,7 @@ public class CrearCuentaMedicoIntermedioPaginas {
     public CrearCuentaMedicoIntermedioPaginas() {
     }
     
-    @PostConstruct
-    public void init(){
+    public String init(){
         
         numDocumento = null;
         nombreUsuario = null;
@@ -44,6 +42,8 @@ public class CrearCuentaMedicoIntermedioPaginas {
         contrasena = null;
         genero = null;
         numTarjetaProfesional = null;
+        
+        return "crearMedico.xhtml";
         
     }
 
@@ -195,7 +195,7 @@ public class CrearCuentaMedicoIntermedioPaginas {
             
             if(crearCuentasMetodosLogicaPaginas.CrearMedico(medicoTransporteDatos)){
                 
-                return "pagina exito";
+                return "carrouselBienvenida.xhtml";
                 
             } else {
                 

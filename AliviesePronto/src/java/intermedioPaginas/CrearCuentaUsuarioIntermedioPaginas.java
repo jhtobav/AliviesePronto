@@ -1,16 +1,15 @@
 package intermedioPaginas;
 
 import java.util.Date;
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import metodosLogicaPaginas.CrearCuentasMetodosLogicaPaginas;
 import transporteDatos.TarjetaTransporteDatos;
 import transporteDatos.UsuarioTransporteDatos;
 
-@ManagedBean(name="registroUsuarioIntermedioPaginas")
+@ManagedBean(name="crearCuentaUsuarioIntermedioPaginas")
 @SessionScoped
-public class RegistroUsuarioIntermedioPaginas {
+public class CrearCuentaUsuarioIntermedioPaginas {
         
     private Long numDocumento;
     private String nombreUsuario;
@@ -27,14 +26,15 @@ public class RegistroUsuarioIntermedioPaginas {
     
     private Long numTarjeta;
     private String nombrePersona;
+    private Integer mesVencimiento;
+    private Integer anoVencimiento;
     private String fechaVencimiento;
     private Integer csv;
 
-    public RegistroUsuarioIntermedioPaginas() {
+    public CrearCuentaUsuarioIntermedioPaginas() {
     }
     
-    @PostConstruct
-    public void init(){
+    public String init(){
         
         numDocumento = null;
         nombreUsuario = null;
@@ -51,8 +51,12 @@ public class RegistroUsuarioIntermedioPaginas {
         
         numTarjeta = null;
         nombrePersona = null;
+        mesVencimiento = null;
+        anoVencimiento = null;
         fechaVencimiento = null;
         csv = null;
+        
+        return "crearPaciente.xhtml";
         
     }
 
@@ -168,6 +172,22 @@ public class RegistroUsuarioIntermedioPaginas {
         this.nombrePersona = nombrePersona;
     }
 
+    public Integer getMesVencimiento() {
+        return mesVencimiento;
+    }
+
+    public void setMesVencimiento(Integer mesVencimiento) {
+        this.mesVencimiento = mesVencimiento;
+    }
+
+    public Integer getAnoVencimiento() {
+        return anoVencimiento;
+    }
+
+    public void setAnoVencimiento(Integer anoVencimiento) {
+        this.anoVencimiento = anoVencimiento;
+    }
+
     public String getFechaVencimiento() {
         return fechaVencimiento;
     }
@@ -210,7 +230,8 @@ public class RegistroUsuarioIntermedioPaginas {
         segundoNombre != null && primerApellido != null && segundoApellido != null && 
         fechaNacimiento != null && telefono != null && direccion != null && 
         correo != null && contrasena != null && genero != null &&
-        numTarjeta != null && nombrePersona != null && fechaVencimiento != null && csv != null){
+        numTarjeta != null && nombrePersona != null && mesVencimiento != null &&  
+        anoVencimiento != null && csv != null){
             
             UsuarioTransporteDatos usuarioTransporteDatos = new UsuarioTransporteDatos();
             
@@ -231,7 +252,7 @@ public class RegistroUsuarioIntermedioPaginas {
             
             tarjetaTransporteDatos.setNumTarjeta(numTarjeta);
             tarjetaTransporteDatos.setNombrePersona(nombrePersona);
-            tarjetaTransporteDatos.setFechaVencimiento(fechaVencimiento);
+            tarjetaTransporteDatos.setFechaVencimiento(mesVencimiento.toString() + anoVencimiento.toString());
             tarjetaTransporteDatos.setCsv(csv.shortValue());
             
             CrearCuentasMetodosLogicaPaginas crearCuentasMetodosLogicaPaginas = new CrearCuentasMetodosLogicaPaginas();
@@ -239,7 +260,7 @@ public class RegistroUsuarioIntermedioPaginas {
             if(crearCuentasMetodosLogicaPaginas
                     .RegistrarUsuario(usuarioTransporteDatos, tarjetaTransporteDatos)){
                 
-                return "pagina exito";
+                return "carrouselBienvenida.xhtml";
                 
             } else {
                 

@@ -1,18 +1,19 @@
 package intermedioPaginas;
 
-import consultasBaseDatos.MedicoConsultaBaseDatos;
 import java.util.Date;
-import javax.annotation.PostConstruct;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import metodosLogicaPaginas.ModificarCuentasMetodosLogicaPaginas;
-import tablas.Medico;
 import transporteDatos.MedicoTransporteDatos;
 
 @ManagedBean(name="modificarCuentaMedicoIntermedioPaginas")
 @SessionScoped
 public class ModificarCuentaMedicoIntermedioPaginas {
         
+    List<MedicoTransporteDatos> medicos = null;
+    
+    private Long id;
     private Long numDocumento;
     private String nombreUsuario;
     private String primerNombre;
@@ -25,15 +26,17 @@ public class ModificarCuentaMedicoIntermedioPaginas {
     private String correo;
     private String contrasena;
     private String genero;
-    private Boolean estadoCuenta;
+    private String estadoCuenta;
     private Long numTarjetaProfesional;
 
     public ModificarCuentaMedicoIntermedioPaginas() {
     }
     
-    @PostConstruct
-    public void init(){
+    public String init(){
         
+        medicos = new ModificarCuentasMetodosLogicaPaginas().listarMedicos();
+        
+        id = null;
         numDocumento = null;
         nombreUsuario = null;
         primerNombre = null;
@@ -49,37 +52,24 @@ public class ModificarCuentaMedicoIntermedioPaginas {
         estadoCuenta = null;
         numTarjetaProfesional = null;
         
+        return "listarMedicos.xhtml";
+        
     }
-    public String buscarMedico(String nomUsuario){
-     
-        MedicoConsultaBaseDatos consultaBaseDatos = new MedicoConsultaBaseDatos();
-        
-        Medico medico = consultaBaseDatos.encontrarPorNombreUsuario(nomUsuario);
-        
-        if(medico != null){
-            
-            numDocumento = medico.getNumDocumento();
-            nombreUsuario = medico.getNombreUsuario();
-            primerNombre = medico.getPrimerNombre();
-            segundoNombre = medico.getSegundoNombre();
-            primerApellido = medico.getPrimerApellido();
-            segundoApellido = medico.getSegundoApellido();
-            fechaNacimiento = medico.getFechaNacimiento();
-            telefono = medico.getTelefono();
-            direccion = medico.getDireccion();
-            correo = medico.getCorreo();
-            contrasena = medico.getContrasena();
-            genero = medico.getGenero();
-            estadoCuenta = medico.getEstadoCuenta();
-            
-            return "usuario encontrado";
-            
-        } else {
-            
-            return "usuario no encontrado";
-            
-        }
-        
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+    
+    public List<MedicoTransporteDatos> getMedicos() {
+        return medicos;
+    }
+
+    public void setMedicos(List<MedicoTransporteDatos> medicos) {
+        this.medicos = medicos;
     }
 
     public Long getNumDocumento() {
@@ -178,20 +168,54 @@ public class ModificarCuentaMedicoIntermedioPaginas {
         this.genero = genero;
     }
 
-    public Boolean getEstadoCuenta() {
-        return estadoCuenta;
-    }
-
-    public void setEstadoCuenta(Boolean estadoCuenta) {
-        this.estadoCuenta = estadoCuenta;
-    }
-
     public Long getNumTarjetaProfesional() {
         return numTarjetaProfesional;
     }
 
     public void setNumTarjetaProfesional(Long numTarjetaProfesional) {
         this.numTarjetaProfesional = numTarjetaProfesional;
+    }
+
+    public String getEstadoCuenta() {
+        return estadoCuenta;
+    }
+
+    public void setEstadoCuenta(String estadoCuenta) {
+        this.estadoCuenta = estadoCuenta;
+    }
+    
+    public String cargarMedico(Long idMedico){
+        
+        for(MedicoTransporteDatos medico : medicos){
+            
+            if(medico.getId() == idMedico){
+                
+                id = medico.getId();
+                numDocumento = medico.getNumDocumento();
+                nombreUsuario = medico.getNombreUsuario();
+                primerNombre = medico.getPrimerNombre();
+                segundoNombre = medico.getSegundoNombre();
+                primerApellido = medico.getPrimerApellido();
+                segundoApellido = medico.getSegundoApellido();
+                fechaNacimiento = medico.getFechaNacimiento();
+                telefono = medico.getTelefono();
+                direccion = medico.getDireccion();
+                correo = medico.getCorreo();
+                contrasena = null;
+                genero = medico.getGenero();
+                if (medico.isEstadoCuenta()){
+                    estadoCuenta = "Activo";
+                } else {
+                    estadoCuenta = "Inactivo";
+                }
+                numTarjetaProfesional = medico.getNumTarjetaProfesional();
+                
+            }
+            
+        }
+        
+        return "modificarMedico.xhtml";
+        
     }
 
     public String modificarMedico(){
@@ -220,6 +244,7 @@ public class ModificarCuentaMedicoIntermedioPaginas {
             
             MedicoTransporteDatos medicoTransporteDatos = new MedicoTransporteDatos();
             
+            medicoTransporteDatos.setId(id);
             medicoTransporteDatos.setNumDocumento(numDocumento);
             medicoTransporteDatos.setNombreUsuario(nombreUsuario);
             medicoTransporteDatos.setPrimerNombre(primerNombre);
@@ -232,14 +257,18 @@ public class ModificarCuentaMedicoIntermedioPaginas {
             medicoTransporteDatos.setCorreo(correo);
             medicoTransporteDatos.setContrasena(contrasena);
             medicoTransporteDatos.setGenero(genero);
-            medicoTransporteDatos.setEstadoCuenta(estadoCuenta);
+            if(estadoCuenta.equals("Activo")){
+                medicoTransporteDatos.setEstadoCuenta(true);    
+            } else {
+                medicoTransporteDatos.setEstadoCuenta(false);    
+            }
             medicoTransporteDatos.setNumTarjetaProfesional(numTarjetaProfesional);
             
             ModificarCuentasMetodosLogicaPaginas modificarCuentasMetodosLogicaPaginas = new ModificarCuentasMetodosLogicaPaginas();
             
             if(modificarCuentasMetodosLogicaPaginas.ModificarMedico(medicoTransporteDatos)){
                 
-                return "pagina exito";
+                return init();
                 
             } else {
                 

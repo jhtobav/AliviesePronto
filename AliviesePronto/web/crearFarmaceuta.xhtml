@@ -9,7 +9,7 @@
     </h:head>
     <h:body>
         <b:panelGrid colSpans="12">
-            <b:panel title="Registro de Pacientes" id="targetPage" look="primary" collapsible="false">
+            <b:panel title="Registro de Farmaceutas" id="targetPage" look="primary" collapsible="false">
                 <h:form id="signUpForm">
                     <b:container>
                         <b:row>
@@ -19,7 +19,7 @@
                                     <h:outputText value="Primer Nombre"/>
                                 </b:row>
                                 <b:row>
-                                    <b:inputText placeholder="Primer Nombre" value="#{crearCuentaUsuarioIntermedioPaginas.primerNombre}"/>
+                                    <b:inputText placeholder="Primer Nombre" value="#{crearCuentaFarmaceutaIntermedioPaginas.primerNombre}"/>
                                 </b:row>
                             </b:column>
                             <b:column span="1"></b:column>
@@ -28,7 +28,7 @@
                                     <h:outputText value="Segundo Nombre"/>
                                 </b:row>
                                 <b:row>
-                                    <b:inputText placeholder="Segundo Nombre" value="#{crearCuentaUsuarioIntermedioPaginas.segundoNombre}"/>
+                                    <b:inputText placeholder="Segundo Nombre" value="#{crearCuentaFarmaceutaIntermedioPaginas.segundoNombre}"/>
                                 </b:row>
                             </b:column>
                         </b:row>
@@ -39,7 +39,7 @@
                                     <h:outputText value="Primer Apellido"/>
                                 </b:row>
                                 <b:row>
-                                    <b:inputText placeholder="Primer Apellido" value="#{crearCuentaUsuarioIntermedioPaginas.primerApellido}"/>
+                                    <b:inputText placeholder="Primer Apellido" value="#{crearCuentaFarmaceutaIntermedioPaginas.primerApellido}"/>
                                 </b:row>
                             </b:column>
                             <b:column span="1"></b:column>
@@ -48,7 +48,7 @@
                                     <h:outputText value="Segundo Apellido"/>
                                 </b:row>
                                 <b:row>
-                                    <b:inputText placeholder="Segundo Apellido" value="#{crearCuentaUsuarioIntermedioPaginas.segundoApellido}"/>
+                                    <b:inputText placeholder="Segundo Apellido" value="#{crearCuentaFarmaceutaIntermedioPaginas.segundoApellido}"/>
                                 </b:row>
                             </b:column>
                         </b:row>
@@ -59,7 +59,7 @@
                                     <h:outputText value="Numero de Documento"/>
                                 </b:row>
                                 <b:row>
-                                    <b:inputText placeholder="Numero de Documento" value="#{crearCuentaUsuarioIntermedioPaginas.numDocumento}"/>
+                                    <b:inputText placeholder="Numero de Documento" value="#{crearCuentaFarmaceutaIntermedioPaginas.numDocumento}"/>
                                 </b:row>
                             </b:column>
                             <b:column span="1"></b:column>
@@ -68,7 +68,7 @@
                                     <h:outputText value="Nombre de Usuario"/>
                                 </b:row>
                                 <b:row>
-                                    <b:inputText placeholder="Nombre de Usuario" value="#{crearCuentaUsuarioIntermedioPaginas.nombreUsuario}"/>
+                                    <b:inputText placeholder="Nombre de Usuario" value="#{crearCuentaFarmaceutaIntermedioPaginas.nombreUsuario}"/>
                                 </b:row>
                             </b:column>
                         </b:row>
@@ -79,7 +79,7 @@
                                     <h:outputText value="Teléfono"/>
                                 </b:row>
                                 <b:row>
-                                    <b:inputText placeholder="Teléfono" value="#{crearCuentaUsuarioIntermedioPaginas.telefono}"/>
+                                    <b:inputText placeholder="Teléfono" value="#{crearCuentaFarmaceutaIntermedioPaginas.telefono}"/>
                                 </b:row>
                             </b:column>
                             <b:column span="1"></b:column>
@@ -88,7 +88,7 @@
                                     <h:outputText value="Correo"/>
                                 </b:row>
                                 <b:row>
-                                    <b:inputText placeholder="Correo" value="#{crearCuentaUsuarioIntermedioPaginas.correo}"/>
+                                    <b:inputText placeholder="Correo" value="#{crearCuentaFarmaceutaIntermedioPaginas.correo}"/>
                                 </b:row>
                             </b:column>
                         </b:row>
@@ -99,7 +99,7 @@
                                     <h:outputText value="Dirección"/>
                                 </b:row>
                                 <b:row>
-                                    <b:inputText placeholder="Dirección" value="#{crearCuentaUsuarioIntermedioPaginas.direccion}"/>
+                                    <b:inputText placeholder="Dirección" value="#{crearCuentaFarmaceutaIntermedioPaginas.direccion}"/>
                                 </b:row>
                             </b:column>
                             <b:column span="1"></b:column>
@@ -108,7 +108,7 @@
                                     <h:outputText value="Fecha de nacimiento"/>
                                 </b:row>
                                 <b:row>
-                                    <b:datepicker mode="popup-icon" placeholder="Fecha de nacimiento" value="#{crearCuentaUsuarioIntermedioPaginas.fechaNacimiento}"/>
+                                    <b:datepicker mode="popup-icon" placeholder="Fecha de nacimiento" value="#{crearCuentaFarmaceutaIntermedioPaginas.fechaNacimiento}"/>
                                 </b:row>
                             </b:column>
                             <b:column span="1"></b:column>
@@ -117,7 +117,7 @@
                                     <h:outputText value="Género"/>
                                 </b:row>
                                 <b:row>
-                                    <b:selectMultiMenu radiobuttons="true" value="#{crearCuentaUsuarioIntermedioPaginas.genero}">
+                                    <b:selectMultiMenu radiobuttons="true" value="#{crearCuentaFarmaceutaIntermedioPaginas.genero}">
                                         <f:selectItem itemLabel="Masculino" itemValue="Masculino"/>
                                         <f:selectItem itemLabel="Femenino" itemValue="Femenino"/>
                                     </b:selectMultiMenu>
@@ -131,7 +131,7 @@
                                     <h:outputText value="Contraseña"/>
                                 </b:row>
                                 <b:row>
-                                    <b:inputSecret placeholder="Contraseña" value="#{crearCuentaUsuarioIntermedioPaginas.contrasena}"/>
+                                    <b:inputSecret placeholder="Contraseña" value="#{crearCuentaFarmaceutaIntermedioPaginas.contrasena}"/>
                                 </b:row>
                             </b:column>
                             <b:column span="1"></b:column>
@@ -140,70 +140,7 @@
                                     <h:outputText value="Confirmar contraseña"/>
                                 </b:row>
                                 <b:row>
-                                    <b:inputSecret placeholder="Confirmar Contraseña" value="#{crearCuentaUsuarioIntermedioPaginas.contrasena}"/>
-                                </b:row>
-                            </b:column>
-                        </b:row>
-                        <hr/>
-                        <b:row>
-                            <b:column span="1"></b:column>
-                            <b:column span="4">
-                                <b:row>
-                                    <h:outputText value="Numero Tarjeta"/>
-                                </b:row>
-                                <b:row>
-                                    <b:inputText placeholder="Numero Tarjeta" value="#{crearCuentaUsuarioIntermedioPaginas.numTarjeta}"/>
-                                </b:row>
-                            </b:column>
-                            <b:column span="1"></b:column>
-                            <b:column span="4">
-                                <b:row>
-                                    <h:outputText value="Nombre en Tarjeta"/>
-                                </b:row>
-                                <b:row>
-                                    <b:inputText placeholder="Nombre en Tarjeta" value="#{crearCuentaUsuarioIntermedioPaginas.nombrePersona}"/>
-                                </b:row>
-                            </b:column>
-                        </b:row>
-                        <b:row>
-                            <b:column span="1"></b:column>
-                            <b:column span="1">
-                                <b:row>
-                                    <h:outputText value="Mes"/>
-                                </b:row>
-                                <b:row>
-                                    <b:selectMultiMenu radiobuttons="true" value="#{crearCuentaUsuarioIntermedioPaginas.mesVencimiento}">
-                                        <f:selectItem itemValue="1" itemLabel="1" />
-                                        <f:selectItem itemValue="2" itemLabel="2" />
-                                        <f:selectItem itemValue="3" itemLabel="3" />
-                                        <f:selectItem itemValue="4" itemLabel="4" />
-                                        <f:selectItem itemValue="5" itemLabel="5" />
-                                        <f:selectItem itemValue="6" itemLabel="6" />
-                                        <f:selectItem itemValue="7" itemLabel="7" />
-                                        <f:selectItem itemValue="8" itemLabel="8" />
-                                        <f:selectItem itemValue="9" itemLabel="9" />
-                                        <f:selectItem itemValue="10" itemLabel="10" />
-                                        <f:selectItem itemValue="11" itemLabel="11" />
-                                        <f:selectItem itemValue="12" itemLabel="12" />
-                                    </b:selectMultiMenu>
-                                </b:row>
-                            </b:column>
-                            <b:column span="1"></b:column>
-                            <b:column span="2">
-                                <b:row>
-                                    <h:outputText value="Año"/>
-                                </b:row>
-                                <b:row>
-                                    <b:inputText placeholder="Año Vencimiento" value="#{crearCuentaUsuarioIntermedioPaginas.anoVencimiento}"/>
-                                </b:row>
-                            </b:column>
-                            <b:column span="1"></b:column>
-                            <b:column span="4">
-                                <b:row>
-                                    <h:outputText value="CSV"/>
-                                </b:row>
-                                <b:row>
-                                    <b:inputText placeholder="CSV" value="#{crearCuentaUsuarioIntermedioPaginas.csv}"/>
+                                    <b:inputSecret placeholder="Confirmar Contraseña" value="#{crearCuentaFarmaceutaIntermedioPaginas.contrasena}"/>
                                 </b:row>
                             </b:column>
                         </b:row>
@@ -215,7 +152,7 @@
                             </b:column>
                             <b:column span="1"></b:column>
                             <b:column span="4">
-                                <b:commandButton value="Registrar Cuenta" action="#{crearCuentaUsuarioIntermedioPaginas.registroUsuario()}" look="primary" style="width:100%" />
+                                <b:commandButton value="Registrar Farmaceuta" action="#{crearCuentaFarmaceutaIntermedioPaginas.crearFarmaceuta()}" look="primary" style="width:100%" />
                             </b:column>
                             <b:column span="2"></b:column>
                         </b:row>

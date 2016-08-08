@@ -1,7 +1,6 @@
 package intermedioPaginas;
 
 import static intermedioPaginas.InicioSesionIntermedioPaginas.emf;
-import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
@@ -22,11 +21,25 @@ public class InicioSesionIntermedioPaginas {
     public InicioSesionIntermedioPaginas() {
     }
     
-    @PostConstruct
-    public void init(){
+    public String init(String tipoUsuario){
         
         nombreUsuario = null;
         contrasena = null;
+
+        switch (tipoUsuario) {
+            case "Usuario":
+                return "loginUsuario.xhtml";
+            case "Medico":
+                return "loginMedico.xhtml";
+            case "Farmaceuta":
+                return "loginFarmaceuta.xhtml";
+            case "Administrador":
+                return "loginAdministrador.xhtml";
+            case "Gerente":
+                return "loginGerente.xhtml";
+            default:
+                return "inicio.xhtml";
+        }
         
     }
     
@@ -55,7 +68,7 @@ public class InicioSesionIntermedioPaginas {
     }
     
     public String inicioSesion(String tipoUsuario){
-                
+        
         if(nombreUsuario != null && contrasena != null){
             
             InicioSesionMetodosLogicaPaginas inicioSesionMetodosLogicaPaginas 

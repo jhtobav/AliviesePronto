@@ -1,7 +1,6 @@
 package intermedioPaginas;
 
 import java.util.Date;
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import metodosLogicaPaginas.CrearCuentasMetodosLogicaPaginas;
@@ -27,8 +26,7 @@ public class CrearCuentaGerenteIntermedioPaginas {
     public CrearCuentaGerenteIntermedioPaginas() {
     }
     
-    @PostConstruct
-    public void init(){
+    public String init(){
         
         numDocumento = null;
         nombreUsuario = null;
@@ -42,6 +40,8 @@ public class CrearCuentaGerenteIntermedioPaginas {
         correo = null;
         contrasena = null;
         genero = null;
+        
+        return "crearGerente.xhtml";
         
     }
 
@@ -183,7 +183,7 @@ public class CrearCuentaGerenteIntermedioPaginas {
             
             if(crearCuentasMetodosLogicaPaginas.CrearGerente(gerenteTransporteDatos)){
                 
-                return "pagina exito";
+                return "carrouselBienvenida.xhtml";
                 
             } else {
                 

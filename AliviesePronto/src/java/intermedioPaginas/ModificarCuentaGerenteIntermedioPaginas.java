@@ -2,7 +2,6 @@ package intermedioPaginas;
 
 import consultasBaseDatos.GerenteConsultaBaseDatos;
 import java.util.Date;
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import metodosLogicaPaginas.ModificarCuentasMetodosLogicaPaginas;
@@ -30,8 +29,7 @@ public class ModificarCuentaGerenteIntermedioPaginas {
     public ModificarCuentaGerenteIntermedioPaginas() {
     }
     
-    @PostConstruct
-    public void init(){
+    public String init(){
         
         numDocumento = null;
         nombreUsuario = null;
@@ -46,6 +44,8 @@ public class ModificarCuentaGerenteIntermedioPaginas {
         contrasena = null;
         genero = null;
         estadoCuenta = null;
+        
+        return "modificarGerente.xhtml";
         
     }
     

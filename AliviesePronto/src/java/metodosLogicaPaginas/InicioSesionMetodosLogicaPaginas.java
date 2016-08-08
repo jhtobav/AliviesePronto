@@ -23,7 +23,7 @@ import tablas.Usuario;
 public class InicioSesionMetodosLogicaPaginas {
 
     public String inicioSesion(String nombreUsuario, String contrasena, String tipoUsuario) {
-
+        
         if ("Usuario".equals(tipoUsuario)) {
 
             UsuarioConsultaBaseDatos usuarioConsultaBaseDatos = new UsuarioConsultaBaseDatos();
@@ -64,7 +64,7 @@ public class InicioSesionMetodosLogicaPaginas {
             AdministradorConsultaBaseDatos administradorConsultaBaseDatos = new AdministradorConsultaBaseDatos();
 
             Administrador administrador = administradorConsultaBaseDatos.encontrarPorNombreUsuario(nombreUsuario);
-
+            
             if (administrador != null) {
 
                 if (administrador.getEstadoCuenta()) {

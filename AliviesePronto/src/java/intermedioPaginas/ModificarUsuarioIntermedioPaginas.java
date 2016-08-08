@@ -2,7 +2,6 @@ package intermedioPaginas;
 
 import consultasBaseDatos.UsuarioConsultaBaseDatos;
 import java.util.Date;
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import metodosLogicaPaginas.ModificarCuentasMetodosLogicaPaginas;
@@ -30,8 +29,7 @@ public class ModificarUsuarioIntermedioPaginas {
     public ModificarUsuarioIntermedioPaginas() {
     }
     
-    @PostConstruct
-    public void init(){
+    public String init(){
         
         numDocumento = null;
         nombreUsuario = null;
@@ -46,6 +44,8 @@ public class ModificarUsuarioIntermedioPaginas {
         contrasena = null;
         genero = null;
         estadoCuenta = null;
+        
+        return "modificarUsuario.xhtml";
         
     }
     
