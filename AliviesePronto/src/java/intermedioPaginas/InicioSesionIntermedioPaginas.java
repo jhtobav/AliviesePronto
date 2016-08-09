@@ -19,6 +19,7 @@ public class InicioSesionIntermedioPaginas {
     private String contrasena = null;
 
     public InicioSesionIntermedioPaginas() {
+        System.out.println("INICIO");
     }
     
     public String init(String tipoUsuario){

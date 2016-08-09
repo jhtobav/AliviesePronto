@@ -1,7 +1,6 @@
 package intermedioPaginas;
 
 import java.util.List;
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import metodosLogicaPaginas.ProductoMetodosLogicaPaginas;
@@ -16,13 +15,14 @@ public class ListarProductoIntermedioPaginas {
     public ListarProductoIntermedioPaginas() {
     }
     
-    @PostConstruct
-    public void init(){
+    public String init(){
                
         productosPublicos = new ProductoMetodosLogicaPaginas().listarProductosPublicos();
         
         for(ProductoTransporteDatos productoTransporteDatos : productosPublicos)
             System.out.println(productoTransporteDatos.getId() + " " + productoTransporteDatos.getDescripcion());
+        
+        return "listarProductos.xhtml";
         
     }
 

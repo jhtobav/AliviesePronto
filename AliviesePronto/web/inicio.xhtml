@@ -30,7 +30,7 @@
                         </b:listLinks>
                         <b:listLinks>
                             <b:navLink header="Comprar productos"/>
-                            <li><h:link outcome="listarProductos.xhtml" value="Todos los productos" target="inicioFrame"/></li>
+                            <li><h:commandLink action="#{listarProductoIntermedioPaginas.init()}" value="Todos los productos" target="inicioFrame"/></li>
                             <li><h:link outcome="listarProductos.xhtml" value="Limpieza" target="inicioFrame"/></li>
                             <li><h:link outcome="listarProductos.xhtml" value="Salud" target="inicioFrame"/></li>
                             <li><h:link outcome="loginUsuario.xhtml" value="Formulas" target="inicioFrame"/></li>
