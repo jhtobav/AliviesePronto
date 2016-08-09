@@ -1,6 +1,6 @@
 package consultasBaseDatos;
 
-import intermedioPaginas.InicioSesionIntermedioPaginas;
+import intermedioPaginas.ManejoEMFIntermedioPaginas;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -10,7 +10,7 @@ import transporteDatos.MedicoTransporteDatos;
 
 public class MedicoConsultaBaseDatos {
     
-    EntityManagerFactory emf = InicioSesionIntermedioPaginas.getEmf();
+    EntityManagerFactory emf = ManejoEMFIntermedioPaginas.getEmf();
         
     public Medico encontrarPorIdMedico(Long idMedico) {
         EntityManager em = emf.createEntityManager();

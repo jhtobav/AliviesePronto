@@ -1,6 +1,6 @@
 package consultasBaseDatos;
 
-import intermedioPaginas.InicioSesionIntermedioPaginas;
+import intermedioPaginas.ManejoEMFIntermedioPaginas;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -9,7 +9,7 @@ import tablas.Producto;
 
 public class ProductoConsultaBaseDatos {
     
-    EntityManagerFactory emf = InicioSesionIntermedioPaginas.getEmf();
+    EntityManagerFactory emf = ManejoEMFIntermedioPaginas.getEmf();
             
     public Producto crearProducto(Producto producto) {
         

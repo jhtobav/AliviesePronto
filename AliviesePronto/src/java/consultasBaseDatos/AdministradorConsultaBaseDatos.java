@@ -5,7 +5,7 @@
  */
 package consultasBaseDatos;
 
-import intermedioPaginas.InicioSesionIntermedioPaginas;
+import intermedioPaginas.ManejoEMFIntermedioPaginas;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
@@ -18,7 +18,7 @@ import transporteDatos.AdministradorTransporteDatos;
  */
 public class AdministradorConsultaBaseDatos {
     
-    EntityManagerFactory emf = InicioSesionIntermedioPaginas.getEmf();
+    EntityManagerFactory emf = ManejoEMFIntermedioPaginas.getEmf();
         
     public Administrador encontrarPorIdAdministrador(Long idAdministrador) {
         EntityManager em = emf.createEntityManager();

@@ -1,13 +1,13 @@
 package consultasBaseDatos;
 
-import intermedioPaginas.InicioSesionIntermedioPaginas;
+import intermedioPaginas.ManejoEMFIntermedioPaginas;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import tablas.TarjetaCredito;
 
 public class TarjetaConsultaBaseDatos {
     
-    EntityManagerFactory emf = InicioSesionIntermedioPaginas.getEmf();
+    EntityManagerFactory emf = ManejoEMFIntermedioPaginas.getEmf();
     
     public TarjetaCredito crearTarjetaCredito(TarjetaCredito tarjetaCredito) {
         

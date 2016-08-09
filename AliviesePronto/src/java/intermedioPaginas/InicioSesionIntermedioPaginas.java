@@ -1,25 +1,17 @@
 package intermedioPaginas;
 
-import static intermedioPaginas.InicioSesionIntermedioPaginas.emf;
-import javax.annotation.PreDestroy;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.persistence.EntityManagerFactory;
-import javax.persistence.Persistence;
 import metodosLogicaPaginas.InicioSesionMetodosLogicaPaginas;
 
 @ManagedBean(name="inicioSesionIntermedioPaginas")
 @SessionScoped
 public class InicioSesionIntermedioPaginas {
     
-    public static EntityManagerFactory emf = Persistence
-            .createEntityManagerFactory("AlivieseProntoPU");
-    
     private String nombreUsuario = null;
     private String contrasena = null;
 
     public InicioSesionIntermedioPaginas() {
-        System.out.println("INICIO");
     }
     
     public String init(String tipoUsuario){
@@ -42,14 +34,6 @@ public class InicioSesionIntermedioPaginas {
                 return "inicio.xhtml";
         }
         
-    }
-    
-    public static EntityManagerFactory getEmf() {
-        return emf;
-    }
-
-    public static void setEmf(EntityManagerFactory emf) {
-        InicioSesionIntermedioPaginas.emf = emf;
     }
 
     public String getNombreUsuario() {
@@ -100,9 +84,4 @@ public class InicioSesionIntermedioPaginas {
         
     }
     
-    @PreDestroy
-    public void destruct()
-    {
-        emf.close();
-    }
 }
