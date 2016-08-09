@@ -190,7 +190,7 @@ public class RegistrarProductoIntermedioPaginas {
             fileContent = inputFile.getInputStream();
             localFile = new File(File.separator + "Imagenes" + File.separator + inputFile.getSubmittedFileName());
             FileOutputStream out = new FileOutputStream(localFile);
-            imagen = localFile.getAbsolutePath();
+            imagen = "Imagenes/" + inputFile.getSubmittedFileName(); 
             int read = 0;
             final byte[] bytes = new byte[1024];
 
