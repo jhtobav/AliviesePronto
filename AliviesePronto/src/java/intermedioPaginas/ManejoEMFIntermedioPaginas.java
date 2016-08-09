@@ -15,6 +15,10 @@ public class ManejoEMFIntermedioPaginas {
 
     public ManejoEMFIntermedioPaginas() {
         
+    }
+    
+    public void init(){
+
         emf = Persistence
             .createEntityManagerFactory("AlivieseProntoPU");
         
