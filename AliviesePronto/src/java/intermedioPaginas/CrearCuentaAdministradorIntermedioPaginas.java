@@ -183,7 +183,7 @@ public class CrearCuentaAdministradorIntermedioPaginas {
             
             if(crearCuentasMetodosLogicaPaginas.CrearAdministrador(administradorTransporteDatos)){
                 
-                return "carrouselBienvenida.xhtml";
+                return "listarAdministradores.xhtml";
                 
             } else {
                 

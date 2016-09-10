@@ -182,7 +182,7 @@ public class CrearCuentaFarmaceutaIntermedioPaginas {
             
             if(crearCuentasMetodosLogicaPaginas.CrearFarmaceuta(farmaceutaTransporteDatos)){
                 
-                return "carrouselBienvenida.xhtml";
+                return "listarFarmaceutas.xhtml";
                 
             } else {
                 

@@ -183,7 +183,7 @@ public class CrearCuentaGerenteIntermedioPaginas {
             
             if(crearCuentasMetodosLogicaPaginas.CrearGerente(gerenteTransporteDatos)){
                 
-                return "carrouselBienvenida.xhtml";
+                return "listarGerentes.xhtml";
                 
             } else {
                 

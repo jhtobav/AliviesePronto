@@ -1,0 +1,75 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Pharmacy</title>
+    </h:head>
+    <h:body>
+        <b:panelGrid colSpans="12">
+            <b:panel title="Lista de Médicos" id="targetPage" look="primary" collapsible="false">
+                <h:form id="signUpForm">
+                    <b:container>
+                        <b:row>
+                            <div class="row spacedMargin">
+                                <b:dataTable id="tabla" value="#{modificarCuentaMedicoIntermedioPaginas.medicos}" var="medico">
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Numero Documento
+                                        </f:facet>
+                                        <h:outputText value="#{medico.numDocumento}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Primer Nombre
+                                        </f:facet>
+                                        <h:outputText value="#{medico.primerNombre}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Segundo Nombre
+                                        </f:facet>
+                                        <h:outputText value="#{medico.segundoNombre}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Primer Apellido
+                                        </f:facet>
+                                        <h:outputText value="#{medico.primerApellido}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Segundo Apellido
+                                        </f:facet>
+                                        <h:outputText value="#{medico.segundoApellido}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Modificar
+                                        </f:facet>
+                                        <b:commandButton action="#{modificarCuentaMedicoIntermedioPaginas.cargarMedico(medico.id)}" look="primary" value="Modiricar"/>
+                                    </h:column>
+                                </b:dataTable>
+                            </div>
+                        </b:row>
+                        <b:row>
+                            <br/>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:commandButton  value="Regresar" action="carrouselBienvenida.xhtml" look="warning" style="width:100%"/>
+                            </b:column>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:commandButton value="Registrar Médico" action="#{crearCuentaMedicoIntermedioPaginas.init()}" look="primary" style="width:100%" />
+                            </b:column>
+                            <b:column span="2"></b:column>
+                        </b:row>
+                    </b:container>
+                </h:form>
+            </b:panel>
+        </b:panelGrid>
+    </h:body>
+</html>
+

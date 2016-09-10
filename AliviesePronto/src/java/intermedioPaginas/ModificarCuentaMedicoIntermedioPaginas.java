@@ -52,7 +52,7 @@ public class ModificarCuentaMedicoIntermedioPaginas {
         estadoCuenta = null;
         numTarjetaProfesional = null;
         
-        return "listarMedicos.xhtml";
+        return "listarMedico.xhtml";
         
     }
 

@@ -1,15 +1,19 @@
 package intermedioPaginas;
 
 import java.util.Date;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import metodosLogicaPaginas.CrearCuentasMetodosLogicaPaginas;
+import metodosLogicaPaginas.ModificarCuentasMetodosLogicaPaginas;
 import transporteDatos.MedicoTransporteDatos;
 
 @ManagedBean(name="crearCuentaMedicoIntermedioPaginas")
 @SessionScoped
 public class CrearCuentaMedicoIntermedioPaginas {
         
+    List<MedicoTransporteDatos> medicos = null;
+    
     private Long numDocumento;
     private String nombreUsuario;
     private String primerNombre;
@@ -29,6 +33,8 @@ public class CrearCuentaMedicoIntermedioPaginas {
     
     public String init(){
         
+        medicos = new ModificarCuentasMetodosLogicaPaginas().listarMedicos();
+        
         numDocumento = null;
         nombreUsuario = null;
         primerNombre = null;
@@ -43,8 +49,16 @@ public class CrearCuentaMedicoIntermedioPaginas {
         genero = null;
         numTarjetaProfesional = null;
         
-        return "crearMedico.xhtml";
+        return "crearMedicoListar.xhtml";
         
+    }
+
+    public List<MedicoTransporteDatos> getMedicos() {
+        return medicos;
+    }
+
+    public void setMedicos(List<MedicoTransporteDatos> medicos) {
+        this.medicos = medicos;
     }
 
     public Long getNumDocumento() {
@@ -195,7 +209,7 @@ public class CrearCuentaMedicoIntermedioPaginas {
             
             if(crearCuentasMetodosLogicaPaginas.CrearMedico(medicoTransporteDatos)){
                 
-                return "carrouselBienvenida.xhtml";
+                return init();
                 
             } else {
                 

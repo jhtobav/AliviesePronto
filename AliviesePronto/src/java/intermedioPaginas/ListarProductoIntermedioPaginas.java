@@ -22,7 +22,7 @@ public class ListarProductoIntermedioPaginas {
         for(ProductoTransporteDatos productoTransporteDatos : productosPublicos)
             System.out.println(productoTransporteDatos.getId() + " " + productoTransporteDatos.getDescripcion());
         
-        return "listarProductos.xhtml";
+        return "listarProducto.xhtml";
         
     }
 
