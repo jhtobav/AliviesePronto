@@ -2,6 +2,18 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="AlivieseProntoPU" transaction-type="RESOURCE_LOCAL">
     <non-jta-data-source>java:app/AlivieseProntoDS</non-jta-data-source>
+    <class>tablas.Administrador</class>
+    <class>tablas.AlertaInventario</class>
+    <class>tablas.Farmaceuta</class>
+    <class>tablas.Formula</class>
+    <class>tablas.Gerente</class>
+    <class>tablas.Medico</class>
+    <class>tablas.MetodoPago</class>
+    <class>tablas.Producto</class>
+    <class>tablas.ProductoVendido</class>
+    <class>tablas.TarjetaCredito</class>
+    <class>tablas.Usuario</class>
+    <class>tablas.Venta</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties/>
   </persistence-unit>
