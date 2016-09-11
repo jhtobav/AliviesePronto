@@ -14,6 +14,7 @@
     <class>tablas.TarjetaCredito</class>
     <class>tablas.Usuario</class>
     <class>tablas.Venta</class>
+    <class>tablas.Cupon</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties/>
   </persistence-unit>
