@@ -49,7 +49,7 @@ public class CrearCuentaMedicoIntermedioPaginas {
         genero = null;
         numTarjetaProfesional = null;
         
-        return "crearMedicoListar.xhtml";
+        return "crearMedicoLista.xhtml";
         
     }
 

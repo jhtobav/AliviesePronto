@@ -32,7 +32,7 @@ public class CrearCuentaGerenteIntermedioPaginas {
     
     public String init(){
         
-        //gerentes = new ModificarCuentasMetodosLogicaPaginas().listarGerentes();
+        gerentes = new ModificarCuentasMetodosLogicaPaginas().listarGerentes();
         
         numDocumento = null;
         nombreUsuario = null;
@@ -47,8 +47,16 @@ public class CrearCuentaGerenteIntermedioPaginas {
         contrasena = null;
         genero = null;
         
-        return "crearGerenteListar.xhtml";
+        return "crearGerenteLista.xhtml";
         
+    }
+
+    public List<GerenteTransporteDatos> getGerentes() {
+        return gerentes;
+    }
+
+    public void setGerentes(List<GerenteTransporteDatos> gerentes) {
+        this.gerentes = gerentes;
     }
 
     public Long getNumDocumento() {
@@ -189,7 +197,7 @@ public class CrearCuentaGerenteIntermedioPaginas {
             
             if(crearCuentasMetodosLogicaPaginas.CrearGerente(gerenteTransporteDatos)){
                 
-                return "listarGerentes.xhtml";
+                return init();
                 
             } else {
                 

@@ -1,17 +1,19 @@
 package intermedioPaginas;
 
-import consultasBaseDatos.GerenteConsultaBaseDatos;
 import java.util.Date;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import metodosLogicaPaginas.ModificarCuentasMetodosLogicaPaginas;
-import tablas.Gerente;
 import transporteDatos.GerenteTransporteDatos;
 
 @ManagedBean(name="modificarCuentaGerenteIntermedioPaginas")
 @SessionScoped
 public class ModificarCuentaGerenteIntermedioPaginas {
         
+    List<GerenteTransporteDatos> gerentes = null;
+    
+    private Long id;
     private Long numDocumento;
     private String nombreUsuario;
     private String primerNombre;
@@ -24,13 +26,16 @@ public class ModificarCuentaGerenteIntermedioPaginas {
     private String correo;
     private String contrasena;
     private String genero;
-    private Boolean estadoCuenta;
+    private String estadoCuenta;
 
     public ModificarCuentaGerenteIntermedioPaginas() {
     }
     
     public String init(){
         
+        gerentes = new ModificarCuentasMetodosLogicaPaginas().listarGerentes();
+        
+        id = null;
         numDocumento = null;
         nombreUsuario = null;
         primerNombre = null;
@@ -45,40 +50,24 @@ public class ModificarCuentaGerenteIntermedioPaginas {
         genero = null;
         estadoCuenta = null;
         
-        return "modificarGerente.xhtml";
+        return "modificarGerenteLista.xhtml";
         
     }
-    
-    public String buscarGerente(String nomUsuario){
-     
-        GerenteConsultaBaseDatos consultaBaseDatos = new GerenteConsultaBaseDatos();
-        
-        Gerente gerente = consultaBaseDatos.encontrarPorNombreUsuario(nomUsuario);
-        
-        if(gerente != null){
-            
-            numDocumento = gerente.getNumDocumento();
-            nombreUsuario = gerente.getNombreUsuario();
-            primerNombre = gerente.getPrimerNombre();
-            segundoNombre = gerente.getSegundoNombre();
-            primerApellido = gerente.getPrimerApellido();
-            segundoApellido = gerente.getSegundoApellido();
-            fechaNacimiento = gerente.getFechaNacimiento();
-            telefono = gerente.getTelefono();
-            direccion = gerente.getDireccion();
-            correo = gerente.getCorreo();
-            contrasena = gerente.getContrasena();
-            genero = gerente.getGenero();
-            estadoCuenta = gerente.getEstadoCuenta();
-            
-            return "usuario encontrado";
-            
-        } else {
-            
-            return "usuario no encontrado";
-            
-        }
-        
+
+    public List<GerenteTransporteDatos> getGerentes() {
+        return gerentes;
+    }
+
+    public void setGerentes(List<GerenteTransporteDatos> gerentes) {
+        this.gerentes = gerentes;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getNumDocumento() {
@@ -177,12 +166,45 @@ public class ModificarCuentaGerenteIntermedioPaginas {
         this.genero = genero;
     }
 
-    public Boolean getEstadoCuenta() {
+    public String getEstadoCuenta() {
         return estadoCuenta;
     }
 
-    public void setEstadoCuenta(Boolean estadoCuenta) {
+    public void setEstadoCuenta(String estadoCuenta) {
         this.estadoCuenta = estadoCuenta;
+    }
+
+    public String cargarGerente(Long idGerente){
+        
+        for(GerenteTransporteDatos gerente : gerentes){
+            
+            if(gerente.getId() == idGerente){
+                
+                id = gerente.getId();
+                numDocumento = gerente.getNumDocumento();
+                nombreUsuario = gerente.getNombreUsuario();
+                primerNombre = gerente.getPrimerNombre();
+                segundoNombre = gerente.getSegundoNombre();
+                primerApellido = gerente.getPrimerApellido();
+                segundoApellido = gerente.getSegundoApellido();
+                fechaNacimiento = gerente.getFechaNacimiento();
+                telefono = gerente.getTelefono();
+                direccion = gerente.getDireccion();
+                correo = gerente.getCorreo();
+                contrasena = null;
+                genero = gerente.getGenero();
+                if (gerente.isEstadoCuenta()){
+                    estadoCuenta = "Activo";
+                } else {
+                    estadoCuenta = "Inactivo";
+                }
+                
+            }
+            
+        }
+        
+        return "modificarGerente.xhtml";
+        
     }
 
     public String modificarGerente(){
@@ -210,6 +232,7 @@ public class ModificarCuentaGerenteIntermedioPaginas {
             
             GerenteTransporteDatos gerenteTransporteDatos = new GerenteTransporteDatos();
             
+            gerenteTransporteDatos.setId(id);
             gerenteTransporteDatos.setNumDocumento(numDocumento);
             gerenteTransporteDatos.setNombreUsuario(nombreUsuario);
             gerenteTransporteDatos.setPrimerNombre(primerNombre);
@@ -222,13 +245,17 @@ public class ModificarCuentaGerenteIntermedioPaginas {
             gerenteTransporteDatos.setCorreo(correo);
             gerenteTransporteDatos.setContrasena(contrasena);
             gerenteTransporteDatos.setGenero(genero);
-            gerenteTransporteDatos.setEstadoCuenta(estadoCuenta);
+            if(estadoCuenta.equals("Activo")){
+                gerenteTransporteDatos.setEstadoCuenta(true);
+            } else {
+                gerenteTransporteDatos.setEstadoCuenta(false);
+            }
             
             ModificarCuentasMetodosLogicaPaginas modificarCuentasMetodosLogicaPaginas = new ModificarCuentasMetodosLogicaPaginas();
             
             if(modificarCuentasMetodosLogicaPaginas.ModificarGerente(gerenteTransporteDatos)){
                 
-                return "pagina exito";
+                return init();
                 
             } else {
                 

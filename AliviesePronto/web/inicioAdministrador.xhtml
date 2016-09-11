@@ -37,9 +37,9 @@
                             </b:panel>
                             <b:panel title="Modificar Cuentas" collapsed="true">
                                 <li><h:commandLink action="#{modificarCuentaMedicoIntermedioPaginas.init()}" value="Modificar Medico" target="inicioFrame"/></li>
-                                    <li><h:commandLink action="modificarFarmaceuta.xhtml" value="Modificar Farmaceuta" target="inicioFrame"/></li>
-                                    <li><h:commandLink action="modificarAdministrador.xhtml" value="Modificar Administrador" target="inicioFrame"/></li>
-                                    <li><h:commandLink action="modificarGerente.xhtml" value="Modificar Gerente" target="inicioFrame"/></li>
+                                    <li><h:commandLink action="#{modificarCuentaFarmaceutaIntermedioPaginas.init()}" value="Modificar Farmaceuta" target="inicioFrame"/></li>
+                                    <li><h:commandLink action="#{modificarCuentaAdministradorIntermedioPaginas.init()}" value="Modificar Administrador" target="inicioFrame"/></li>
+                                    <li><h:commandLink action="#{modificarCuentaGerenteIntermedioPaginas.init()}" value="Modificar Gerente" target="inicioFrame"/></li>
                             </b:panel>
                             <b:panel title="Productos" collapsed="true">
                                     <li><h:commandLink action="crearProducto.xhtml" value="Registrar Productos" target="inicioFrame"/></li>

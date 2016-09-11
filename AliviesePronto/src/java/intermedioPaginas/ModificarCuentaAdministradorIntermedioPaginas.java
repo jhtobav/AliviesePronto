@@ -1,17 +1,19 @@
 package intermedioPaginas;
 
-import consultasBaseDatos.AdministradorConsultaBaseDatos;
 import java.util.Date;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import metodosLogicaPaginas.ModificarCuentasMetodosLogicaPaginas;
-import tablas.Administrador;
 import transporteDatos.AdministradorTransporteDatos;
 
 @ManagedBean(name="modificarCuentaAdministradorIntermedioPaginas")
 @SessionScoped
 public class ModificarCuentaAdministradorIntermedioPaginas {
         
+    List<AdministradorTransporteDatos> administradores = null;
+    
+    private Long id;
     private Long numDocumento;
     private String nombreUsuario;
     private String primerNombre;
@@ -24,14 +26,16 @@ public class ModificarCuentaAdministradorIntermedioPaginas {
     private String correo;
     private String contrasena;
     private String genero;
-    private Boolean estadoCuenta;
+    private String estadoCuenta;
 
     public ModificarCuentaAdministradorIntermedioPaginas() {
     }
-    
 
     public String init(){
         
+        administradores = new ModificarCuentasMetodosLogicaPaginas().listarAdministradores();
+        
+        id = null;
         numDocumento = null;
         nombreUsuario = null;
         primerNombre = null;
@@ -46,40 +50,24 @@ public class ModificarCuentaAdministradorIntermedioPaginas {
         genero = null;
         estadoCuenta = null;
         
-        return "modificarAdministrador.xhtml";
+        return "modificarAdministradorLista.xhtml";
         
     }
-    
-    public String buscarAdministrador(String nomUsuario){
-     
-        AdministradorConsultaBaseDatos consultaBaseDatos = new AdministradorConsultaBaseDatos();
-        
-        Administrador administrador = consultaBaseDatos.encontrarPorNombreUsuario(nomUsuario);
-        
-        if(administrador != null){
-            
-            numDocumento = administrador.getNumDocumento();
-            nombreUsuario = administrador.getNombreUsuario();
-            primerNombre = administrador.getPrimerNombre();
-            segundoNombre = administrador.getSegundoNombre();
-            primerApellido = administrador.getPrimerApellido();
-            segundoApellido = administrador.getSegundoApellido();
-            fechaNacimiento = administrador.getFechaNacimiento();
-            telefono = administrador.getTelefono();
-            direccion = administrador.getDireccion();
-            correo = administrador.getCorreo();
-            contrasena = administrador.getContrasena();
-            genero = administrador.getGenero();
-            estadoCuenta = administrador.getEstadoCuenta();
-            
-            return "usuario encontrado";
-            
-        } else {
-            
-            return "usuario no encontrado";
-            
-        }
-        
+
+    public List<AdministradorTransporteDatos> getAdministradores() {
+        return administradores;
+    }
+
+    public void setAdministradores(List<AdministradorTransporteDatos> administradores) {
+        this.administradores = administradores;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getNumDocumento() {
@@ -178,14 +166,47 @@ public class ModificarCuentaAdministradorIntermedioPaginas {
         this.genero = genero;
     }
 
-    public Boolean getEstadoCuenta() {
+    public String getEstadoCuenta() {
         return estadoCuenta;
     }
 
-    public void setEstadoCuenta(Boolean estadoCuenta) {
+    public void setEstadoCuenta(String estadoCuenta) {
         this.estadoCuenta = estadoCuenta;
-    }
+    }  
 
+    public String cargarAdministrador(Long idAdministrador){
+        
+        for(AdministradorTransporteDatos administrador : administradores){
+            
+            if(administrador.getId() == idAdministrador){
+                
+                id = administrador.getId();
+                numDocumento = administrador.getNumDocumento();
+                nombreUsuario = administrador.getNombreUsuario();
+                primerNombre = administrador.getPrimerNombre();
+                segundoNombre = administrador.getSegundoNombre();
+                primerApellido = administrador.getPrimerApellido();
+                segundoApellido = administrador.getSegundoApellido();
+                fechaNacimiento = administrador.getFechaNacimiento();
+                telefono = administrador.getTelefono();
+                direccion = administrador.getDireccion();
+                correo = administrador.getCorreo();
+                contrasena = null;
+                genero = administrador.getGenero();
+                if (administrador.isEstadoCuenta()){
+                    estadoCuenta = "Activo";
+                } else {
+                    estadoCuenta = "Inactivo";
+                }
+                
+            }
+            
+        }
+        
+        return "modificarAdministrador.xhtml";
+        
+    }
+    
     public String modificarAdministrador(){
         
         /*
@@ -209,8 +230,11 @@ public class ModificarCuentaAdministradorIntermedioPaginas {
         fechaNacimiento != null && telefono != null && direccion != null && 
         correo != null && contrasena != null && genero != null){
             
+            System.out.println("error 1");
+            
             AdministradorTransporteDatos administradorTransporteDatos = new AdministradorTransporteDatos();
             
+            administradorTransporteDatos.setId(id);
             administradorTransporteDatos.setNumDocumento(numDocumento);
             administradorTransporteDatos.setNombreUsuario(nombreUsuario);
             administradorTransporteDatos.setPrimerNombre(primerNombre);
@@ -223,13 +247,17 @@ public class ModificarCuentaAdministradorIntermedioPaginas {
             administradorTransporteDatos.setCorreo(correo);
             administradorTransporteDatos.setContrasena(contrasena);
             administradorTransporteDatos.setGenero(genero);
-            administradorTransporteDatos.setEstadoCuenta(estadoCuenta);
+            if(estadoCuenta.equals("Activo")){
+                administradorTransporteDatos.setEstadoCuenta(true);
+            } else {
+                administradorTransporteDatos.setEstadoCuenta(false);
+            }
             
             ModificarCuentasMetodosLogicaPaginas modificarCuentasMetodosLogicaPaginas = new ModificarCuentasMetodosLogicaPaginas();
             
             if(modificarCuentasMetodosLogicaPaginas.ModificarAdministrador(administradorTransporteDatos)){
                 
-                return "pagina exito";
+                return init();
                 
             } else {
                 

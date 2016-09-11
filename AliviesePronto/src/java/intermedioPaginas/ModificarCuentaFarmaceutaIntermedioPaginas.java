@@ -1,17 +1,19 @@
 package intermedioPaginas;
 
-import consultasBaseDatos.FarmaceutaConsultaBaseDatos;
 import java.util.Date;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import metodosLogicaPaginas.ModificarCuentasMetodosLogicaPaginas;
-import tablas.Farmaceuta;
 import transporteDatos.FarmaceutaTransporteDatos;
 
 @ManagedBean(name="modificarCuentaFarmaceutaIntermedioPaginas")
 @SessionScoped
 public class ModificarCuentaFarmaceutaIntermedioPaginas {
         
+    List<FarmaceutaTransporteDatos> farmaceutas = null;
+    
+    private Long id;
     private Long numDocumento;
     private String nombreUsuario;
     private String primerNombre;
@@ -24,13 +26,16 @@ public class ModificarCuentaFarmaceutaIntermedioPaginas {
     private String correo;
     private String contrasena;
     private String genero;
-    private Boolean estadoCuenta;
+    private String estadoCuenta;
 
     public ModificarCuentaFarmaceutaIntermedioPaginas() {
     }
     
     public String init(){
         
+        farmaceutas = new ModificarCuentasMetodosLogicaPaginas().listarFarmaceutas();
+        
+        id = null;
         numDocumento = null;
         nombreUsuario = null;
         primerNombre = null;
@@ -45,40 +50,24 @@ public class ModificarCuentaFarmaceutaIntermedioPaginas {
         genero = null;
         estadoCuenta = null;
         
-        return "modificarFarmaceuta.xhtml";
+        return "modificarFarmaceutaLista.xhtml";
         
     }
-    
-    public String buscarFarmaceuta(String nomUsuario){
-     
-        FarmaceutaConsultaBaseDatos consultaBaseDatos = new FarmaceutaConsultaBaseDatos();
-        
-        Farmaceuta farmaceuta = consultaBaseDatos.encontrarPorNombreUsuario(nomUsuario);
-        
-        if(farmaceuta != null){
-            
-            numDocumento = farmaceuta.getNumDocumento();
-            nombreUsuario = farmaceuta.getNombreUsuario();
-            primerNombre = farmaceuta.getPrimerNombre();
-            segundoNombre = farmaceuta.getSegundoNombre();
-            primerApellido = farmaceuta.getPrimerApellido();
-            segundoApellido = farmaceuta.getSegundoApellido();
-            fechaNacimiento = farmaceuta.getFechaNacimiento();
-            telefono = farmaceuta.getTelefono();
-            direccion = farmaceuta.getDireccion();
-            correo = farmaceuta.getCorreo();
-            contrasena = farmaceuta.getContrasena();
-            genero = farmaceuta.getGenero();
-            estadoCuenta = farmaceuta.getEstadoCuenta();
-            
-            return "usuario encontrado";
-            
-        } else {
-            
-            return "usuario no encontrado";
-            
-        }
-        
+
+    public List<FarmaceutaTransporteDatos> getFarmaceutas() {
+        return farmaceutas;
+    }
+
+    public void setFarmaceutas(List<FarmaceutaTransporteDatos> farmaceutas) {
+        this.farmaceutas = farmaceutas;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
     public Long getNumDocumento() {
@@ -177,12 +166,45 @@ public class ModificarCuentaFarmaceutaIntermedioPaginas {
         this.genero = genero;
     }
 
-    public Boolean getEstadoCuenta() {
+    public String getEstadoCuenta() {
         return estadoCuenta;
     }
 
-    public void setEstadoCuenta(Boolean estadoCuenta) {
+    public void setEstadoCuenta(String estadoCuenta) {
         this.estadoCuenta = estadoCuenta;
+    }
+    
+    public String cargarFarmaceuta(Long idFarmaceuta){
+        
+        for(FarmaceutaTransporteDatos farmaceuta : farmaceutas){
+            
+            if(farmaceuta.getId() == idFarmaceuta){
+                
+                id = farmaceuta.getId();
+                numDocumento = farmaceuta.getNumDocumento();
+                nombreUsuario = farmaceuta.getNombreUsuario();
+                primerNombre = farmaceuta.getPrimerNombre();
+                segundoNombre = farmaceuta.getSegundoNombre();
+                primerApellido = farmaceuta.getPrimerApellido();
+                segundoApellido = farmaceuta.getSegundoApellido();
+                fechaNacimiento = farmaceuta.getFechaNacimiento();
+                telefono = farmaceuta.getTelefono();
+                direccion = farmaceuta.getDireccion();
+                correo = farmaceuta.getCorreo();
+                contrasena = null;
+                genero = farmaceuta.getGenero();
+                if (farmaceuta.isEstadoCuenta()){
+                    estadoCuenta = "Activo";
+                } else {
+                    estadoCuenta = "Inactivo";
+                }
+                
+            }
+            
+        }
+        
+        return "modificarFarmaceuta.xhtml";
+        
     }
 
     public String modificarFarmaceuta(){
@@ -209,6 +231,7 @@ public class ModificarCuentaFarmaceutaIntermedioPaginas {
             
             FarmaceutaTransporteDatos farmaceutaTransporteDatos = new FarmaceutaTransporteDatos();
             
+            farmaceutaTransporteDatos.setId(id);
             farmaceutaTransporteDatos.setNumDocumento(numDocumento);
             farmaceutaTransporteDatos.setNombreUsuario(nombreUsuario);
             farmaceutaTransporteDatos.setPrimerNombre(primerNombre);
@@ -221,13 +244,17 @@ public class ModificarCuentaFarmaceutaIntermedioPaginas {
             farmaceutaTransporteDatos.setCorreo(correo);
             farmaceutaTransporteDatos.setContrasena(contrasena);
             farmaceutaTransporteDatos.setGenero(genero);
-            farmaceutaTransporteDatos.setEstadoCuenta(estadoCuenta);
+            if(estadoCuenta.equals("Activo")){
+                farmaceutaTransporteDatos.setEstadoCuenta(true);
+            } else {
+                farmaceutaTransporteDatos.setEstadoCuenta(false);
+            }
             
             ModificarCuentasMetodosLogicaPaginas modificarCuentasMetodosLogicaPaginas = new ModificarCuentasMetodosLogicaPaginas();
             
             if(modificarCuentasMetodosLogicaPaginas.ModificarFarmaceuta(farmaceutaTransporteDatos)){
                 
-                return "pagina exito";
+                return init();
                 
             } else {
                 

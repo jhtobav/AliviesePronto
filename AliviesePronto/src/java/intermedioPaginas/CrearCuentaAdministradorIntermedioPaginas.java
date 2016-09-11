@@ -1,14 +1,18 @@
 package intermedioPaginas;
 
 import java.util.Date;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import metodosLogicaPaginas.CrearCuentasMetodosLogicaPaginas;
+import metodosLogicaPaginas.ModificarCuentasMetodosLogicaPaginas;
 import transporteDatos.AdministradorTransporteDatos;
 
 @ManagedBean(name="crearCuentaAdministradorIntermedioPaginas")
 @SessionScoped
 public class CrearCuentaAdministradorIntermedioPaginas {
+    
+    List<AdministradorTransporteDatos> administradores = null;
         
     private Long numDocumento;
     private String nombreUsuario;
@@ -28,6 +32,8 @@ public class CrearCuentaAdministradorIntermedioPaginas {
     
     public String init(){
         
+        administradores = new ModificarCuentasMetodosLogicaPaginas().listarAdministradores();
+        
         numDocumento = null;
         nombreUsuario = null;
         primerNombre = null;
@@ -41,8 +47,16 @@ public class CrearCuentaAdministradorIntermedioPaginas {
         contrasena = null;
         genero = null;
         
-        return "crearAdministrador.xhtml";
+        return "crearAdministradorLista.xhtml";
         
+    }
+
+    public List<AdministradorTransporteDatos> getAdministradores() {
+        return administradores;
+    }
+
+    public void setAdministradores(List<AdministradorTransporteDatos> administradores) {
+        this.administradores = administradores;
     }
 
     public Long getNumDocumento() {
@@ -183,7 +197,7 @@ public class CrearCuentaAdministradorIntermedioPaginas {
             
             if(crearCuentasMetodosLogicaPaginas.CrearAdministrador(administradorTransporteDatos)){
                 
-                return "listarAdministradores.xhtml";
+                return init();
                 
             } else {
                 

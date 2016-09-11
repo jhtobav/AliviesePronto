@@ -9,7 +9,7 @@
     </h:head>
     <h:body>
         <b:panelGrid colSpans="12">
-            <b:panel title="Registro de Médicos" id="targetPage" look="primary" collapsible="false">
+            <b:panel title="Modificar Gerente" id="targetPage" look="primary" collapsible="false">
                 <h:form id="signUpForm">
                     <b:container>
                         <b:row>
@@ -19,7 +19,7 @@
                                     <h:outputText value="Primer Nombre"/>
                                 </b:row>
                                 <b:row>
-                                    <b:inputText placeholder="Primer Nombre" value="#{crearCuentaMedicoIntermedioPaginas.primerNombre}"/>
+                                    <b:inputText placeholder="Primer Nombre" value="#{modificarCuentaGerenteIntermedioPaginas.primerNombre}"/>
                                 </b:row>
                             </b:column>
                             <b:column span="1"></b:column>
@@ -28,7 +28,7 @@
                                     <h:outputText value="Segundo Nombre"/>
                                 </b:row>
                                 <b:row>
-                                    <b:inputText placeholder="Segundo Nombre" value="#{crearCuentaMedicoIntermedioPaginas.segundoNombre}"/>
+                                    <b:inputText placeholder="Segundo Nombre" value="#{modificarCuentaGerenteIntermedioPaginas.segundoNombre}"/>
                                 </b:row>
                             </b:column>
                         </b:row>
@@ -39,7 +39,7 @@
                                     <h:outputText value="Primer Apellido"/>
                                 </b:row>
                                 <b:row>
-                                    <b:inputText placeholder="Primer Apellido" value="#{crearCuentaMedicoIntermedioPaginas.primerApellido}"/>
+                                    <b:inputText placeholder="Primer Apellido" value="#{modificarCuentaGerenteIntermedioPaginas.primerApellido}"/>
                                 </b:row>
                             </b:column>
                             <b:column span="1"></b:column>
@@ -48,7 +48,7 @@
                                     <h:outputText value="Segundo Apellido"/>
                                 </b:row>
                                 <b:row>
-                                    <b:inputText placeholder="Segundo Apellido" value="#{crearCuentaMedicoIntermedioPaginas.segundoApellido}"/>
+                                    <b:inputText placeholder="Segundo Apellido" value="#{modificarCuentaGerenteIntermedioPaginas.segundoApellido}"/>
                                 </b:row>
                             </b:column>
                         </b:row>
@@ -59,7 +59,7 @@
                                     <h:outputText value="Numero de Documento"/>
                                 </b:row>
                                 <b:row>
-                                    <b:inputText placeholder="Numero de Documento" value="#{crearCuentaMedicoIntermedioPaginas.numDocumento}"/>
+                                    <b:inputText placeholder="Numero de Documento" value="#{modificarCuentaGerenteIntermedioPaginas.numDocumento}"/>
                                 </b:row>
                             </b:column>
                             <b:column span="1"></b:column>
@@ -68,7 +68,7 @@
                                     <h:outputText value="Nombre de Usuario"/>
                                 </b:row>
                                 <b:row>
-                                    <b:inputText placeholder="Nombre de Usuario" value="#{crearCuentaMedicoIntermedioPaginas.nombreUsuario}"/>
+                                    <b:inputText placeholder="Nombre de Usuario" value="#{modificarCuentaGerenteIntermedioPaginas.nombreUsuario}"/>
                                 </b:row>
                             </b:column>
                         </b:row>
@@ -79,7 +79,7 @@
                                     <h:outputText value="Teléfono"/>
                                 </b:row>
                                 <b:row>
-                                    <b:inputText placeholder="Teléfono" value="#{crearCuentaMedicoIntermedioPaginas.telefono}"/>
+                                    <b:inputText placeholder="Teléfono" value="#{modificarCuentaGerenteIntermedioPaginas.telefono}"/>
                                 </b:row>
                             </b:column>
                             <b:column span="1"></b:column>
@@ -88,7 +88,7 @@
                                     <h:outputText value="Correo"/>
                                 </b:row>
                                 <b:row>
-                                    <b:inputText placeholder="Correo" value="#{crearCuentaMedicoIntermedioPaginas.correo}"/>
+                                    <b:inputText placeholder="Correo" value="#{modificarCuentaGerenteIntermedioPaginas.correo}"/>
                                 </b:row>
                             </b:column>
                         </b:row>
@@ -99,18 +99,30 @@
                                     <h:outputText value="Dirección"/>
                                 </b:row>
                                 <b:row>
-                                    <b:inputText placeholder="Dirección" value="#{crearCuentaMedicoIntermedioPaginas.direccion}"/>
+                                    <b:inputText placeholder="Dirección" value="#{modificarCuentaGerenteIntermedioPaginas.direccion}"/>
                                 </b:row>
                             </b:column>
                             <b:column span="1"></b:column>
-                            <b:column span="4">
+                            <b:column span="1">
                                 <b:row>
                                     <h:outputText value="Género"/>
                                 </b:row>
                                 <b:row>
-                                    <b:selectMultiMenu radiobuttons="true" value="#{crearCuentaMedicoIntermedioPaginas.genero}">
+                                    <b:selectMultiMenu radiobuttons="true" value="#{modificarCuentaGerenteIntermedioPaginas.genero}">
                                         <f:selectItem itemLabel="Masculino" itemValue="Masculino"/>
                                         <f:selectItem itemLabel="Femenino" itemValue="Femenino"/>
+                                    </b:selectMultiMenu>
+                                </b:row>
+                            </b:column>
+                            <b:column span="1"></b:column>
+                            <b:column span="2">
+                                <b:row>
+                                    <h:outputText value="Estado Cuenta"/>
+                                </b:row>
+                                <b:row>
+                                    <b:selectMultiMenu radiobuttons="true" value="#{modificarCuentaGerenteIntermedioPaginas.estadoCuenta}">
+                                        <f:selectItem itemLabel="Activo" itemValue="Activo"/>
+                                        <f:selectItem itemLabel="Inactivo" itemValue="Inactivo"/>
                                     </b:selectMultiMenu>
                                 </b:row>
                             </b:column>
@@ -122,16 +134,7 @@
                                     <h:outputText value="Fecha de nacimiento"/>
                                 </b:row>
                                 <b:row>
-                                    <b:datepicker mode="popup-icon" placeholder="Fecha de nacimiento" value="#{crearCuentaMedicoIntermedioPaginas.fechaNacimiento}"/>
-                                </b:row>
-                            </b:column>
-                            <b:column span="1"></b:column>
-                            <b:column span="4">
-                                <b:row>
-                                    <h:outputText value="Tarjeta profesional"/>
-                                </b:row>
-                                <b:row>
-                                    <b:inputText placeholder="Numero Tarjeta profesional" value="#{crearCuentaMedicoIntermedioPaginas.numTarjetaProfesional}"/>
+                                    <b:datepicker mode="popup-icon" placeholder="Fecha de nacimiento" value="#{modificarCuentaGerenteIntermedioPaginas.fechaNacimiento}"/>
                                 </b:row>
                             </b:column>
                         </b:row>
@@ -142,7 +145,7 @@
                                     <h:outputText value="Contraseña"/>
                                 </b:row>
                                 <b:row>
-                                    <b:inputSecret placeholder="Contraseña" value="#{crearCuentaMedicoIntermedioPaginas.contrasena}"/>
+                                    <b:inputSecret placeholder="Contraseña" value="#{modificarCuentaGerenteIntermedioPaginas.contrasena}"/>
                                 </b:row>
                             </b:column>
                             <b:column span="1"></b:column>
@@ -151,7 +154,7 @@
                                     <h:outputText value="Confirmar contraseña"/>
                                 </b:row>
                                 <b:row>
-                                    <b:inputSecret placeholder="Confirmar Contraseña" value="#{crearCuentaMedicoIntermedioPaginas.contrasena}"/>
+                                    <b:inputSecret placeholder="Confirmar Contraseña" value="#{modificarCuentaGerenteIntermedioPaginas.contrasena}"/>
                                 </b:row>
                             </b:column>
                         </b:row>
@@ -159,11 +162,11 @@
                             <br/>
                             <b:column span="1"></b:column>
                             <b:column span="4">
-                                <b:commandButton  value="Cancelar" action="crearMedicoLista.xhtml" look="warning" style="width:100%" />
+                                <b:commandButton  value="Cancelar" action="modificarGerenteLista.xhtml" look="warning" style="width:100%" />
                             </b:column>
                             <b:column span="1"></b:column>
                             <b:column span="4">
-                                <b:commandButton value="Registrar Medico" action="#{crearCuentaMedicoIntermedioPaginas.crearMedico()}" look="primary" style="width:100%" />
+                                <b:commandButton value="Modificar Gerente" action="#{modificarCuentaGerenteIntermedioPaginas.modificarGerente()}" look="primary" style="width:100%" />
                             </b:column>
                             <b:column span="2"></b:column>
                         </b:row>

@@ -1,6 +1,7 @@
 package consultasBaseDatos;
 
 import intermedioPaginas.ManejoEMFIntermedioPaginas;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
@@ -90,6 +91,27 @@ public class FarmaceutaConsultaBaseDatos {
         } finally {
             em.close();
             return nuevoFarmaceuta;
+        }
+        
+    }
+    
+    public List<Farmaceuta> obtenerFarmaceutas(){
+            
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        
+        Query q;
+
+        List<Farmaceuta> farmaceutas = null;
+
+        try {
+            q = em.createNamedQuery("Farmaceuta.findAll", Farmaceuta.class);
+            farmaceutas = q.getResultList();
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            em.close();
+            return farmaceutas;
         }
         
     }

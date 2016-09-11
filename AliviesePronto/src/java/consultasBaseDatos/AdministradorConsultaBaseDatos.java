@@ -6,6 +6,7 @@
 package consultasBaseDatos;
 
 import intermedioPaginas.ManejoEMFIntermedioPaginas;
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
@@ -95,10 +96,32 @@ public class AdministradorConsultaBaseDatos {
             
             em.getTransaction().commit();
         } catch (Exception e){
+            System.out.println(e);
             em.getTransaction().rollback();
         } finally {
             em.close();
             return nuevoAdministrador;
+        }
+        
+    }
+    
+    public List<Administrador> obtenerAdministradores(){
+            
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        
+        Query q;
+
+        List<Administrador> administradores = null;
+
+        try {
+            q = em.createNamedQuery("Administrador.findAll", Administrador.class);
+            administradores = q.getResultList();
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            em.close();
+            return administradores;
         }
         
     }

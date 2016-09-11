@@ -1,14 +1,18 @@
 package intermedioPaginas;
 
 import java.util.Date;
+import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import metodosLogicaPaginas.CrearCuentasMetodosLogicaPaginas;
+import metodosLogicaPaginas.ModificarCuentasMetodosLogicaPaginas;
 import transporteDatos.FarmaceutaTransporteDatos;
 
 @ManagedBean(name="crearCuentaFarmaceutaIntermedioPaginas")
 @SessionScoped
 public class CrearCuentaFarmaceutaIntermedioPaginas {
+    
+    List<FarmaceutaTransporteDatos> farmaceutas = null;
         
     private Long numDocumento;
     private String nombreUsuario;
@@ -28,6 +32,8 @@ public class CrearCuentaFarmaceutaIntermedioPaginas {
     
     public String init(){
         
+        farmaceutas = new ModificarCuentasMetodosLogicaPaginas().listarFarmaceutas();
+        
         numDocumento = null;
         nombreUsuario = null;
         primerNombre = null;
@@ -41,12 +47,20 @@ public class CrearCuentaFarmaceutaIntermedioPaginas {
         contrasena = null;
         genero = null;
         
-        return "crearFarmaceuta.xhtml";
+        return "crearFarmaceutaLista.xhtml";
         
     }
 
     public Long getNumDocumento() {
         return numDocumento;
+    }
+
+    public List<FarmaceutaTransporteDatos> getFarmaceutas() {
+        return farmaceutas;
+    }
+
+    public void setFarmaceutas(List<FarmaceutaTransporteDatos> farmaceutas) {
+        this.farmaceutas = farmaceutas;
     }
 
     public void setNumDocumento(Long numDocumento) {
@@ -182,7 +196,7 @@ public class CrearCuentaFarmaceutaIntermedioPaginas {
             
             if(crearCuentasMetodosLogicaPaginas.CrearFarmaceuta(farmaceutaTransporteDatos)){
                 
-                return "listarFarmaceutas.xhtml";
+                return init();
                 
             } else {
                 

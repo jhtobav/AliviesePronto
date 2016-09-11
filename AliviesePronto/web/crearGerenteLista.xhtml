@@ -9,47 +9,41 @@
     </h:head>
     <h:body>
         <b:panelGrid colSpans="12">
-            <b:panel title="Lista de Médicos" id="targetPage" look="primary" collapsible="false">
+            <b:panel title="Lista de Gerentes" id="targetPage" look="primary" collapsible="false">
                 <h:form id="signUpForm">
                     <b:container>
                         <b:row>
                             <div class="row spacedMargin">
-                                <b:dataTable id="tabla" value="#{modificarCuentaMedicoIntermedioPaginas.medicos}" var="medico">
+                                <b:dataTable id="tabla" value="#{crearCuentaGerenteIntermedioPaginas.gerentes}" var="gerente">
                                     <h:column>
                                         <f:facet name="header">
                                             Numero Documento
                                         </f:facet>
-                                        <h:outputText value="#{medico.numDocumento}"/>
+                                        <h:outputText value="#{gerente.numDocumento}"/>
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">
                                             Primer Nombre
                                         </f:facet>
-                                        <h:outputText value="#{medico.primerNombre}"/>
+                                        <h:outputText value="#{gerente.primerNombre}"/>
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">
                                             Segundo Nombre
                                         </f:facet>
-                                        <h:outputText value="#{medico.segundoNombre}"/>
+                                        <h:outputText value="#{gerente.segundoNombre}"/>
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">
                                             Primer Apellido
                                         </f:facet>
-                                        <h:outputText value="#{medico.primerApellido}"/>
+                                        <h:outputText value="#{gerente.primerApellido}"/>
                                     </h:column>
                                     <h:column>
                                         <f:facet name="header">
                                             Segundo Apellido
                                         </f:facet>
-                                        <h:outputText value="#{medico.segundoApellido}"/>
-                                    </h:column>
-                                    <h:column>
-                                        <f:facet name="header">
-                                            Modificar
-                                        </f:facet>
-                                        <b:commandButton action="#{modificarCuentaMedicoIntermedioPaginas.cargarMedico(medico.id)}" look="primary" value="Modiricar"/>
+                                        <h:outputText value="#{gerente.segundoApellido}"/>
                                     </h:column>
                                 </b:dataTable>
                             </div>
@@ -62,7 +56,7 @@
                             </b:column>
                             <b:column span="1"></b:column>
                             <b:column span="4">
-                                <b:commandButton value="Registrar Médico" action="#{crearCuentaMedicoIntermedioPaginas.init()}" look="primary" style="width:100%" />
+                                <b:commandButton value="Registrar Nuevo Gerente" action="crearGerente.xhtml" look="primary" style="width:100%" />
                             </b:column>
                             <b:column span="2"></b:column>
                         </b:row>
