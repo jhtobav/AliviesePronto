@@ -47,8 +47,10 @@ and open the template in the editor.
                                 <p class="imgDescription">Nombre del producto: #{producto.nombre}<br/>
                                     Fabricante: #{producto.marca}<br/>
                                     Precio: #{producto.precioUnitarioCompra}<br/>
-                                    Descripcion: #{producto.descripcion}<br/></p>
+                                    Descripcion: #{producto.descripcion}<br/>
+                                </p>
                             </div>
+                            <b:commandButton value="Agregar al carrito" action="#{carritoComprasIntermedioPaginas.agregarProductos(producto)}"/>
                         </b:column>
                     
                 </c:forEach>

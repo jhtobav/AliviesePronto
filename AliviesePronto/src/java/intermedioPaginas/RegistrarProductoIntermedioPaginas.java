@@ -142,7 +142,18 @@ public class RegistrarProductoIntermedioPaginas {
          */
         
         upload();
+        System.out.println(nombre);
+        System.out.println(descripcion);
+        System.out.println(marca);
+        System.out.println(tipo);
+        System.out.println(presentacion);
+        System.out.println(imagen);
+        System.out.println(precioUnitarioCompra);
+        System.out.println(precioUnitarioVenta);
+        System.out.println(cantidadInventario);
+        System.out.println(cantidadMinimaInventario);
 
+        
 
         if (nombre != null && descripcion != null && marca != null && imagen != null
                 && presentacion != null && precioUnitarioCompra != null && precioUnitarioVenta != null
@@ -201,7 +212,7 @@ public class RegistrarProductoIntermedioPaginas {
             
             System.out.println("New file " + "file001.jpg" + " created at ");
         } catch (IOException e) {
-            System.out.println("");
+            e.printStackTrace();
         }
     }
 

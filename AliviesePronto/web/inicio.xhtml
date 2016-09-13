@@ -3,7 +3,8 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:b="http://bootsfaces.net/ui"
       xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:f="http://java.sun.com/jsf/core">
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:head>
         <title>AliviesePronto</title>
         <script src="js/aliviesePronto.js" type="text/javascript"></script>
@@ -14,9 +15,11 @@
             <h:form styleClass="navbar-form navbar-right">
                 <div class="form-group">
                     <b:inputText placeholder="Buscar productos..." fieldSize="m" />
-                    <b:dropButton value="Mis compras">
-                        <b:navLink value="Shampoo"></b:navLink>
-                        <b:navLink value="Jabon" href="#"></b:navLink>
+                    <b:dropButton value="Mis compras" >
+                        <c:forEach items="#{carritoComprasIntermedioPaginas.productosCarrito}" var="producto">
+                            <img src="#{producto.imagen}" alt="polaroid" class="productImage" height="50" width="50"/>
+                            <b:navLink value="#{producto.nombre}"></b:navLink>
+                        </c:forEach>
                         <b:button value="Pagar"></b:button>
                     </b:dropButton>
                 </div>
@@ -31,7 +34,9 @@
                         </b:listLinks>
                         <b:listLinks>
                             <b:navLink header="Comprar productos"/>
-                            <li><h:commandLink action="#{listarProductoIntermedioPaginas.init()}" value="Todos los productos" target="inicioFrame"/></li>
+                            <li><h:commandLink action="#{listarProductoIntermedioPaginas.init()}" value="Todos los productos" target="inicioFrame">
+                                    <f:actionListener binding="#{carritoComprasIntermedioPaginas.init()}"/>
+                                </h:commandLink></li>
                             <li><h:link outcome="listarProducto.xhtml" value="Limpieza" target="inicioFrame"/></li>
                             <li><h:link outcome="listarProducto.xhtml" value="Salud" target="inicioFrame"/></li>
                             <li><h:link outcome="loginUsuario.xhtml" value="Formulas" target="inicioFrame"/></li>
