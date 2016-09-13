@@ -38,6 +38,7 @@ public class MedicoConsultaBaseDatos {
             q.setParameter("nombreUsuario", nombreUsuario);
             medico = (Medico) q.getSingleResult();
         } catch (Exception e){
+            System.out.println(e);
         } finally {
             em.close();
             return medico;

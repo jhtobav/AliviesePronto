@@ -266,7 +266,7 @@ public class ModificarCuentaMedicoIntermedioPaginas {
             
             ModificarCuentasMetodosLogicaPaginas modificarCuentasMetodosLogicaPaginas = new ModificarCuentasMetodosLogicaPaginas();
             
-            if(modificarCuentasMetodosLogicaPaginas.ModificarMedico(medicoTransporteDatos)){
+            if(modificarCuentasMetodosLogicaPaginas.modificarMedico(medicoTransporteDatos)){
                 
                 return init();
                 

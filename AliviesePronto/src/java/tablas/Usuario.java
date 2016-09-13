@@ -123,7 +123,7 @@ public class Usuario implements Serializable {
     @NotNull
     @Column(name = "estadoCuenta")
     private boolean estadoCuenta;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "usuarioFormulaFormulaId")
     private Collection<Formula> formulaCollection;
     @JoinColumn(name = "Tarjeta_Id", referencedColumnName = "Id")
     @OneToOne(optional = false)

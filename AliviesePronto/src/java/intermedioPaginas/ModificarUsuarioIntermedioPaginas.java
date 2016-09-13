@@ -230,7 +230,7 @@ public class ModificarUsuarioIntermedioPaginas {
             
             ModificarCuentasMetodosLogicaPaginas modificarCuentasMetodosLogicaPaginas = new ModificarCuentasMetodosLogicaPaginas();
             
-            if(modificarCuentasMetodosLogicaPaginas.ModificarUsuario(usuarioTransporteDatos)){
+            if(modificarCuentasMetodosLogicaPaginas.modificarUsuario(usuarioTransporteDatos)){
                 
                 return "pagina exito";
                 

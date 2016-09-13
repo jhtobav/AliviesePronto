@@ -55,12 +55,12 @@ public class Formula implements Serializable {
     @NotNull
     @Column(name = "estado")
     private boolean estado;
-    @JoinColumn(name = "Medico_Id", referencedColumnName = "Id")
+    @JoinColumn(name = "MedicoFormula_Formula_Id", referencedColumnName = "Id")
     @ManyToOne(optional = false)
-    private Medico medicoId;
-    @JoinColumn(name = "Usuario_Id", referencedColumnName = "Id")
+    private Medico medicoFormulaFormulaId;
+    @JoinColumn(name = "UsuarioFormula_Formula_Id", referencedColumnName = "Id")
     @ManyToOne(optional = false)
-    private Usuario usuarioId;
+    private Usuario usuarioFormulaFormulaId;
     @OneToMany(mappedBy = "formulaProductoProductoId")
     private Collection<Producto> productoCollection;
 
@@ -101,20 +101,20 @@ public class Formula implements Serializable {
         this.estado = estado;
     }
 
-    public Medico getMedicoId() {
-        return medicoId;
+    public Medico getMedicoFormulaFormulaId() {
+        return medicoFormulaFormulaId;
     }
 
-    public void setMedicoId(Medico medicoId) {
-        this.medicoId = medicoId;
+    public void setMedicoFormulaFormulaId(Medico medicoFormulaFormulaId) {
+        this.medicoFormulaFormulaId = medicoFormulaFormulaId;
     }
 
-    public Usuario getUsuarioId() {
-        return usuarioId;
+    public Usuario getUsuarioFormulaFormulaId() {
+        return usuarioFormulaFormulaId;
     }
 
-    public void setUsuarioId(Usuario usuarioId) {
-        this.usuarioId = usuarioId;
+    public void setUsuarioFormulaFormulaId(Usuario usuarioFormulaFormulaId) {
+        this.usuarioFormulaFormulaId = usuarioFormulaFormulaId;
     }
 
     @XmlTransient

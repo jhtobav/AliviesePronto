@@ -207,7 +207,7 @@ public class CrearCuentaMedicoIntermedioPaginas {
             
             CrearCuentasMetodosLogicaPaginas crearCuentasMetodosLogicaPaginas = new CrearCuentasMetodosLogicaPaginas();
             
-            if(crearCuentasMetodosLogicaPaginas.CrearMedico(medicoTransporteDatos)){
+            if(crearCuentasMetodosLogicaPaginas.crearMedico(medicoTransporteDatos)){
                 
                 return init();
                 

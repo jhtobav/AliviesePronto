@@ -258,7 +258,7 @@ public class CrearCuentaUsuarioIntermedioPaginas {
             CrearCuentasMetodosLogicaPaginas crearCuentasMetodosLogicaPaginas = new CrearCuentasMetodosLogicaPaginas();
             
             if(crearCuentasMetodosLogicaPaginas
-                    .RegistrarUsuario(usuarioTransporteDatos, tarjetaTransporteDatos)){
+                    .registrarUsuario(usuarioTransporteDatos, tarjetaTransporteDatos)){
                 
                 return "carrouselBienvenida.xhtml";
                 

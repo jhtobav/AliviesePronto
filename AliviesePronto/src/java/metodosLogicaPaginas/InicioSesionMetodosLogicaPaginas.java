@@ -165,7 +165,7 @@ public class InicioSesionMetodosLogicaPaginas {
         }
 
         if ("Medico".equals(tipoUsuario)) {
-
+            
             MedicoConsultaBaseDatos medicoConsultaBaseDatos = new MedicoConsultaBaseDatos();
 
             Medico medico = medicoConsultaBaseDatos.encontrarPorNombreUsuario(nombreUsuario);
@@ -180,7 +180,7 @@ public class InicioSesionMetodosLogicaPaginas {
                         return "inicioMedico.xhtml";
 
                     } else {
-
+                        
                         return "Error Credenciales";
 
                     }
@@ -193,6 +193,7 @@ public class InicioSesionMetodosLogicaPaginas {
 
             } else {
 
+                System.out.println("error4");
                 return "Error Credenciales";
 
             }

@@ -252,7 +252,7 @@ public class ModificarCuentaFarmaceutaIntermedioPaginas {
             
             ModificarCuentasMetodosLogicaPaginas modificarCuentasMetodosLogicaPaginas = new ModificarCuentasMetodosLogicaPaginas();
             
-            if(modificarCuentasMetodosLogicaPaginas.ModificarFarmaceuta(farmaceutaTransporteDatos)){
+            if(modificarCuentasMetodosLogicaPaginas.modificarFarmaceuta(farmaceutaTransporteDatos)){
                 
                 return init();
                 

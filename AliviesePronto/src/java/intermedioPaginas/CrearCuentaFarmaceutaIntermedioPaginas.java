@@ -194,7 +194,7 @@ public class CrearCuentaFarmaceutaIntermedioPaginas {
             
             CrearCuentasMetodosLogicaPaginas crearCuentasMetodosLogicaPaginas = new CrearCuentasMetodosLogicaPaginas();
             
-            if(crearCuentasMetodosLogicaPaginas.CrearFarmaceuta(farmaceutaTransporteDatos)){
+            if(crearCuentasMetodosLogicaPaginas.crearFarmaceuta(farmaceutaTransporteDatos)){
                 
                 return init();
                 

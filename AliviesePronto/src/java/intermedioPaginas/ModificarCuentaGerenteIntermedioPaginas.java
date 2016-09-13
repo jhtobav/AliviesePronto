@@ -253,7 +253,7 @@ public class ModificarCuentaGerenteIntermedioPaginas {
             
             ModificarCuentasMetodosLogicaPaginas modificarCuentasMetodosLogicaPaginas = new ModificarCuentasMetodosLogicaPaginas();
             
-            if(modificarCuentasMetodosLogicaPaginas.ModificarGerente(gerenteTransporteDatos)){
+            if(modificarCuentasMetodosLogicaPaginas.modificarGerente(gerenteTransporteDatos)){
                 
                 return init();
                 
