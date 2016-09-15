@@ -27,6 +27,27 @@ public class ProductoConsultaBaseDatos {
         }
 
     }
+
+    public List<Producto> obtenerProductos(){
+            
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        
+        Query q;
+
+        List<Producto> productos = null;    
+
+        try {
+            q = em.createNamedQuery("Producto.findAll", Producto.class);
+            productos = q.getResultList();
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            em.close();
+            return productos;
+        }
+        
+    }
     
     public List<Producto> obtenerProductosPublicos(){
             

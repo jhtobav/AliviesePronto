@@ -195,7 +195,7 @@ public class CrearCuentaGerenteIntermedioPaginas {
             
             CrearCuentasMetodosLogicaPaginas crearCuentasMetodosLogicaPaginas = new CrearCuentasMetodosLogicaPaginas();
             
-            if(crearCuentasMetodosLogicaPaginas.CrearGerente(gerenteTransporteDatos)){
+            if(crearCuentasMetodosLogicaPaginas.crearGerente(gerenteTransporteDatos)){
                 
                 return init();
                 

@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Pharmacy</title>
+    </h:head>
+    <h:body>
+        <b:panelGrid colSpans="12">
+            <b:panel title="Generar Cupon" id="targetPage" look="primary" collapsible="false">
+                <h:form id="signUpForm">
+                    <b:container>
+                        <b:row>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Valor"/>
+                                </b:row>
+                                <b:row>
+                                    <b:inputText placeholder="Valor" value="#{generarCuponIntermedioPaginas.valor}"/>
+                                </b:row>
+                            </b:column>
+                            <b:column span="1"></b:column>
+                            <b:column span="2">
+                                <b:row>
+                                    <h:outputText value="Fecha Vencimiento"/>
+                                </b:row>
+                                <b:row>
+                                    <b:datepicker mode="popup-icon" placeholder="Fecha de nacimiento" value="#{generarCuponIntermedioPaginas.fechaVencimiento}"/>
+                                </b:row>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Id de Cupon Generado"/>
+                                </b:row>
+                                <b:row>
+                                    <b:inputText disabled="true" placeholder="id de Cupon Generado" value="#{generarCuponIntermedioPaginas.id}"/>
+                                </b:row>
+                            </b:column>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Estado de Cupon"/>
+                                </b:row>
+                                <b:row>
+                                    <b:inputText disabled="true" placeholder="Estado de Cupon" value="#{generarCuponIntermedioPaginas.estado}"/>
+                                </b:row>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <br/>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:commandButton  value="Regresar" action="#{generarCuponIntermedioPaginas.init()}" look="warning" style="width:100%" />
+                            </b:column>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:commandButton value="Generar Nuevo Cupon" action="#{generarCuponIntermedioPaginas.generarCupon()}" look="primary" style="width:100%" />
+                            </b:column>
+                            <b:column span="2"></b:column>
+                        </b:row>
+                    </b:container>
+                </h:form>
+            </b:panel>
+        </b:panelGrid>
+    </h:body>
+</html>
+

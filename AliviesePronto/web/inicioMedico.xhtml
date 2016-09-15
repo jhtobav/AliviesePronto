@@ -29,24 +29,8 @@
                             <li><h:link id="carrouselBienvenida" outcome="carrouselBienvenida.xhtml" value="Bienvenido" target="inicioFrame"/></li>
                         </b:listLinks>
                         <b:listLinks>
-                            <b:panel title="Registrar Cuentas" collapsed="true">
-                                <li><h:commandLink action="#{crearCuentaMedicoIntermedioPaginas.init()}" value="Registrar Medico" target="inicioFrame"/></li>    
-                                <li><h:commandLink action="#{crearCuentaFarmaceutaIntermedioPaginas.init()}" value="Registrar Farmaceuta" target="inicioFrame"/></li>    
-                                <li><h:commandLink action="#{crearCuentaAdministradorIntermedioPaginas.init()}" value="Registrar Administrador" target="inicioFrame"/></li>    
-                                <li><h:commandLink action="#{crearCuentaGerenteIntermedioPaginas.init()}" value="Registrar Gerente" target="inicioFrame"/></li>    
-                            </b:panel>
-                            <b:panel title="Modificar Cuentas" collapsed="true">
-                                <li><h:commandLink action="#{modificarCuentaMedicoIntermedioPaginas.init()}" value="Modificar Medico" target="inicioFrame"/></li>
-                                <li><h:commandLink action="#{modificarCuentaFarmaceutaIntermedioPaginas.init()}" value="Modificar Farmaceuta" target="inicioFrame"/></li>
-                                <li><h:commandLink action="#{modificarCuentaAdministradorIntermedioPaginas.init()}" value="Modificar Administrador" target="inicioFrame"/></li>
-                                <li><h:commandLink action="#{modificarCuentaGerenteIntermedioPaginas.init()}" value="Modificar Gerente" target="inicioFrame"/></li>
-                            </b:panel>
-                            <b:panel title="Productos" collapsed="true">
-                                <li><h:commandLink action="crearProducto.xhtml" value="Registrar Productos" target="inicioFrame"/></li>
-                                <li><h:commandLink action="modificarProducto" value="Modificar Productos" target="inicioFrame"/></li>
-                                <li><h:commandLink action="eliminarProducto" value="Eliminar Productos" target="inicioFrame"/></li>
-                            </b:panel>                            
-                            <li><h:commandLink action="#{generarCuponIntermedioPaginas.init()}" value="Generar Cupon" target="inicioFrame"/></li>
+                            <li><h:commandLink action="#{registrarFormulaIntermedioPaginas.init()}" value="Registrar Formula" target="inicioFrame"/></li>
+                            <li><h:commandLink action="inicioMedico.xhtml" value="Mis Formulas" target="inicioFrame"/></li>
                         </b:listLinks>
                     </b:column>
                     <b:column col-sm="10" col-md="10" col-lg="10" styleClass="main">

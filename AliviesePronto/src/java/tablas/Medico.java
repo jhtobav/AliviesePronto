@@ -126,7 +126,7 @@ public class Medico implements Serializable {
     @NotNull
     @Column(name = "numTarjetaProfesional")
     private long numTarjetaProfesional;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "medicoId")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "medicoFormulaFormulaId")
     private Collection<Formula> formulaCollection;
 
     public Medico() {

@@ -230,8 +230,6 @@ public class ModificarCuentaAdministradorIntermedioPaginas {
         fechaNacimiento != null && telefono != null && direccion != null && 
         correo != null && contrasena != null && genero != null){
             
-            System.out.println("error 1");
-            
             AdministradorTransporteDatos administradorTransporteDatos = new AdministradorTransporteDatos();
             
             administradorTransporteDatos.setId(id);
@@ -255,7 +253,7 @@ public class ModificarCuentaAdministradorIntermedioPaginas {
             
             ModificarCuentasMetodosLogicaPaginas modificarCuentasMetodosLogicaPaginas = new ModificarCuentasMetodosLogicaPaginas();
             
-            if(modificarCuentasMetodosLogicaPaginas.ModificarAdministrador(administradorTransporteDatos)){
+            if(modificarCuentasMetodosLogicaPaginas.modificarAdministrador(administradorTransporteDatos)){
                 
                 return init();
                 

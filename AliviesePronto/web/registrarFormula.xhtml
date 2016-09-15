@@ -1,0 +1,113 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Pharmacy</title>
+    </h:head>
+    <h:body>
+        <b:panelGrid colSpans="12">
+            <b:panel title="Registro de Formula" id="targetPage" look="primary" collapsible="false">
+                <h:form id="signUpForm">
+                    <b:container>
+                        <b:row>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Num Documento Usuario"/>
+                                </b:row>
+                                <b:row>
+                                    <b:inputText disabled="true" placeholder="Num Documento Usuario" value="#{registrarFormulaIntermedioPaginas.numDocumento}"/>
+                                </b:row>
+                            </b:column>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Descripción"/>
+                                </b:row>
+                                <b:row>
+                                    <b:inputText placeholder="Descripción" value="#{registrarFormulaIntermedioPaginas.descripcion}"/>
+                                </b:row>
+                            </b:column>
+                        </b:row>
+                        <b:row>
+                            <div class="row spacedMargin">
+                                <b:dataTable id="tablaTodosProductos" value="#{registrarFormulaIntermedioPaginas.todosLosProductos}" var="productoPorAgregar">
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Nombre
+                                        </f:facet>
+                                        <h:outputText value="#{productoPorAgregar.nombre}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Descripcion
+                                        </f:facet>
+                                        <h:outputText value="#{productoPorAgregar.descripcion}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Marca
+                                        </f:facet>
+                                        <h:outputText value="#{productoPorAgregar.marca}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Presentación
+                                        </f:facet>
+                                        <h:outputText value="#{productoPorAgregar.presentacion}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Agregar
+                                        </f:facet>
+                                        <b:commandButton action="#{registrarFormulaIntermedioPaginas.agregarProducto(productoPorAgregar.id)}" look="primary" value="Agregar"/>
+                                    </h:column>
+                                </b:dataTable>
+                            </div>
+                        </b:row>
+                        <b:row>
+                            <div class="row spacedMargin">
+                                <b:dataTable id="tablaProductosAgregados" value="#{registrarFormulaIntermedioPaginas.productosAgregados}" var="productoAgregado">
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Nombre
+                                        </f:facet>
+                                        <h:outputText value="#{productoAgregado.nombre}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Descripcion
+                                        </f:facet>
+                                        <h:outputText value="#{productoAgregado.descripcion}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Marca
+                                        </f:facet>
+                                        <h:outputText value="#{productoAgregado.marca}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Presentación
+                                        </f:facet>
+                                        <h:outputText value="#{productoAgregado.presentacion}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Quitar
+                                        </f:facet>
+                                        <b:commandButton action="#{registrarFormulaIntermedioPaginas.quitarProducto(productoAgregado.id)}" look="primary" value="Quitar"/>
+                                    </h:column>
+                                </b:dataTable>
+                            </div>
+                        </b:row>
+                    </b:container>
+                </h:form>
+            </b:panel>
+        </b:panelGrid>
+    </h:body>
+</html>
+

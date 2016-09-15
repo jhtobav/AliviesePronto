@@ -33,7 +33,7 @@ import transporteDatos.UsuarioTransporteDatos;
  */
 public class CrearCuentasMetodosLogicaPaginas {
 
-    public boolean RegistrarUsuario(UsuarioTransporteDatos usuarioTransporteDatos,
+    public boolean registrarUsuario(UsuarioTransporteDatos usuarioTransporteDatos,
             TarjetaTransporteDatos tarjetaTransporteDatos ){
     
         TarjetaCredito tarjetaCredito = new TarjetaCredito();
@@ -74,7 +74,7 @@ public class CrearCuentasMetodosLogicaPaginas {
         
     }
     
-    public boolean CrearAdministrador(AdministradorTransporteDatos administradorTransporteDatos){
+    public boolean crearAdministrador(AdministradorTransporteDatos administradorTransporteDatos){
         
         Administrador administrador = new Administrador();
         
@@ -99,7 +99,7 @@ public class CrearCuentasMetodosLogicaPaginas {
         
     }
     
-    public boolean CrearFarmaceuta(FarmaceutaTransporteDatos farmaceutaTransporteDatos){
+    public boolean crearFarmaceuta(FarmaceutaTransporteDatos farmaceutaTransporteDatos){
             
         Farmaceuta farmaceuta = new Farmaceuta();
         
@@ -124,7 +124,7 @@ public class CrearCuentasMetodosLogicaPaginas {
         
     }
         
-    public boolean CrearGerente(GerenteTransporteDatos gerenteTransporteDatos){
+    public boolean crearGerente(GerenteTransporteDatos gerenteTransporteDatos){
             
         Gerente gerente = new Gerente();
         
@@ -149,7 +149,7 @@ public class CrearCuentasMetodosLogicaPaginas {
         
     }
     
-    public boolean CrearMedico(MedicoTransporteDatos medicoTransporteDatos){
+    public boolean crearMedico(MedicoTransporteDatos medicoTransporteDatos){
             
         Medico medico = new Medico();
         

@@ -206,7 +206,7 @@ public class ModificarCuentasMetodosLogicaPaginas {
     }
 
     
-    public boolean ModificarUsuario(UsuarioTransporteDatos usuarioTransporteDatos){
+    public boolean modificarUsuario(UsuarioTransporteDatos usuarioTransporteDatos){
         
         UsuarioConsultaBaseDatos usuarioConsultaBaseDatos = new UsuarioConsultaBaseDatos();
         usuarioConsultaBaseDatos.modificarUsuario(usuarioTransporteDatos);
@@ -215,7 +215,7 @@ public class ModificarCuentasMetodosLogicaPaginas {
         
     }
     
-    public boolean ModificarAdministrador(AdministradorTransporteDatos administradorTransporteDatos){
+    public boolean modificarAdministrador(AdministradorTransporteDatos administradorTransporteDatos){
                 
         AdministradorConsultaBaseDatos administradorConsultaBaseDatos = new AdministradorConsultaBaseDatos();
         administradorConsultaBaseDatos.modificarAdministrador(administradorTransporteDatos);
@@ -224,7 +224,7 @@ public class ModificarCuentasMetodosLogicaPaginas {
         
     }
     
-    public boolean ModificarFarmaceuta(FarmaceutaTransporteDatos farmaceutaTransporteDatos){
+    public boolean modificarFarmaceuta(FarmaceutaTransporteDatos farmaceutaTransporteDatos){
                    
         FarmaceutaConsultaBaseDatos farmaceutaConsultaBaseDatos = new FarmaceutaConsultaBaseDatos();
         farmaceutaConsultaBaseDatos.modificarFarmaceuta(farmaceutaTransporteDatos);
@@ -233,7 +233,7 @@ public class ModificarCuentasMetodosLogicaPaginas {
         
     }
         
-    public boolean ModificarGerente(GerenteTransporteDatos gerenteTransporteDatos){
+    public boolean modificarGerente(GerenteTransporteDatos gerenteTransporteDatos){
                     
         GerenteConsultaBaseDatos gerenteConsultaBaseDatos = new GerenteConsultaBaseDatos();
         gerenteConsultaBaseDatos.modificarGerente(gerenteTransporteDatos);
@@ -242,7 +242,7 @@ public class ModificarCuentasMetodosLogicaPaginas {
         
     }
     
-    public boolean ModificarMedico(MedicoTransporteDatos medicoTransporteDatos){
+    public boolean modificarMedico(MedicoTransporteDatos medicoTransporteDatos){
         
         MedicoConsultaBaseDatos medicoConsultaBaseDatos = new MedicoConsultaBaseDatos();
         medicoConsultaBaseDatos.modificarMedico(medicoTransporteDatos);
