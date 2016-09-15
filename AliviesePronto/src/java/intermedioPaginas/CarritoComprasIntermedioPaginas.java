@@ -36,4 +36,8 @@ public class CarritoComprasIntermedioPaginas {
         return "inicio.xhtml";
     }
     
+    public String irAPagar(){
+        return "pagarCarrito.xhtml";
+    }
+    
 }

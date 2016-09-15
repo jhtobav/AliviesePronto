@@ -13,14 +13,17 @@
     <h:body style="padding-top: 60px" onload="inicioLoaded()">
         <b:navBar brand="Aliviese Pronto" brandHref="#" inverse="true" fixed="top" fluid="true">
             <h:form styleClass="navbar-form navbar-right">
-                <div class="form-group">
+                <div class="form-group" style="display: inline-block">
                     <b:inputText placeholder="Buscar productos..." fieldSize="m" />
                     <b:dropButton value="Mis compras" >
+                        <c:set var="i" value="${0}"/>
                         <c:forEach items="#{carritoComprasIntermedioPaginas.productosCarrito}" var="producto">
-                            <img src="#{producto.imagen}" alt="polaroid" class="productImage" height="50" width="50"/>
-                            <b:navLink value="#{producto.nombre}"></b:navLink>
+                            <b:navLink value=""><img src="#{producto.imagen}" alt="polaroid" class="productImage" height="50" width="50"/> #{producto.nombre}, #{producto.precioUnitarioVenta}</b:navLink>
+                            
+                            <c:set var="i" value="${i+producto.precioUnitarioVenta}"/>
                         </c:forEach>
-                        <b:button value="Pagar"></b:button>
+                        <b:navLink value="Valor total; ${i}"/>
+                        <b:navLink><b:commandButton value="Pagar" action="#{carritoComprasIntermedioPaginas.irAPagar()}"/></b:navLink>                        
                     </b:dropButton>
                 </div>
             </h:form>

@@ -50,7 +50,7 @@ and open the template in the editor.
                                     Descripcion: #{producto.descripcion}<br/>
                                 </p>
                             </div>
-                            <b:commandButton value="Agregar al carrito" action="#{carritoComprasIntermedioPaginas.agregarProductos(producto)}"/>
+                            <b:commandButton value="Agregar al carrito" action="#{carritoComprasIntermedioPaginas.agregarProductos(producto)}" onclick="parent.location.reload();" />
                         </b:column>
                     
                 </c:forEach>

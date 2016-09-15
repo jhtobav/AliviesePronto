@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+    <h:head>
+        <title>Pharmacy</title>
+        <link href="css/aliviesePronto.css" rel="stylesheet"/>
+    </h:head>
+    <h:body>
+        <h:form id="loginForm" >
+            <b:container styleClass="main">
+                <b:row class="top-buffer">
+                    <c:forEach items="#{carritoComprasIntermedioPaginas.productosCarrito}" var="producto">
+                        <b:row>
+                            <b:column span="2">
+                                <img src="#{producto.imagen}" class="checkoutImage"/>
+                            </b:column>
+                            <b:column span="2">
+                                #{producto.nombre}
+                            </b:column>
+                            <b:column span="2">
+                                #{producto.marca}
+                            </b:column>
+                            <b:column span="2">
+                                #{producto.descripcion}
+                            </b:column>
+                            <b:column span="2">
+                                #{producto.presentacion}
+                            </b:column>
+                            <b:column span="2">
+                                #{producto.precioUnitarioVenta}
+                            </b:column>
+                        </b:row>
+                    </c:forEach>
+                </b:row>
+            </b:container>
+        </h:form>
+    </h:body>
+</html>

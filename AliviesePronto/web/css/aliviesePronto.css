@@ -136,6 +136,11 @@ and open the template in the editor.
 }
 
 .productImage {
+  height: 50px;
+  width: 63px; 
+}
+
+.productImage {
   height: 250px;
   width: 263px; 
 }
