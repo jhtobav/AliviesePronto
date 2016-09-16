@@ -8,35 +8,44 @@ import metodosLogicaPaginas.ListarFormulaMetodosLogicaPaginas;
 import transporteDatos.FormulaTransporteDatos;
 import transporteDatos.ProductoTransporteDatos;
 
-@ManagedBean(name="listarFormulasMedicoIntermedioPaginas")
+@ManagedBean(name="despacharFormulaListaDespachadasIntermedioPaginas")
 @SessionScoped
-public class ListarFormulasMedicoIntermedioPaginas {
+public class DespacharFormulaListaDespachadasIntermedioPaginas {
         
-    List<FormulaTransporteDatos> formulasDelMedico = null;
+    List<FormulaTransporteDatos> formulasDespachadas = null;
     List<ProductoTransporteDatos> productosDeFormula = null;
 
+    FormulaTransporteDatos formulaSeleccionada = null;
     Long numDocumentoUsuarioFormula;
     String descripcionFormula;
 
-    public ListarFormulasMedicoIntermedioPaginas() {
+    public DespacharFormulaListaDespachadasIntermedioPaginas() {
     }
 
     public String init(){
                 
-        formulasDelMedico = new ListarFormulaMetodosLogicaPaginas().listarFormulasMedico();
+        formulasDespachadas = new ListarFormulaMetodosLogicaPaginas().listarFormulasDespachadas();
         
-        return "listaFormulasMedico.xhtml";
+        return "despacharFormulaListaDespachadas.xhtml";
         
     }
 
-    public List<FormulaTransporteDatos> getFormulasDelMedico() {
-        return formulasDelMedico;
+    public List<FormulaTransporteDatos> getFormulasDespachadas() {
+        return formulasDespachadas;
     }
 
-    public void setFormulasDelMedico(List<FormulaTransporteDatos> formulasDelMedico) {
-        this.formulasDelMedico = formulasDelMedico;
+    public void setFormulasDespachadas(List<FormulaTransporteDatos> formulasDespachadas) {
+        this.formulasDespachadas = formulasDespachadas;
     }
 
+    public FormulaTransporteDatos getFormulaSeleccionada() {
+        return formulaSeleccionada;
+    }
+
+    public void setFormulaSeleccionada(FormulaTransporteDatos formulaSeleccionada) {
+        this.formulaSeleccionada = formulaSeleccionada;
+    }
+    
     public List<ProductoTransporteDatos> getProductosDeFormula() {
         return productosDeFormula;
     }
@@ -65,12 +74,14 @@ public class ListarFormulasMedicoIntermedioPaginas {
         
         productosDeFormula = new ArrayList<>();
         
-        productosDeFormula = formula.getProductos();
-        numDocumentoUsuarioFormula = formula.getNumDocumentoUsuario();
-        descripcionFormula = formula.getDescripcion();
+        formulaSeleccionada = formula;
+        productosDeFormula = formulaSeleccionada.getProductos();
+        numDocumentoUsuarioFormula = formulaSeleccionada.getNumDocumentoUsuario();
+        descripcionFormula = formulaSeleccionada.getDescripcion();
         
-        return "listaFormulasMedicoDetalle.xhtml";
+        return "despacharFormulaListaDespachadasDetalle.xhtml";
         
     }
+
     
 }

@@ -129,7 +129,7 @@ public class RegistrarFormulaMetodosLogicaPaginas {
             productoVendido.setTipo(productoTransporteDatos.getTipo());
             productoVendido.setCantidadVendida(1);
             productoVendido.setFormulaProductoVendidoProductoVendidoId(formula);
-            productoVendido.setVentaProductoVendidoProductoVendidoId(new Venta());
+            productoVendido.setVentaProductoVendidoProductoVendidoId(null);
             
             productoVendidoConsultaBaseDatos.crearProductoVendido(productoVendido);
             

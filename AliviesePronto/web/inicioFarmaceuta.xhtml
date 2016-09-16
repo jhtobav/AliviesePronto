@@ -29,12 +29,8 @@
                             <li><h:link id="carrouselBienvenida" outcome="carrouselBienvenida.xhtml" value="Bienvenido" target="inicioFrame"/></li>
                         </b:listLinks>
                         <b:listLinks>
-                            <b:navLink header="Comprar productos"/>
-                            <li><h:link outcome="listarProducto.xhtml" value="Todos los productos" target="inicioFrame"/></li>
-                        </b:listLinks>
-                        <b:listLinks>
-                            <b:navLink header="Opciones" />
-                            <li><h:commandLink action="#{listarFormulasClienteIntermedioPaginas.init()}" value="Listar Formulas" target="inicioFrame"/></li>
+                            <li><h:commandLink action="#{despacharFormulaIntermedioPaginas.init()}" value="Despachar Formula" target="inicioFrame"/></li>
+                            <li><h:commandLink action="#{despacharFormulaListaDespachadasIntermedioPaginas.init()}" value="Formulas Despachadas" target="inicioFrame"/></li>
                         </b:listLinks>
                     </b:column>
                     <b:column col-sm="10" col-md="10" col-lg="10" styleClass="main">

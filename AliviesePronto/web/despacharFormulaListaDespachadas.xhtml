@@ -1,0 +1,51 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Pharmacy</title>
+    </h:head>
+    <h:body>
+        <b:panelGrid colSpans="12">
+            <b:panel title="Listado de Formulas del Medico" id="targetPage" look="primary" collapsible="false">
+                <h:form id="signUpForm">
+                    <b:container>
+                        <b:row>
+                            <div class="row spacedMargin">
+                                <b:dataTable id="tablaTodosProductos" value="#{despacharFormulaListaDespachadasIntermedioPaginas.formulasDespachadas}" var="formula">
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Num Documento Usuario
+                                        </f:facet>
+                                        <h:outputText value="#{formula.numDocumentoUsuario}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Fecha de Emisión
+                                        </f:facet>
+                                        <h:outputText value="#{formula.fechaEmision}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Estado de Formula
+                                        </f:facet>
+                                        <h:outputText value="#{formula.estadoFormula}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Ver Detalle
+                                        </f:facet>
+                                        <b:commandButton action="#{despacharFormulaListaDespachadasIntermedioPaginas.verFormula(formula)}" look="primary" value="Ver Detalle"/>
+                                    </h:column>
+                                </b:dataTable>
+                            </div>
+                        </b:row>
+                    </b:container>
+                </h:form>
+            </b:panel>
+        </b:panelGrid>
+    </h:body>
+</html>
+

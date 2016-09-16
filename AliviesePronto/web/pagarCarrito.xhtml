@@ -66,27 +66,27 @@ and open the template in the editor.
                         <h:outputText value="Valor total" />
                     </b:column>
                     <b:column medium-screen="3">
-                        <b:inputText id="valortotal" placeholder="Valor Total" value="${i}" disabled="true">
+                        <b:inputText id="valortotal" placeholder="Valor Total" value="${carritoComprasIntermedioPaginas.valorTotal}" disabled="true">
                         </b:inputText>
                     </b:column>
                     <b:column medium-screen="1">
                         <h:outputText value="Ingresar cupon:" />
                     </b:column>
                     <b:column medium-screen="2">
-                        <b:inputSecret id="cupon" placeholder="Cupon" value="">
+                        <b:inputText id="cupon" placeholder="Cupon" value="${carritoComprasIntermedioPaginas.numCupon}">
                             <f:facet name="prepend">
                                 <b:iconAwesome name="key" />
                             </f:facet>
-                        </b:inputSecret>
+                        </b:inputText>
                     </b:column>
                     <b:column medium-screen="2">
-                        <b:commandButton value="Pagar con cupon"/>
+                        <b:commandButton value="Pagar con cupon" action="${carritoComprasIntermedioPaginas.aplicarDescuento()}"/>
                     </b:column>
                     <b:column medium-screen="1">
                         <h:outputText value="Valor con descuento:" />
                     </b:column>
                     <b:column medium-screen="2">
-                        <b:inputText id="valordescuento" placeholder="Valor con descuento" value="${i}" disabled="true">
+                        <b:inputText id="valordescuento" placeholder="Valor con descuento" value="${carritoComprasIntermedioPaginas.valorConDescuento}" disabled="true">
                         </b:inputText>
                     </b:column>
                 </b:row>

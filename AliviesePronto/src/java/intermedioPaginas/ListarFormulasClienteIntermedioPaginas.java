@@ -8,33 +8,33 @@ import metodosLogicaPaginas.ListarFormulaMetodosLogicaPaginas;
 import transporteDatos.FormulaTransporteDatos;
 import transporteDatos.ProductoTransporteDatos;
 
-@ManagedBean(name="listarFormulasMedicoIntermedioPaginas")
+@ManagedBean(name="listarFormulasClienteIntermedioPaginas")
 @SessionScoped
-public class ListarFormulasMedicoIntermedioPaginas {
+public class ListarFormulasClienteIntermedioPaginas {
         
-    List<FormulaTransporteDatos> formulasDelMedico = null;
+    List<FormulaTransporteDatos> formulasDelCliente = null;
     List<ProductoTransporteDatos> productosDeFormula = null;
 
     Long numDocumentoUsuarioFormula;
     String descripcionFormula;
 
-    public ListarFormulasMedicoIntermedioPaginas() {
+    public ListarFormulasClienteIntermedioPaginas() {
     }
 
     public String init(){
                 
-        formulasDelMedico = new ListarFormulaMetodosLogicaPaginas().listarFormulasMedico();
+        formulasDelCliente = new ListarFormulaMetodosLogicaPaginas().listarFormulasCliente();
         
-        return "listaFormulasMedico.xhtml";
+        return "listaFormulasCliente.xhtml";
         
     }
 
-    public List<FormulaTransporteDatos> getFormulasDelMedico() {
-        return formulasDelMedico;
+    public List<FormulaTransporteDatos> getFormulasDelCliente() {
+        return formulasDelCliente;
     }
 
-    public void setFormulasDelMedico(List<FormulaTransporteDatos> formulasDelMedico) {
-        this.formulasDelMedico = formulasDelMedico;
+    public void setFormulasDelCliente(List<FormulaTransporteDatos> formulasDelCliente) {
+        this.formulasDelCliente = formulasDelCliente;
     }
 
     public List<ProductoTransporteDatos> getProductosDeFormula() {
@@ -69,7 +69,7 @@ public class ListarFormulasMedicoIntermedioPaginas {
         numDocumentoUsuarioFormula = formula.getNumDocumentoUsuario();
         descripcionFormula = formula.getDescripcion();
         
-        return "listaFormulasMedicoDetalle.xhtml";
+        return "listaFormulasClienteDetalle.xhtml";
         
     }
     
