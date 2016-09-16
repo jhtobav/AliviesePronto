@@ -18,30 +18,103 @@ and open the template in the editor.
         <h:form id="loginForm" >
             <b:container styleClass="main">
                 <b:row class="top-buffer">
-                    <c:forEach items="#{carritoComprasIntermedioPaginas.productosCarrito}" var="producto">
-                        <b:row>
-                            <b:column span="2">
-                                <img src="#{producto.imagen}" class="checkoutImage"/>
-                            </b:column>
-                            <b:column span="2">
-                                #{producto.nombre}
-                            </b:column>
-                            <b:column span="2">
-                                #{producto.marca}
-                            </b:column>
-                            <b:column span="2">
-                                #{producto.descripcion}
-                            </b:column>
-                            <b:column span="2">
-                                #{producto.presentacion}
-                            </b:column>
-                            <b:column span="2">
-                                #{producto.precioUnitarioVenta}
-                            </b:column>
-                        </b:row>
-                    </c:forEach>
+                    <b:dataTable id="tabla"  value="#{carritoComprasIntermedioPaginas.productosCarrito}" var="producto">
+                        <h:column>
+                            <f:facet name="header">
+                                Imagen
+                            </f:facet>
+                            <img src="#{producto.imagen}" class="checkoutImage"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                Nombre
+                            </f:facet>
+                            <h:outputText value="#{producto.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                Marca
+                            </f:facet>
+                            <h:outputText value="#{producto.marca}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                escripcion
+                            </f:facet>
+                            <h:outputText value="#{producto.descripcion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                Presentacion
+                            </f:facet>
+                            <h:outputText value="#{producto.presentacion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                Precio
+                            </f:facet>
+                            <h:outputText value="#{producto.precioUnitarioVenta}"/>
+                        </h:column>
+                    </b:dataTable>
+                </b:row>
+                <c:set var="i" value="${0}"/>
+                <c:forEach items="#{carritoComprasIntermedioPaginas.productosCarrito}" var="producto">
+                    <c:set var="i" value="${i+producto.precioUnitarioVenta}"/>
+                </c:forEach>
+                <b:row>
+                    <b:column medium-screen="1">
+                        <h:outputText value="Valor total" />
+                    </b:column>
+                    <b:column medium-screen="3">
+                        <b:inputText id="valortotal" placeholder="Valor Total" value="${i}" disabled="true">
+                        </b:inputText>
+                    </b:column>
+                    <b:column medium-screen="1">
+                        <h:outputText value="Ingresar cupon:" />
+                    </b:column>
+                    <b:column medium-screen="3">
+                        <b:inputSecret id="cupon" placeholder="Cupon" value="">
+                            <f:facet name="prepend">
+                                <b:iconAwesome name="key" />
+                            </f:facet>
+                        </b:inputSecret>
+                    </b:column>
+                    <b:column medium-screen="2">
+                        <b:commandButton value="Pagar con cupon"/>
+                    </b:column>
+                    <b:column medium-screen="2">
+                    </b:column>
+                </b:row>
+                <b:row>
+                    <b:column medium-screen="1">
+                        <h:outputText value="Iniciar sesion" />
+                    </b:column>
+                    <b:column medium-screen="3">
+                        <b:inputText id="usuario" placeholder="Usuario" value="${inicioSesionIntermedioPaginas.nombreUsuario}">
+                            <f:facet name="prepend">
+                                <b:icon name="user" />
+                            </f:facet>
+                        </b:inputText>
+                    </b:column>
+
+                    <b:column medium-screen="1">
+                        <h:outputText value="Contraseña" />
+                    </b:column>
+                    <b:column medium-screen="3">
+                        <b:inputSecret id="password" placeholder="Contraseña" value="#{inicioSesionIntermedioPaginas.contrasena}">
+                            <f:facet name="prepend">
+                                <b:iconAwesome name="key" />
+                            </f:facet>
+                        </b:inputSecret>
+                    </b:column>
+                    <b:column medium-screen="2">
+                        <b:commandButton value="Iniciar sesión"/>
+                    </b:column>
+                    <b:column medium-screen="2">
+                    </b:column>
                 </b:row>
             </b:container>
+
         </h:form>
     </h:body>
 </html>

@@ -23,7 +23,7 @@
                             <c:set var="i" value="${i+producto.precioUnitarioVenta}"/>
                         </c:forEach>
                         <b:navLink value="Valor total; ${i}"/>
-                        <b:navLink><b:commandButton value="Pagar" action="#{carritoComprasIntermedioPaginas.irAPagar()}"/></b:navLink>                        
+                        <b:navLink><h:commandLink action="#{carritoComprasIntermedioPaginas.irAPagar()}" value="Pagar" target="inicioFrame"/></b:navLink>                        
                     </b:dropButton>
                 </div>
             </h:form>
