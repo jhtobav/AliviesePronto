@@ -5,6 +5,7 @@ import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import metodosLogicaPaginas.RegistrarFormulaMetodosLogicaPaginas;
+import transporteDatos.FormulaTransporteDatos;
 import transporteDatos.ProductoTransporteDatos;
 import transporteDatos.UsuarioTransporteDatos;
 
@@ -92,6 +93,38 @@ public class RegistrarFormulaIntermedioPaginas {
         numDocumento = numDocumentoSeleccionado;
         
         return "registrarFormula.xhtml";
+        
+    }
+    
+    public String registrarFormula(){
+        
+        if(descripcion != null && productosAgregados.size() > 0){
+            
+            FormulaTransporteDatos formulaTransporteDatos = new FormulaTransporteDatos();
+            
+            formulaTransporteDatos.setIdMedico(InicioSesionIntermedioPaginas.idPersonaLogueada);
+            formulaTransporteDatos.setIdUsuario(idUsuario);
+            formulaTransporteDatos.setNumDocumentoUsuario(numDocumento);
+            formulaTransporteDatos.setProductos(productosAgregados);
+            formulaTransporteDatos.setDescripcion(descripcion);
+            
+            String respuesta = new RegistrarFormulaMetodosLogicaPaginas().registrarFormula(formulaTransporteDatos);
+            
+            if("exito".equals(respuesta)){
+                
+                return init();
+                
+            } else {
+
+                return "pagina error";
+                
+            }
+            
+        } else {
+        
+            return "pagina error";
+            
+        }
         
     }
     

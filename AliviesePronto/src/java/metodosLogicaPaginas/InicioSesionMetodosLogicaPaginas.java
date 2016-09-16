@@ -10,6 +10,7 @@ import consultasBaseDatos.FarmaceutaConsultaBaseDatos;
 import consultasBaseDatos.GerenteConsultaBaseDatos;
 import consultasBaseDatos.MedicoConsultaBaseDatos;
 import consultasBaseDatos.UsuarioConsultaBaseDatos;
+import intermedioPaginas.InicioSesionIntermedioPaginas;
 import tablas.Administrador;
 import tablas.Farmaceuta;
 import tablas.Gerente;
@@ -37,6 +38,9 @@ public class InicioSesionMetodosLogicaPaginas {
                     if (contrasena.equals(usuario.getContrasena())) {
 
                         // Inicio Correcto
+                        
+                        InicioSesionIntermedioPaginas.idPersonaLogueada = usuario.getId();
+                        
                         return "inicioPaciente.xhtml";
 
                     } else {
@@ -72,6 +76,9 @@ public class InicioSesionMetodosLogicaPaginas {
                     if (contrasena.equals(administrador.getContrasena())) {
 
                         // Inicio Correcto
+                        
+                        InicioSesionIntermedioPaginas.idPersonaLogueada = administrador.getId();
+                        
                         return "inicioAdministrador.xhtml";
 
                     } else {
@@ -107,6 +114,9 @@ public class InicioSesionMetodosLogicaPaginas {
                     if (contrasena.equals(farmaceuta.getContrasena())) {
 
                         // Inicio Correcto
+                        
+                        InicioSesionIntermedioPaginas.idPersonaLogueada = farmaceuta.getId();
+                        
                         return "inicioFarmaceuta.xhtml";
 
                     } else {
@@ -142,6 +152,9 @@ public class InicioSesionMetodosLogicaPaginas {
                     if (contrasena.equals(gerente.getContrasena())) {
 
                         // Inicio Correcto
+                        
+                        InicioSesionIntermedioPaginas.idPersonaLogueada = gerente.getId();
+                        
                         return "inicioGerente.xhtml";
 
                     } else {
@@ -177,6 +190,9 @@ public class InicioSesionMetodosLogicaPaginas {
                     if (contrasena.equals(medico.getContrasena())) {
 
                         // Inicio Correcto
+                        
+                        InicioSesionIntermedioPaginas.idPersonaLogueada = medico.getId();
+                        
                         return "inicioMedico.xhtml";
 
                     } else {

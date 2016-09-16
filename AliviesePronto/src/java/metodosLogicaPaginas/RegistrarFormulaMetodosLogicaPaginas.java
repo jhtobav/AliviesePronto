@@ -5,12 +5,20 @@
  */
 package metodosLogicaPaginas;
 
+import consultasBaseDatos.FormulaConsultaBaseDatos;
+import consultasBaseDatos.MedicoConsultaBaseDatos;
 import consultasBaseDatos.ProductoConsultaBaseDatos;
+import consultasBaseDatos.ProductoVendidoConsultaBaseDatos;
 import consultasBaseDatos.UsuarioConsultaBaseDatos;
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Date;
+import tablas.Formula;
 import tablas.Producto;
+import tablas.ProductoVendido;
 import tablas.Usuario;
+import tablas.Venta;
+import transporteDatos.FormulaTransporteDatos;
 import transporteDatos.ProductoTransporteDatos;
 import transporteDatos.UsuarioTransporteDatos;
 
@@ -24,7 +32,7 @@ public class RegistrarFormulaMetodosLogicaPaginas {
         
         List<Producto> listaProductos = new ProductoConsultaBaseDatos().obtenerProductos();
         
-        List<ProductoTransporteDatos> listaProductossTransporteDatos = new ArrayList<>();
+        List<ProductoTransporteDatos> listaProductosTransporteDatos = new ArrayList<>();
         
         ProductoTransporteDatos productoTransporteDatos;
         
@@ -44,11 +52,11 @@ public class RegistrarFormulaMetodosLogicaPaginas {
             productoTransporteDatos.setPrecioUnitarioVenta(producto.getPrecioUnitarioVenta());
             productoTransporteDatos.setPresentacion(producto.getPresentacion());
             
-            listaProductossTransporteDatos.add(productoTransporteDatos);
+            listaProductosTransporteDatos.add(productoTransporteDatos);
             
         }
         
-        return listaProductossTransporteDatos;
+        return listaProductosTransporteDatos;
         
     }
     
@@ -64,6 +72,7 @@ public class RegistrarFormulaMetodosLogicaPaginas {
             
             usuarioTransporteDatos = new UsuarioTransporteDatos();
             
+            usuarioTransporteDatos.setId(usuario.getId());
             usuarioTransporteDatos.setNumDocumento(usuario.getNumDocumento());
             usuarioTransporteDatos.setNombreUsuario(usuario.getNombreUsuario());
             usuarioTransporteDatos.setPrimerNombre(usuario.getPrimerNombre());
@@ -83,6 +92,50 @@ public class RegistrarFormulaMetodosLogicaPaginas {
         }
         
         return listaUsuariosTransporteDatos;
+        
+    }
+    
+    public String registrarFormula(FormulaTransporteDatos formulaTransporteDatos){
+        
+        Formula formula = new Formula();
+        
+        UsuarioConsultaBaseDatos usuarioConsultaBaseDatos = new UsuarioConsultaBaseDatos();
+        ProductoVendidoConsultaBaseDatos productoVendidoConsultaBaseDatos = new ProductoVendidoConsultaBaseDatos();
+        FormulaConsultaBaseDatos formulaConsultaBaseDatos = new FormulaConsultaBaseDatos();
+        
+        formula.setUsuarioFormulaFormulaId(usuarioConsultaBaseDatos
+                .encontrarPorIdUsuario(formulaTransporteDatos.getIdUsuario()));       
+        formula.setMedicoFormulaFormulaId(new MedicoConsultaBaseDatos()
+                .encontrarPorIdMedico(formulaTransporteDatos.getIdMedico()));
+        formula.setFechaEmision(new Date());
+        formula.setDescripcion(formulaTransporteDatos.getDescripcion());
+        formula.setEstado(true);
+        
+        formula = formulaConsultaBaseDatos.crearFormula(formula);
+        
+        ProductoVendido productoVendido;
+        
+        for(ProductoTransporteDatos productoTransporteDatos : formulaTransporteDatos.getProductos()){
+            
+            productoVendido = new ProductoVendido();
+            
+            productoVendido.setNombre(productoTransporteDatos.getNombre());
+            productoVendido.setDescripcion(productoTransporteDatos.getDescripcion());
+            productoVendido.setMarca(productoTransporteDatos.getMarca());
+            productoVendido.setImagen(productoTransporteDatos.getImagen());
+            productoVendido.setPresentacion(productoTransporteDatos.getPresentacion());
+            productoVendido.setPrecioUnitarioCompra(productoTransporteDatos.getPrecioUnitarioCompra());
+            productoVendido.setPrecioUnitarioVenta(productoTransporteDatos.getPrecioUnitarioVenta());
+            productoVendido.setTipo(productoTransporteDatos.getTipo());
+            productoVendido.setCantidadVendida(1);
+            productoVendido.setFormulaProductoVendidoProductoVendidoId(formula);
+            productoVendido.setVentaProductoVendidoProductoVendidoId(new Venta());
+            
+            productoVendidoConsultaBaseDatos.crearProductoVendido(productoVendido);
+            
+        }
+        
+        return "exito";
         
     }
     

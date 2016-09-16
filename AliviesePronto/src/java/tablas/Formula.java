@@ -10,8 +10,11 @@ import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Cacheable;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -22,6 +25,7 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
 
@@ -37,14 +41,15 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Formula.findAll", query = "SELECT f FROM Formula f"),
     @NamedQuery(name = "Formula.findById", query = "SELECT f FROM Formula f WHERE f.id = :id"),
     @NamedQuery(name = "Formula.findByFechaEmision", query = "SELECT f FROM Formula f WHERE f.fechaEmision = :fechaEmision"),
-    @NamedQuery(name = "Formula.findByEstado", query = "SELECT f FROM Formula f WHERE f.estado = :estado")})
+    @NamedQuery(name = "Formula.findByEstado", query = "SELECT f FROM Formula f WHERE f.estado = :estado"),
+    @NamedQuery(name = "Formula.findByDescripcion", query = "SELECT f FROM Formula f WHERE f.descripcion = :descripcion")})
 public class Formula implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
-    @NotNull
     @Column(name = "Id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)  
     private Long id;
     @Basic(optional = false)
     @NotNull
@@ -55,14 +60,19 @@ public class Formula implements Serializable {
     @NotNull
     @Column(name = "estado")
     private boolean estado;
+    @Basic(optional = false)
+    @NotNull
+    @Size(min = 1, max = 2147483647)
+    @Column(name = "descripcion")
+    private String descripcion;
     @JoinColumn(name = "MedicoFormula_Formula_Id", referencedColumnName = "Id")
     @ManyToOne(optional = false)
     private Medico medicoFormulaFormulaId;
     @JoinColumn(name = "UsuarioFormula_Formula_Id", referencedColumnName = "Id")
     @ManyToOne(optional = false)
     private Usuario usuarioFormulaFormulaId;
-    @OneToMany(mappedBy = "formulaProductoProductoId")
-    private Collection<Producto> productoCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "formulaProductoVendidoProductoVendidoId")
+    private Collection<ProductoVendido> productoVendidoCollection;
 
     public Formula() {
     }
@@ -71,10 +81,11 @@ public class Formula implements Serializable {
         this.id = id;
     }
 
-    public Formula(Long id, Date fechaEmision, boolean estado) {
+    public Formula(Long id, Date fechaEmision, boolean estado, String descripcion) {
         this.id = id;
         this.fechaEmision = fechaEmision;
         this.estado = estado;
+        this.descripcion = descripcion;
     }
 
     public Long getId() {
@@ -101,6 +112,14 @@ public class Formula implements Serializable {
         this.estado = estado;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public Medico getMedicoFormulaFormulaId() {
         return medicoFormulaFormulaId;
     }
@@ -118,12 +137,12 @@ public class Formula implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Producto> getProductoCollection() {
-        return productoCollection;
+    public Collection<ProductoVendido> getProductoVendidoCollection() {
+        return productoVendidoCollection;
     }
 
-    public void setProductoCollection(Collection<Producto> productoCollection) {
-        this.productoCollection = productoCollection;
+    public void setProductoVendidoCollection(Collection<ProductoVendido> productoVendidoCollection) {
+        this.productoVendidoCollection = productoVendidoCollection;
     }
 
     @Override

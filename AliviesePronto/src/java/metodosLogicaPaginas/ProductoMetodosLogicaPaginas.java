@@ -22,7 +22,6 @@ public class ProductoMetodosLogicaPaginas {
         producto.setCantidadInventario(productoTransporteDatos.getCantidadInventario());
         producto.setCantidadMinimaInventario(productoTransporteDatos.getCantidadMinimaInventario());
         producto.setTipo(productoTransporteDatos.getTipo());
-        producto.setFormulaProductoProductoId(null);
         
         ProductoConsultaBaseDatos productoConsultaBaseDatos = new ProductoConsultaBaseDatos();
         productoConsultaBaseDatos.crearProducto(producto);

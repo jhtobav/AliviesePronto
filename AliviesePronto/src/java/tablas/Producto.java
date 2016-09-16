@@ -13,8 +13,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -97,9 +95,6 @@ public class Producto implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "tipo")
     private String tipo;
-    @JoinColumn(name = "FormulaProducto_Producto_Id", referencedColumnName = "Id")
-    @ManyToOne
-    private Formula formulaProductoProductoId;
 
     public Producto() {
     }
@@ -208,14 +203,6 @@ public class Producto implements Serializable {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
-    }
-
-    public Formula getFormulaProductoProductoId() {
-        return formulaProductoProductoId;
-    }
-
-    public void setFormulaProductoProductoId(Formula formulaProductoProductoId) {
-        this.formulaProductoProductoId = formulaProductoProductoId;
     }
 
     @Override

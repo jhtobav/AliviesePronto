@@ -58,6 +58,10 @@ public class Venta implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "numDocUsuario")
     private String numDocUsuario;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "idUsuario")
+    private long idUsuario;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "ventaProductoVendidoProductoVendidoId")
     private Collection<ProductoVendido> productoVendidoCollection;
 
@@ -139,6 +143,14 @@ public class Venta implements Serializable {
     @Override
     public String toString() {
         return "tablas.Venta[ id=" + id + " ]";
+    }
+
+    public long getIdUsuario() {
+        return idUsuario;
+    }
+
+    public void setIdUsuario(long idUsuario) {
+        this.idUsuario = idUsuario;
     }
     
 }

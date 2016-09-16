@@ -22,6 +22,7 @@ public class UsuarioConsultaBaseDatos {
             usuario = em.find(Usuario.class
                     , idUsuario);
         } catch (Exception e){
+            usuario.getId();
         } finally {
             em.close();
             return usuario;

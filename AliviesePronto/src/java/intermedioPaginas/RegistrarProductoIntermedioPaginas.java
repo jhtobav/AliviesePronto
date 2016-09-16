@@ -176,7 +176,7 @@ public class RegistrarProductoIntermedioPaginas {
             if (registrarProductoMetodosLogicaPaginas
                     .RegistrarProducto(productoTransporteDatos)) {
 
-                return "pagina exito";
+                return "carrouselBienvenida.xhtml";
 
             } else {
 

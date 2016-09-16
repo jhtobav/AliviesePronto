@@ -11,6 +11,8 @@ public class InicioSesionIntermedioPaginas {
     private String nombreUsuario = null;
     private String contrasena = null;
 
+    public static Long idPersonaLogueada = null;
+    
     public InicioSesionIntermedioPaginas() {
     }
     
@@ -50,6 +52,14 @@ public class InicioSesionIntermedioPaginas {
 
     public void setContrasena(String contrasena) {
         this.contrasena = contrasena;
+    }
+
+    public static Long getIdPersonaLogueada() {
+        return idPersonaLogueada;
+    }
+
+    public static void setIdPersonaLogueada(Long idPersonaLogueada) {
+        InicioSesionIntermedioPaginas.idPersonaLogueada = idPersonaLogueada;
     }
     
     public String inicioSesion(String tipoUsuario){

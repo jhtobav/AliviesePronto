@@ -27,6 +27,20 @@ public class ProductoConsultaBaseDatos {
         }
 
     }
+    
+    public Producto encontrarPorIdProducto(Long idProducto) {
+        EntityManager em = emf.createEntityManager();
+        Producto producto = null;
+        try {
+            producto = em.find(Producto.class
+                    , idProducto);
+        } catch (Exception e){
+        } finally {
+            em.close();
+            return producto;
+        }
+      
+    } 
 
     public List<Producto> obtenerProductos(){
             
