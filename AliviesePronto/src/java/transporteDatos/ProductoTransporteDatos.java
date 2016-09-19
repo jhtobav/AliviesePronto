@@ -12,6 +12,7 @@ package transporteDatos;
 public class ProductoTransporteDatos {
     
     private long id;
+    private long idProductoInventario;
     private String nombre;
     private String descripcion;
     private String marca;
@@ -29,6 +30,14 @@ public class ProductoTransporteDatos {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public long getIdProductoInventario() {
+        return idProductoInventario;
+    }
+
+    public void setIdProductoInventario(long idProductoInventario) {
+        this.idProductoInventario = idProductoInventario;
     }
 
     public String getNombre() {

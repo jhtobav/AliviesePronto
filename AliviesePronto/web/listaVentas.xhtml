@@ -1,0 +1,83 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Pharmacy</title>
+    </h:head>
+    <h:body>
+        <b:panelGrid colSpans="12">
+            <b:panel title="Listado de Ventas" id="targetPage" look="primary" collapsible="false">
+                <h:form id="signUpForm">
+                    <b:container>
+                        <b:row>
+                            <div class="row spacedMargin">
+                                <b:dataTable id="tablaTodosProductos" value="#{listarVentasIntermedioPaginas.ventas}" var="venta">
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Fecha de Venta
+                                        </f:facet>
+                                        <h:outputText value="#{venta.idVenta}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Tipo de Venta
+                                        </f:facet>
+                                        <h:outputText value="#{venta.tipoVenta}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Valor del Descuento
+                                        </f:facet>
+                                        <h:outputText value="#{venta.valorDescuento}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Valor de Venta Sin Descuento
+                                        </f:facet>
+                                        <h:outputText value="#{venta.valorSinDescuento}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Valor de Venta Con Descuento
+                                        </f:facet>
+                                        <h:outputText value="#{venta.valorTotal}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
+                                            Ver Detalle
+                                        </f:facet>
+                                        <b:commandButton action="#{listarVentasIntermedioPaginas.verVenta(venta)}" look="primary" value="Ver Detalle"/>
+                                    </h:column>
+                                </b:dataTable>
+                            </div>
+                        </b:row>
+                        <b:row>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Valor Total de Ventas"/>
+                                </b:row>
+                                <b:row>
+                                    <b:inputText disabled="true" placeholder="Valor Total de Ventas" value="#{listarVentasIntermedioPaginas.valorTotalVentas}"/>
+                                </b:row>
+                            </b:column>
+                            <b:column span="1"></b:column>
+                            <b:column span="4">
+                                <b:row>
+                                    <h:outputText value="Valor Total de Descuentos"/>
+                                </b:row>
+                                <b:row>
+                                    <b:inputText disabled="true" placeholder="Valor Total de Descuentos" value="#{listarVentasIntermedioPaginas.valorTotalDescuentos}"/>
+                                </b:row>
+                            </b:column>
+                        </b:row>
+                    </b:container>
+                </h:form>
+            </b:panel>
+        </b:panelGrid>
+    </h:body>
+</html>
+

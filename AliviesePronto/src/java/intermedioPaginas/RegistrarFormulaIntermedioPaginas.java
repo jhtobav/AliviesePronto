@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import metodosLogicaPaginas.RegistrarFormulaMetodosLogicaPaginas;
+import metodosLogicaPaginas.FormulaMetodosLogicaPaginas;
 import transporteDatos.FormulaTransporteDatos;
 import transporteDatos.ProductoTransporteDatos;
 import transporteDatos.UsuarioTransporteDatos;
@@ -26,7 +26,7 @@ public class RegistrarFormulaIntermedioPaginas {
 
     public String init(){
                 
-        listaUsuarios = new RegistrarFormulaMetodosLogicaPaginas().listarUsuarios();
+        listaUsuarios = new FormulaMetodosLogicaPaginas().listarUsuarios();
         
         idUsuario = null;
         numDocumento = null;
@@ -86,7 +86,7 @@ public class RegistrarFormulaIntermedioPaginas {
 
     public String irRegistrarFormula(Long idUsuarioSeleccionado, Long numDocumentoSeleccionado){
 
-        todosLosProductos = new RegistrarFormulaMetodosLogicaPaginas().listarProductos();
+        todosLosProductos = new FormulaMetodosLogicaPaginas().listarProductos();
         productosAgregados = new ArrayList<>();
         
         idUsuario = idUsuarioSeleccionado;
@@ -108,7 +108,7 @@ public class RegistrarFormulaIntermedioPaginas {
             formulaTransporteDatos.setProductos(productosAgregados);
             formulaTransporteDatos.setDescripcion(descripcion);
             
-            String respuesta = new RegistrarFormulaMetodosLogicaPaginas().registrarFormula(formulaTransporteDatos);
+            String respuesta = new FormulaMetodosLogicaPaginas().registrarFormula(formulaTransporteDatos);
             
             if("exito".equals(respuesta)){
                 

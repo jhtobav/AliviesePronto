@@ -40,6 +40,8 @@ public class InicioSesionMetodosLogicaPaginas {
                         // Inicio Correcto
                         
                         InicioSesionIntermedioPaginas.idPersonaLogueada = usuario.getId();
+                        InicioSesionIntermedioPaginas.nombrePersonaLogueada 
+                                = usuario.getPrimerNombre() + " " + usuario.getPrimerApellido();
                         
                         return "inicioPaciente.xhtml";
 
@@ -78,6 +80,8 @@ public class InicioSesionMetodosLogicaPaginas {
                         // Inicio Correcto
                         
                         InicioSesionIntermedioPaginas.idPersonaLogueada = administrador.getId();
+                        InicioSesionIntermedioPaginas.nombrePersonaLogueada 
+                                = administrador.getPrimerNombre() + " " + administrador.getPrimerApellido();
                         
                         return "inicioAdministrador.xhtml";
 
@@ -116,6 +120,8 @@ public class InicioSesionMetodosLogicaPaginas {
                         // Inicio Correcto
                         
                         InicioSesionIntermedioPaginas.idPersonaLogueada = farmaceuta.getId();
+                        InicioSesionIntermedioPaginas.nombrePersonaLogueada 
+                                = farmaceuta.getPrimerNombre() + " " + farmaceuta.getPrimerApellido();
                         
                         return "inicioFarmaceuta.xhtml";
 
@@ -154,6 +160,8 @@ public class InicioSesionMetodosLogicaPaginas {
                         // Inicio Correcto
                         
                         InicioSesionIntermedioPaginas.idPersonaLogueada = gerente.getId();
+                        InicioSesionIntermedioPaginas.nombrePersonaLogueada 
+                                = gerente.getPrimerNombre() + " " + gerente.getPrimerApellido();
                         
                         return "inicioGerente.xhtml";
 
@@ -192,6 +200,8 @@ public class InicioSesionMetodosLogicaPaginas {
                         // Inicio Correcto
                         
                         InicioSesionIntermedioPaginas.idPersonaLogueada = medico.getId();
+                        InicioSesionIntermedioPaginas.nombrePersonaLogueada 
+                                = medico.getPrimerNombre() + " " + medico.getPrimerApellido();
                         
                         return "inicioMedico.xhtml";
 

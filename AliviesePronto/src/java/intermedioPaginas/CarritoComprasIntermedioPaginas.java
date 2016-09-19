@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import metodosLogicaPaginas.ProductoMetodosLogicaPaginas;
 import transporteDatos.ProductoTransporteDatos;
 
 @ManagedBean(name="carritoComprasIntermedioPaginas")
@@ -21,7 +22,7 @@ public class CarritoComprasIntermedioPaginas {
     public void init(){
         
         numCupon = null;
-        valorCupon = null;
+        valorCupon = 0l;
         valorTotal = null;
         valorConDescuento = null;
         
@@ -112,6 +113,23 @@ public class CarritoComprasIntermedioPaginas {
         }
         
         return "pagarCarrito.xhtml";
+        
+    }
+    
+    public String pagar(){
+        
+        ProductoMetodosLogicaPaginas productoMetodosLogicaPaginas = new ProductoMetodosLogicaPaginas();
+        
+        productoMetodosLogicaPaginas.pagarCompraCarrito(productosCarrito, valorCupon, valorTotal);  
+        
+        numCupon = null;
+        valorCupon = 0l;
+        valorTotal = null;
+        valorConDescuento = null;
+        
+        productosCarrito = new ArrayList<>();
+        
+        return "inicio.xhtml";
         
     }
     

@@ -30,8 +30,7 @@ public class RegistrarProductoIntermedioPaginas {
     public RegistrarProductoIntermedioPaginas() {
     }
 
-    @PostConstruct
-    public void init() {
+    public String init() {
 
         nombre = null;
         descripcion = null;
@@ -43,6 +42,8 @@ public class RegistrarProductoIntermedioPaginas {
         cantidadInventario = null;
         cantidadMinimaInventario = null;
         tipo = null;
+        
+        return "crearProducto.xhtml";
 
     }
 

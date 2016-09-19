@@ -41,7 +41,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "ProductoVendido.findByPrecioUnitarioCompra", query = "SELECT p FROM ProductoVendido p WHERE p.precioUnitarioCompra = :precioUnitarioCompra"),
     @NamedQuery(name = "ProductoVendido.findByPrecioUnitarioVenta", query = "SELECT p FROM ProductoVendido p WHERE p.precioUnitarioVenta = :precioUnitarioVenta"),
     @NamedQuery(name = "ProductoVendido.findByCantidadVendida", query = "SELECT p FROM ProductoVendido p WHERE p.cantidadVendida = :cantidadVendida"),
-    @NamedQuery(name = "ProductoVendido.findByTipo", query = "SELECT p FROM ProductoVendido p WHERE p.tipo = :tipo")})
+    @NamedQuery(name = "ProductoVendido.findByTipo", query = "SELECT p FROM ProductoVendido p WHERE p.tipo = :tipo"),
+    @NamedQuery(name = "ProductoVendido.findByIdProductoInventario", query = "SELECT p FROM ProductoVendido p WHERE p.idProductoInventario = :idProductoInventario")})
 public class ProductoVendido implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -92,8 +93,12 @@ public class ProductoVendido implements Serializable {
     @Size(min = 1, max = 2147483647)
     @Column(name = "tipo")
     private String tipo;
+    @Basic(optional = false)
+    @NotNull
+    @Column(name = "idProductoInventario")
+    private long idProductoInventario;
     @JoinColumn(name = "FormulaProductoVendido_ProductoVendido_Id", referencedColumnName = "Id")
-    @ManyToOne(optional = false)
+    @ManyToOne
     private Formula formulaProductoVendidoProductoVendidoId;
     @JoinColumn(name = "VentaProductoVendido_ProductoVendido_Id", referencedColumnName = "Id")
     @ManyToOne
@@ -106,7 +111,7 @@ public class ProductoVendido implements Serializable {
         this.id = id;
     }
 
-    public ProductoVendido(Long id, String nombre, String descripcion, String marca, String imagen, String presentacion, long precioUnitarioCompra, long precioUnitarioVenta, int cantidadVendida, String tipo) {
+    public ProductoVendido(Long id, String nombre, String descripcion, String marca, String imagen, String presentacion, long precioUnitarioCompra, long precioUnitarioVenta, int cantidadVendida, String tipo, long idProductoInventario) {
         this.id = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -117,6 +122,7 @@ public class ProductoVendido implements Serializable {
         this.precioUnitarioVenta = precioUnitarioVenta;
         this.cantidadVendida = cantidadVendida;
         this.tipo = tipo;
+        this.idProductoInventario = idProductoInventario;
     }
 
     public Long getId() {
@@ -197,6 +203,14 @@ public class ProductoVendido implements Serializable {
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
+    }
+
+    public long getIdProductoInventario() {
+        return idProductoInventario;
+    }
+
+    public void setIdProductoInventario(long idProductoInventario) {
+        this.idProductoInventario = idProductoInventario;
     }
 
     public Formula getFormulaProductoVendidoProductoVendidoId() {

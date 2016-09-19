@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import tablas.ProductoVendido;
+import tablas.Venta;
 
 public class ProductoVendidoConsultaBaseDatos {
     
@@ -60,6 +61,29 @@ public class ProductoVendidoConsultaBaseDatos {
         } finally {
             em.close();
             return productosVendidos;
+        }
+        
+    }
+    
+    public ProductoVendido registrarCompra(Long idProductoVendido, Venta venta){
+        
+        EntityManager em = emf.createEntityManager();  
+        
+        em.getTransaction().begin();
+        
+        ProductoVendido nuevoProductoVendido = new ProductoVendido();
+        
+        try {
+            nuevoProductoVendido = em.merge(em.find(ProductoVendido.class, idProductoVendido));
+            
+            nuevoProductoVendido.setVentaProductoVendidoProductoVendidoId(venta);
+            
+            em.getTransaction().commit();
+        } catch (Exception e){
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+            return nuevoProductoVendido;
         }
         
     }

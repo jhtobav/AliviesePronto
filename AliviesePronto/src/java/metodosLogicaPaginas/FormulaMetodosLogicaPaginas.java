@@ -10,6 +10,7 @@ import consultasBaseDatos.MedicoConsultaBaseDatos;
 import consultasBaseDatos.ProductoConsultaBaseDatos;
 import consultasBaseDatos.ProductoVendidoConsultaBaseDatos;
 import consultasBaseDatos.UsuarioConsultaBaseDatos;
+import consultasBaseDatos.VentaConsultaBaseDatos;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Date;
@@ -26,7 +27,7 @@ import transporteDatos.UsuarioTransporteDatos;
  *
  * @author jhtob
  */
-public class RegistrarFormulaMetodosLogicaPaginas {
+public class FormulaMetodosLogicaPaginas {
     
     public List<ProductoTransporteDatos> listarProductos(){
         
@@ -119,6 +120,7 @@ public class RegistrarFormulaMetodosLogicaPaginas {
             
             productoVendido = new ProductoVendido();
             
+            productoVendido.setIdProductoInventario(productoTransporteDatos.getId());
             productoVendido.setNombre(productoTransporteDatos.getNombre());
             productoVendido.setDescripcion(productoTransporteDatos.getDescripcion());
             productoVendido.setMarca(productoTransporteDatos.getMarca());
@@ -132,6 +134,37 @@ public class RegistrarFormulaMetodosLogicaPaginas {
             productoVendido.setVentaProductoVendidoProductoVendidoId(null);
             
             productoVendidoConsultaBaseDatos.crearProductoVendido(productoVendido);
+            
+        }
+        
+        return "exito";
+        
+    }
+    
+    public String despacharFormula(FormulaTransporteDatos formulaTransporteDatos, Long valorCupon, Long valorVenta){
+        
+        FormulaConsultaBaseDatos formulaConsultaBaseDatos = new FormulaConsultaBaseDatos();
+        VentaConsultaBaseDatos ventaConsultaBaseDatos = new VentaConsultaBaseDatos();
+        ProductoConsultaBaseDatos productoConsultaBaseDatos = new ProductoConsultaBaseDatos();
+        ProductoVendidoConsultaBaseDatos  productoVendidoConsultaBaseDatos = new ProductoVendidoConsultaBaseDatos();
+        
+        Venta venta = new Venta();
+        venta.setFecha(new Date());
+        venta.setIdUsuario(formulaTransporteDatos.getIdUsuario());
+        venta.setTipoVenta("Venta al Público");
+        venta.setValorDescuento(valorCupon);
+        venta.setValorSinDescuento(valorVenta);
+        venta.setValorTotal(valorVenta - valorCupon);
+
+        venta = ventaConsultaBaseDatos.crearVenta(venta);
+        
+        formulaConsultaBaseDatos.despacharFormula(formulaTransporteDatos.getIdFormula());
+        
+        for(ProductoTransporteDatos productoTransporteDatos : formulaTransporteDatos.getProductos()){
+                       
+            System.out.println(productoTransporteDatos.getIdProductoInventario());
+            productoConsultaBaseDatos.registrarCompra(productoTransporteDatos.getIdProductoInventario());
+            productoVendidoConsultaBaseDatos.registrarCompra(productoTransporteDatos.getId(), venta);
             
         }
         

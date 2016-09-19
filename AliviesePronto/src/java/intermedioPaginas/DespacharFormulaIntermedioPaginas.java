@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import metodosLogicaPaginas.DespacharFormulaMetodosLogicaPaginas;
+import metodosLogicaPaginas.FormulaMetodosLogicaPaginas;
 import metodosLogicaPaginas.ListarFormulaMetodosLogicaPaginas;
 import transporteDatos.FormulaTransporteDatos;
 import transporteDatos.ProductoTransporteDatos;
@@ -35,7 +35,7 @@ public class DespacharFormulaIntermedioPaginas {
         
         numCupon = null;
         valorTotal = null;
-        valorCupon = null;
+        valorCupon = 0l;
         valorConDescuento = null;
         
         return "despacharFormulaLista.xhtml";
@@ -154,9 +154,9 @@ public class DespacharFormulaIntermedioPaginas {
     
     public String despachar(){
                 
-        DespacharFormulaMetodosLogicaPaginas despacharFormulaMetodosLogicaPaginas = new DespacharFormulaMetodosLogicaPaginas();
+        FormulaMetodosLogicaPaginas formulaMetodosLogicaPaginas = new FormulaMetodosLogicaPaginas();
         
-        despacharFormulaMetodosLogicaPaginas.despacharFormula(formulaSeleccionada);
+        formulaMetodosLogicaPaginas.despacharFormula(formulaSeleccionada, valorCupon, valorTotal);
         
         return init();
         

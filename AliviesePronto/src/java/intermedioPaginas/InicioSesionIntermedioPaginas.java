@@ -10,8 +10,10 @@ public class InicioSesionIntermedioPaginas {
     
     private String nombreUsuario = null;
     private String contrasena = null;
+    private String nombrePersona = null;
 
     public static Long idPersonaLogueada = null;
+    public static String nombrePersonaLogueada = null;
     
     public InicioSesionIntermedioPaginas() {
     }
@@ -20,6 +22,9 @@ public class InicioSesionIntermedioPaginas {
         
         nombreUsuario = null;
         contrasena = null;
+        nombrePersona = null;
+        idPersonaLogueada = null;
+        nombrePersonaLogueada = null;
 
         switch (tipoUsuario) {
             case "Usuario":
@@ -54,12 +59,28 @@ public class InicioSesionIntermedioPaginas {
         this.contrasena = contrasena;
     }
 
+    public String getNombrePersona() {
+        return nombrePersona;
+    }
+
+    public void setNombrePersona(String nombrePersona) {
+        this.nombrePersona = nombrePersona;
+    }
+
     public static Long getIdPersonaLogueada() {
         return idPersonaLogueada;
     }
 
     public static void setIdPersonaLogueada(Long idPersonaLogueada) {
         InicioSesionIntermedioPaginas.idPersonaLogueada = idPersonaLogueada;
+    }
+
+    public static String getNombrePersonaLogueada() {
+        return nombrePersonaLogueada;
+    }
+
+    public static void setNombrePersonaLogueada(String nombrePersonaLogueada) {
+        InicioSesionIntermedioPaginas.nombrePersonaLogueada = nombrePersonaLogueada;
     }
     
     public String inicioSesion(String tipoUsuario){
@@ -71,6 +92,8 @@ public class InicioSesionIntermedioPaginas {
             
             String respuesta = inicioSesionMetodosLogicaPaginas
                     .inicioSesion(nombreUsuario, contrasena, tipoUsuario);
+            
+            nombrePersona = nombrePersonaLogueada;
             
             if ("Error Credenciales".equals(respuesta)){
                 
@@ -91,6 +114,18 @@ public class InicioSesionIntermedioPaginas {
             return "Por favor ingrese su Nombre de Usuario y Contraseña";
             
         }
+        
+    }
+    
+    public String cerrarSesion(){
+        
+        nombreUsuario = null;
+        contrasena = null;
+        nombrePersona = null;
+        idPersonaLogueada = null;
+        nombrePersonaLogueada = null;
+        
+        return "inicio.xhtml";
         
     }
     

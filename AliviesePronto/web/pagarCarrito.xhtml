@@ -80,7 +80,7 @@ and open the template in the editor.
                         </b:inputText>
                     </b:column>
                     <b:column medium-screen="2">
-                        <b:commandButton value="Pagar con cupon" action="${carritoComprasIntermedioPaginas.aplicarDescuento()}"/>
+                        <b:commandButton value="Redimir Cupon" action="${carritoComprasIntermedioPaginas.aplicarDescuento()}"/>
                     </b:column>
                     <b:column medium-screen="1">
                         <h:outputText value="Valor con descuento:" />
@@ -118,8 +118,19 @@ and open the template in the editor.
                     <b:column medium-screen="2">
                     </b:column>
                 </b:row>
+                <b:row>
+                    <br/>
+                    <b:column span="1"></b:column>
+                    <b:column span="4">
+                        <b:commandButton  value="Cancelar" action="carrouselBienvenida.xhtml" look="warning" style="width:100%" />
+                    </b:column>
+                    <b:column span="1"></b:column>
+                    <b:column span="4">
+                        <b:commandButton value="Pagar" action="#{carritoComprasIntermedioPaginas.pagar()}" look="primary" style="width:100%" />
+                    </b:column>
+                    <b:column span="2"></b:column>
+                </b:row>
             </b:container>
-
         </h:form>
     </h:body>
 </html>

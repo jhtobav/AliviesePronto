@@ -6,6 +6,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import tablas.Producto;
+import transporteDatos.ProductoTransporteDatos;
 
 public class ProductoConsultaBaseDatos {
     
@@ -82,6 +83,52 @@ public class ProductoConsultaBaseDatos {
         } finally {
             em.close();
             return productos;
+        }
+        
+    }
+    
+    public Producto actualizarCantidadInventario(ProductoTransporteDatos productoTransporteDatos){
+        
+        EntityManager em = emf.createEntityManager();  
+        
+        em.getTransaction().begin();
+        
+        Producto nuevoProducto = new Producto();
+        
+        try {
+            nuevoProducto = em.merge(em.find(Producto.class, productoTransporteDatos.getId()));
+            
+            nuevoProducto.setCantidadInventario(productoTransporteDatos.getCantidadInventario());
+            
+            em.getTransaction().commit();
+        } catch (Exception e){
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+            return nuevoProducto;
+        }
+        
+    }
+    
+    public Producto registrarCompra(Long idProducto){
+        
+        EntityManager em = emf.createEntityManager();  
+        
+        em.getTransaction().begin();
+        
+        Producto nuevoProducto = new Producto();
+        
+        try {
+            nuevoProducto = em.merge(em.find(Producto.class, idProducto));
+            
+            nuevoProducto.setCantidadInventario(nuevoProducto.getCantidadInventario() - 1);
+            
+            em.getTransaction().commit();
+        } catch (Exception e){
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+            return nuevoProducto;
         }
         
     }

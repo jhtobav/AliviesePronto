@@ -173,6 +173,7 @@ public class ListarFormulaMetodosLogicaPaginas {
                 productoTransporteDatos = new ProductoTransporteDatos();
 
                 productoTransporteDatos.setId(productoVendido.getId());
+                productoTransporteDatos.setIdProductoInventario(productoVendido.getIdProductoInventario());
                 productoTransporteDatos.setDescripcion(productoVendido.getDescripcion());
                 productoTransporteDatos.setNombre(productoVendido.getNombre());
                 productoTransporteDatos.setMarca(productoVendido.getMarca());

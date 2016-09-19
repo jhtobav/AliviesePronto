@@ -9,7 +9,7 @@
         <script src="js/aliviesePronto.js" type="text/javascript"></script>
     </h:head>
     <h:body style="padding-top: 60px" onload="inicioLoaded()">
-            <b:navBar brand="Bienvenido Farmaceuta #{inicioSesionIntermedioPaginas.nombrePersona}" brandHref="#" inverse="true" fixed="top" fluid="true">
+        <b:navBar brand="Bienvenido Gerente #{inicioSesionIntermedioPaginas.nombrePersona}" brandHref="#" inverse="true" fixed="top" fluid="true">
             <h:form styleClass="navbar-form navbar-right">
                 <div class="form-group">
                     <b:commandButton  value="Salir" action="#{inicioSesionIntermedioPaginas.cerrarSesion()}" look="warning" style="width:100%" />
@@ -24,8 +24,8 @@
                             <li><h:link id="carrouselBienvenida" outcome="carrouselBienvenida.xhtml" value="Bienvenido" target="inicioFrame"/></li>
                         </b:listLinks>
                         <b:listLinks>
-                            <li><h:commandLink action="#{despacharFormulaIntermedioPaginas.init()}" value="Despachar Formula" target="inicioFrame"/></li>
-                            <li><h:commandLink action="#{despacharFormulaListaDespachadasIntermedioPaginas.init()}" value="Formulas Despachadas" target="inicioFrame"/></li>
+                            <b:navLink header="Reportes" />
+                            <li><h:commandLink action="#{listarVentasIntermedioPaginas.init()}" value="Listar Ventas" target="inicioFrame"/></li>
                         </b:listLinks>
                     </b:column>
                     <b:column col-sm="10" col-md="10" col-lg="10" styleClass="main">
