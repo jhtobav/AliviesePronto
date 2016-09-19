@@ -17,6 +17,12 @@
                                 <b:dataTable id="tablaTodosProductos" value="#{despacharFormulaIntermedioPaginas.formulas}" var="formula">
                                     <h:column>
                                         <f:facet name="header">
+                                            Id Formula
+                                        </f:facet>
+                                        <h:outputText value="#{formula.id}"/>
+                                    </h:column>
+                                    <h:column>
+                                        <f:facet name="header">
                                             Num Documento Usuario
                                         </f:facet>
                                         <h:outputText value="#{formula.numDocumentoUsuario}"/>
