@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+    <h:head>
+        <title>Pharmacy</title>
+        <link href="css/aliviesePronto.css" rel="stylesheet"/>
+    </h:head>
+    <h:body>
+        <h:form id="loginForm" >
+            <b:container styleClass="main">
+                <b:row>
+                    <b:column span="12"></b:column>
+                </b:row>
+                <b:row class="top-buffer">
+                    <b:dataTable id="tablaTodosProductos" value="#{eliminarProductoIntermedioPaginas.productos}" var="producto">
+                        <h:column>
+                            <f:facet name="header">
+                                Nombre del producto
+                            </f:facet>
+                            <h:outputText value="#{producto.nombre}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                Fabricante
+                            </f:facet>
+                            <h:outputText value="#{producto.marca}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                Precio
+                            </f:facet>
+                            <h:outputText value="#{producto.precioUnitarioCompra}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                Descripcion
+                            </f:facet>
+                            <h:outputText value="#{producto.descripcion}"/>
+                        </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                Eliminar
+                            </f:facet>
+                            <b:commandButton action="#{eliminarProductoIntermedioPaginas.eliminarProducto(producto.id)}" look="primary" value="Eliminar"/>
+                        </h:column>
+                    </b:dataTable>
+                </b:row>
+            </b:container>
+        </h:form>
+    </h:body>
+</html>

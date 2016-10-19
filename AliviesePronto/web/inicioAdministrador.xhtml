@@ -38,8 +38,8 @@
                             </b:panel>
                             <b:panel title="Productos" collapsed="true">
                                 <li><h:commandLink action="#{registrarProductoIntermedioPaginas.init()}" value="Registrar Productos" target="inicioFrame"/></li>
-                                <li><h:commandLink action="modificarProducto" value="Modificar Productos" target="inicioFrame"/></li>
-                                <li><h:commandLink action="eliminarProducto" value="Eliminar Productos" target="inicioFrame"/></li>
+                                <li><h:commandLink action="#{modificarProductoIntermedioPaginas.init()}" value="Modificar Productos" target="inicioFrame"/></li>
+                                <li><h:commandLink action="#{eliminarProductoIntermedioPaginas.init()}" value="Eliminar Productos" target="inicioFrame"/></li>
                             </b:panel>
                             <li><h:commandLink action="#{inventarioListarProductosIntermedioPaginas.init()}" value="Actualizar Inventario" target="inicioFrame"/></li>
                             <li><h:commandLink action="#{generarCuponIntermedioPaginas.init()}" value="Generar Cupon" target="inicioFrame"/></li>

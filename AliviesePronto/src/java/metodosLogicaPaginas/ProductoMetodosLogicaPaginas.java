@@ -13,10 +13,10 @@ import transporteDatos.ProductoTransporteDatos;
 
 public class ProductoMetodosLogicaPaginas {
 
-    public boolean RegistrarProducto(ProductoTransporteDatos productoTransporteDatos){
-    
+    public boolean RegistrarProducto(ProductoTransporteDatos productoTransporteDatos) {
+
         Producto producto = new Producto();
-        
+
         producto.setNombre(productoTransporteDatos.getNombre());
         producto.setDescripcion(productoTransporteDatos.getDescripcion());
         producto.setMarca(productoTransporteDatos.getMarca());
@@ -27,26 +27,26 @@ public class ProductoMetodosLogicaPaginas {
         producto.setCantidadInventario(productoTransporteDatos.getCantidadInventario());
         producto.setCantidadMinimaInventario(productoTransporteDatos.getCantidadMinimaInventario());
         producto.setTipo(productoTransporteDatos.getTipo());
-        
+
         ProductoConsultaBaseDatos productoConsultaBaseDatos = new ProductoConsultaBaseDatos();
         productoConsultaBaseDatos.crearProducto(producto);
-        
+
         return true;
-        
+
     }
-    
-    public List<ProductoTransporteDatos> listarProductosPublicos(){
-        
+
+    public List<ProductoTransporteDatos> listarProductosPublicos() {
+
         List<Producto> listaProductosPublicos = new ProductoConsultaBaseDatos().obtenerProductosPublicos();
-        
+
         List<ProductoTransporteDatos> listaProductosPublicosTransporteDatos = new ArrayList<>();
-        
+
         ProductoTransporteDatos productoTransporteDatos;
-        
-        for(Producto producto : listaProductosPublicos){
-            
+
+        for (Producto producto : listaProductosPublicos) {
+
             productoTransporteDatos = new ProductoTransporteDatos();
-            
+
             productoTransporteDatos.setId(producto.getId());
             productoTransporteDatos.setNombre(producto.getNombre());
             productoTransporteDatos.setDescripcion(producto.getDescripcion());
@@ -58,27 +58,27 @@ public class ProductoMetodosLogicaPaginas {
             productoTransporteDatos.setCantidadInventario(producto.getCantidadInventario());
             productoTransporteDatos.setCantidadMinimaInventario(producto.getCantidadMinimaInventario());
             productoTransporteDatos.setTipo(producto.getTipo());
-            
+
             listaProductosPublicosTransporteDatos.add(productoTransporteDatos);
-            
+
         }
-        
+
         return listaProductosPublicosTransporteDatos;
-        
+
     }
-    
-    public List<ProductoTransporteDatos> listarProductos(){
-        
+
+    public List<ProductoTransporteDatos> listarProductos() {
+
         List<Producto> listaProductos = new ProductoConsultaBaseDatos().obtenerProductos();
-        
+
         List<ProductoTransporteDatos> listaProductosTransporteDatos = new ArrayList<>();
-        
+
         ProductoTransporteDatos productoTransporteDatos;
-        
-        for(Producto producto : listaProductos){
-            
+
+        for (Producto producto : listaProductos) {
+
             productoTransporteDatos = new ProductoTransporteDatos();
-            
+
             productoTransporteDatos.setId(producto.getId());
             productoTransporteDatos.setNombre(producto.getNombre());
             productoTransporteDatos.setDescripcion(producto.getDescripcion());
@@ -90,38 +90,62 @@ public class ProductoMetodosLogicaPaginas {
             productoTransporteDatos.setCantidadInventario(producto.getCantidadInventario());
             productoTransporteDatos.setCantidadMinimaInventario(producto.getCantidadMinimaInventario());
             productoTransporteDatos.setTipo(producto.getTipo());
-            
+
             listaProductosTransporteDatos.add(productoTransporteDatos);
-            
+
         }
-        
+
         return listaProductosTransporteDatos;
-        
+
     }
-    
-    public String actualizarInventarioProductos(List<ProductoTransporteDatos> productos){
-                
+
+    public String actualizarInventarioProductos(List<ProductoTransporteDatos> productos) {
+
         ProductoConsultaBaseDatos productoConsultaBaseDatos = new ProductoConsultaBaseDatos();
-        
-        for(ProductoTransporteDatos productoTransporteDatos : productos){
-            
+
+        for (ProductoTransporteDatos productoTransporteDatos : productos) {
+
             productoConsultaBaseDatos.actualizarCantidadInventario(productoTransporteDatos);
-            
+
         }
-        
+
         return "exito";
-        
+
+    }
+
+    public boolean actualizarProducto(ProductoTransporteDatos productoTransporteDatos) {
+        System.out.println(productoTransporteDatos);
+        System.out.println(productoTransporteDatos.getId());
+        Producto producto = new Producto(productoTransporteDatos.getId(), 
+                productoTransporteDatos.getNombre(), 
+                productoTransporteDatos.getDescripcion(), 
+                productoTransporteDatos.getMarca(), 
+                productoTransporteDatos.getImagen(), 
+                productoTransporteDatos.getPresentacion(), 
+                productoTransporteDatos.getPrecioUnitarioCompra(), 
+                productoTransporteDatos.getPrecioUnitarioVenta(), 
+                productoTransporteDatos.getCantidadInventario(), 
+                productoTransporteDatos.getCantidadMinimaInventario(), 
+                productoTransporteDatos.getTipo());
+        ProductoConsultaBaseDatos productoConsultaBaseDatos = new ProductoConsultaBaseDatos();
+        productoConsultaBaseDatos.actualizarProducto(producto);
+        return true;
     }
     
+    public void eliminarProducto(Long id){
+        ProductoConsultaBaseDatos productoConsultaBaseDatos = new ProductoConsultaBaseDatos();
+        productoConsultaBaseDatos.eliminarProducto(id);
+    }
+
     public String pagarCompraCarrito(List<ProductoTransporteDatos> productosVendidos,
-            Long valorCupon, Long valorVenta){
-        
+            Long valorCupon, Long valorVenta) {
+
         VentaConsultaBaseDatos ventaConsultaBaseDatos = new VentaConsultaBaseDatos();
         ProductoVendidoConsultaBaseDatos productoVendidoConsultaBaseDatos = new ProductoVendidoConsultaBaseDatos();
         ProductoConsultaBaseDatos productoConsultaBaseDatos = new ProductoConsultaBaseDatos();
-        
+
         ProductoVendido productoVendido;
-        
+
         Venta venta = new Venta();
         venta.setFecha(new Date());
         venta.setIdUsuario(0);
@@ -131,11 +155,11 @@ public class ProductoMetodosLogicaPaginas {
         venta.setValorTotal(valorVenta - valorCupon);
 
         venta = ventaConsultaBaseDatos.crearVenta(venta);
-        
-        for(ProductoTransporteDatos productoTransporteDatos : productosVendidos){
-            
+
+        for (ProductoTransporteDatos productoTransporteDatos : productosVendidos) {
+
             productoVendido = new ProductoVendido();
-            
+
             productoVendido.setIdProductoInventario(productoTransporteDatos.getId());
             productoVendido.setNombre(productoTransporteDatos.getNombre());
             productoVendido.setDescripcion(productoTransporteDatos.getDescripcion());
@@ -148,15 +172,15 @@ public class ProductoMetodosLogicaPaginas {
             productoVendido.setCantidadVendida(1);
             productoVendido.setFormulaProductoVendidoProductoVendidoId(null);
             productoVendido.setVentaProductoVendidoProductoVendidoId(venta);
-            
+
             productoVendidoConsultaBaseDatos.crearProductoVendido(productoVendido);
-            
+
             productoConsultaBaseDatos.registrarCompra(productoTransporteDatos.getId());
-            
+
         }
-        
+
         return "exito";
-        
+
     }
-    
+
 }

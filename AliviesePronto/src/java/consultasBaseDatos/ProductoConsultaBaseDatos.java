@@ -132,5 +132,42 @@ public class ProductoConsultaBaseDatos {
         }
         
     }
+    
+    public Producto actualizarProducto(Producto producto){
+        
+        EntityManager em = emf.createEntityManager();  
+        
+        em.getTransaction().begin();
+        
+        
+        try {
+            producto = em.merge(producto);
+            em.getTransaction().commit();
+        } catch (Exception e){
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+            return producto;
+        }
+        
+    }
+    
+    public void eliminarProducto(Long id){
+        
+        EntityManager em = emf.createEntityManager();  
+        
+        em.getTransaction().begin();
+        
+        
+        try {
+            em.remove(em.find(Producto.class, id));
+            em.getTransaction().commit();
+        } catch (Exception e){
+            em.getTransaction().rollback();
+        } finally {
+            em.close();
+        }
+        
+    }
 
 }
