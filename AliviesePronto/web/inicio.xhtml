@@ -14,7 +14,6 @@
         <b:navBar brand="Aliviese Pronto" brandHref="#" inverse="true" fixed="top" fluid="true">
             <h:form styleClass="navbar-form navbar-right">
                 <div class="form-group" style="display: inline-block">
-                    <b:inputText placeholder="Buscar productos..." fieldSize="m" />
                     <b:dropButton value="Mis compras" >
                         <c:set var="i" value="${0}"/>
                         <c:forEach items="#{carritoComprasIntermedioPaginas.productosCarrito}" var="producto">

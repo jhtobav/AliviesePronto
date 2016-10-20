@@ -26,24 +26,22 @@ and open the template in the editor.
                     <b:column span="2"></b:column>
                     <b:column span="6">
                         <b:buttonGroup>
-                            <b:button value="Ordenar alfabeticamente" look="success"/>
-                            <b:button value="Ordenar por fabricante" />
+                            <b:commandButton value="Ordenar alfabeticamente" action="#{listarProductoIntermedioPaginas.ordenarAlfabeticamente()}" look="#{listarProductoIntermedioPaginas.ordenarAlfabeticamente}"/>
+                            <b:commandButton value="Ordenar por fabricante" action="#{listarProductoIntermedioPaginas.ordenarPorFabricante()}" look="#{listarProductoIntermedioPaginas.ordenarPorFabricante}"/>
                         </b:buttonGroup>
                     </b:column>
                     <b:column span="2">
-                        <b:dropButton value="A-Z">
-                            <b:navLink value="A"></b:navLink>
-                            <b:navLink value="B"></b:navLink>
-                            <b:navLink value="C"></b:navLink>
-                        </b:dropButton>
+                        <b:inputText placeholder="Buscar productos..." fieldSize="md" value="#{listarProductoIntermedioPaginas.nombre}" />
                     </b:column>
-                    <b:column span="2"></b:column>
+                    <b:column span="2">
+                        <b:commandButton value="Buscar" action="#{listarProductoIntermedioPaginas.buscarPorNombre()}"/>
+                    </b:column>
                 </b:row> 
                 <b:row class="top-buffer">
                 <c:forEach items="#{listarProductoIntermedioPaginas.productosPublicos}" var="producto">
                         <b:column span="3">
                             <div class="imgWrap">
-                                <img src="#{producto.imagen}" alt="polaroid" class="productImage" height="50" width="50"/>
+                                <img src="#{producto.imagen}" alt="#{producto.nombre}" class="productImage" height="50" width="50"/>
                                 <p class="imgDescription">Nombre del producto: #{producto.nombre}<br/>
                                     Fabricante: #{producto.marca}<br/>
                                     Precio: #{producto.precioUnitarioCompra}<br/>

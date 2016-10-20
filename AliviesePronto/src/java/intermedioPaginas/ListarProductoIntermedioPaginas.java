@@ -11,6 +11,9 @@ import transporteDatos.ProductoTransporteDatos;
 public class ListarProductoIntermedioPaginas {
         
     List<ProductoTransporteDatos> productosPublicos = null;
+    String ordenarAlfabeticamente;
+    String ordenarPorFabricante;
+    String nombre;
     
     public ListarProductoIntermedioPaginas() {
     }
@@ -25,7 +28,31 @@ public class ListarProductoIntermedioPaginas {
         return "listarProducto.xhtml";
         
     }
-
+    
+    public String ordenarAlfabeticamente(){
+        ordenarAlfabeticamente="success";
+        ordenarPorFabricante="default";
+        
+        productosPublicos = new ProductoMetodosLogicaPaginas().listarProductosAlfabeticamente();
+        
+        return "listarProducto.xhtml";
+    }
+            
+    public String ordenarPorFabricante(){
+        ordenarAlfabeticamente="default";
+        ordenarPorFabricante="success";
+        
+        productosPublicos = new ProductoMetodosLogicaPaginas().listarProductosPorMarca();
+        
+        return "listarProducto.xhtml";
+    }
+    
+    public String buscarPorNombre(){
+        productosPublicos = new ProductoMetodosLogicaPaginas().buscarProductosPorNombre(nombre);
+        
+        return "listarProducto.xhtml";
+    }
+    
     public List<ProductoTransporteDatos> getProductosPublicos() {
         return productosPublicos;
     }
@@ -33,5 +60,29 @@ public class ListarProductoIntermedioPaginas {
     public void setProductosPublicos(List<ProductoTransporteDatos> productosPublicos) {
         this.productosPublicos = productosPublicos;
     }
+
+    public String getOrdenarAlfabeticamente() {
+        return ordenarAlfabeticamente;
+    }
+
+    public void setOrdenarAlfabeticamente(String ordenarAlfabeticamente) {
+        this.ordenarAlfabeticamente = ordenarAlfabeticamente;
+    }
+
+    public String getOrdenarPorFabricante() {
+        return ordenarPorFabricante;
+    }
+
+    public void setOrdenarPorFabricante(String ordenarPorFabricante) {
+        this.ordenarPorFabricante = ordenarPorFabricante;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    } 
     
 }

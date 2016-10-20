@@ -99,14 +99,76 @@ public class ProductoMetodosLogicaPaginas {
 
     }
 
+    public List<ProductoTransporteDatos> listarProductosAlfabeticamente() {
+
+        List<Producto> listaProductos = new ProductoConsultaBaseDatos().obtenerProductosAlfabeticamente();
+
+        List<ProductoTransporteDatos> listaProductosTransporteDatos = new ArrayList<>();
+
+        ProductoTransporteDatos productoTransporteDatos;
+
+        for (Producto producto : listaProductos) {
+
+            productoTransporteDatos = new ProductoTransporteDatos();
+
+            productoTransporteDatos.setId(producto.getId());
+            productoTransporteDatos.setNombre(producto.getNombre());
+            productoTransporteDatos.setDescripcion(producto.getDescripcion());
+            productoTransporteDatos.setMarca(producto.getMarca());
+            productoTransporteDatos.setImagen(producto.getImagen());
+            productoTransporteDatos.setPresentacion(producto.getPresentacion());
+            productoTransporteDatos.setPrecioUnitarioCompra(producto.getPrecioUnitarioCompra());
+            productoTransporteDatos.setPrecioUnitarioVenta(producto.getPrecioUnitarioVenta());
+            productoTransporteDatos.setCantidadInventario(producto.getCantidadInventario());
+            productoTransporteDatos.setCantidadMinimaInventario(producto.getCantidadMinimaInventario());
+            productoTransporteDatos.setTipo(producto.getTipo());
+
+            listaProductosTransporteDatos.add(productoTransporteDatos);
+
+        }
+
+        return listaProductosTransporteDatos;
+
+    }
+
+    public List<ProductoTransporteDatos> listarProductosPorMarca() {
+
+        List<Producto> listaProductos = new ProductoConsultaBaseDatos().obtenerProductosPorFabricante();
+
+        List<ProductoTransporteDatos> listaProductosTransporteDatos = new ArrayList<>();
+
+        ProductoTransporteDatos productoTransporteDatos;
+
+        for (Producto producto : listaProductos) {
+
+            productoTransporteDatos = new ProductoTransporteDatos();
+
+            productoTransporteDatos.setId(producto.getId());
+            productoTransporteDatos.setNombre(producto.getNombre());
+            productoTransporteDatos.setDescripcion(producto.getDescripcion());
+            productoTransporteDatos.setMarca(producto.getMarca());
+            productoTransporteDatos.setImagen(producto.getImagen());
+            productoTransporteDatos.setPresentacion(producto.getPresentacion());
+            productoTransporteDatos.setPrecioUnitarioCompra(producto.getPrecioUnitarioCompra());
+            productoTransporteDatos.setPrecioUnitarioVenta(producto.getPrecioUnitarioVenta());
+            productoTransporteDatos.setCantidadInventario(producto.getCantidadInventario());
+            productoTransporteDatos.setCantidadMinimaInventario(producto.getCantidadMinimaInventario());
+            productoTransporteDatos.setTipo(producto.getTipo());
+
+            listaProductosTransporteDatos.add(productoTransporteDatos);
+
+        }
+
+        return listaProductosTransporteDatos;
+
+    }
+
     public String actualizarInventarioProductos(List<ProductoTransporteDatos> productos) {
 
         ProductoConsultaBaseDatos productoConsultaBaseDatos = new ProductoConsultaBaseDatos();
 
         for (ProductoTransporteDatos productoTransporteDatos : productos) {
-
             productoConsultaBaseDatos.actualizarCantidadInventario(productoTransporteDatos);
-
         }
 
         return "exito";
@@ -116,23 +178,23 @@ public class ProductoMetodosLogicaPaginas {
     public boolean actualizarProducto(ProductoTransporteDatos productoTransporteDatos) {
         System.out.println(productoTransporteDatos);
         System.out.println(productoTransporteDatos.getId());
-        Producto producto = new Producto(productoTransporteDatos.getId(), 
-                productoTransporteDatos.getNombre(), 
-                productoTransporteDatos.getDescripcion(), 
-                productoTransporteDatos.getMarca(), 
-                productoTransporteDatos.getImagen(), 
-                productoTransporteDatos.getPresentacion(), 
-                productoTransporteDatos.getPrecioUnitarioCompra(), 
-                productoTransporteDatos.getPrecioUnitarioVenta(), 
-                productoTransporteDatos.getCantidadInventario(), 
-                productoTransporteDatos.getCantidadMinimaInventario(), 
+        Producto producto = new Producto(productoTransporteDatos.getId(),
+                productoTransporteDatos.getNombre(),
+                productoTransporteDatos.getDescripcion(),
+                productoTransporteDatos.getMarca(),
+                productoTransporteDatos.getImagen(),
+                productoTransporteDatos.getPresentacion(),
+                productoTransporteDatos.getPrecioUnitarioCompra(),
+                productoTransporteDatos.getPrecioUnitarioVenta(),
+                productoTransporteDatos.getCantidadInventario(),
+                productoTransporteDatos.getCantidadMinimaInventario(),
                 productoTransporteDatos.getTipo());
         ProductoConsultaBaseDatos productoConsultaBaseDatos = new ProductoConsultaBaseDatos();
         productoConsultaBaseDatos.actualizarProducto(producto);
         return true;
     }
-    
-    public void eliminarProducto(Long id){
+
+    public void eliminarProducto(Long id) {
         ProductoConsultaBaseDatos productoConsultaBaseDatos = new ProductoConsultaBaseDatos();
         productoConsultaBaseDatos.eliminarProducto(id);
     }
@@ -181,6 +243,37 @@ public class ProductoMetodosLogicaPaginas {
 
         return "exito";
 
+    }
+
+    public List<ProductoTransporteDatos> buscarProductosPorNombre(String nombre) {
+
+        List<Producto> listaProductos = new ProductoConsultaBaseDatos().buscarProductosPorNombre(nombre);
+
+        List<ProductoTransporteDatos> listaProductosTransporteDatos = new ArrayList<>();
+
+        ProductoTransporteDatos productoTransporteDatos;
+
+        for (Producto producto : listaProductos) {
+
+            productoTransporteDatos = new ProductoTransporteDatos();
+
+            productoTransporteDatos.setId(producto.getId());
+            productoTransporteDatos.setNombre(producto.getNombre());
+            productoTransporteDatos.setDescripcion(producto.getDescripcion());
+            productoTransporteDatos.setMarca(producto.getMarca());
+            productoTransporteDatos.setImagen(producto.getImagen());
+            productoTransporteDatos.setPresentacion(producto.getPresentacion());
+            productoTransporteDatos.setPrecioUnitarioCompra(producto.getPrecioUnitarioCompra());
+            productoTransporteDatos.setPrecioUnitarioVenta(producto.getPrecioUnitarioVenta());
+            productoTransporteDatos.setCantidadInventario(producto.getCantidadInventario());
+            productoTransporteDatos.setCantidadMinimaInventario(producto.getCantidadMinimaInventario());
+            productoTransporteDatos.setTipo(producto.getTipo());
+
+            listaProductosTransporteDatos.add(productoTransporteDatos);
+
+        }
+
+        return listaProductosTransporteDatos;
     }
 
 }

@@ -61,7 +61,46 @@ public class ProductoConsultaBaseDatos {
             em.close();
             return productos;
         }
+    }
+    
+    public List<Producto> obtenerProductosAlfabeticamente(){
+            
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
         
+        Query q;
+
+        List<Producto> productos = null;    
+
+        try {
+            q = em.createNamedQuery("Producto.findAllByName", Producto.class);
+            productos = q.getResultList();
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            em.close();
+            return productos;
+        }
+    }
+    
+    public List<Producto> obtenerProductosPorFabricante(){
+            
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        
+        Query q;
+
+        List<Producto> productos = null;    
+
+        try {
+            q = em.createNamedQuery("Producto.findAllByProductor", Producto.class);
+            productos = q.getResultList();
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            em.close();
+            return productos;
+        }
     }
     
     public List<Producto> obtenerProductosPublicos(){
@@ -108,6 +147,27 @@ public class ProductoConsultaBaseDatos {
             return nuevoProducto;
         }
         
+    }
+    
+    public List<Producto> buscarProductosPorNombre(String nombre){
+            
+        EntityManager em = emf.createEntityManager();
+        em.getTransaction().begin();
+        
+        Query q;
+
+        List<Producto> productos = null;    
+
+        try {
+            q = em.createNamedQuery("Producto.findByNombre", Producto.class);
+            q.setParameter("nombre", nombre);
+            productos = q.getResultList();
+        } catch (Exception e) {
+            System.out.println(e);
+        } finally {
+            em.close();
+            return productos;
+        }
     }
     
     public Producto registrarCompra(Long idProducto){
