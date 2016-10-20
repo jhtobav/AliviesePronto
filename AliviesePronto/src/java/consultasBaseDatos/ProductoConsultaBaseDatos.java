@@ -153,7 +153,7 @@ public class ProductoConsultaBaseDatos {
             
         EntityManager em = emf.createEntityManager();
         em.getTransaction().begin();
-        
+        nombre = "%" + nombre + "%";
         Query q;
 
         List<Producto> productos = null;    
